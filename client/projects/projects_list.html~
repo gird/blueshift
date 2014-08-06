@@ -1,0 +1,13 @@
+<template name="projectsList">
+  <div class="row">
+	<div class="projects">
+	  {{#each projects}}
+	  <row>
+	  <div class="col-lg-10">
+	    {{> projectItem}}
+	  </div>
+	  </row>
+	  {{/each}}
+	</div>
+  </div>
+</template>

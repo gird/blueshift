@@ -1,0 +1,48 @@
+<template name="projectItem">
+  <div class="project">
+    <div class="project-content">
+      <div class="container">
+      	<h3><u><a href="{{pathFor 'projectPage'}}">{{name}}</a></u></h3>
+      	<br/>
+	  <div class="row">
+	    <label for="status" class="col-md-2 clearfix">Status:</label>
+	    <div class="col-md-2">
+	      <p id="status">{{status}}</p>
+	    </div>
+	  </div>
+	  <div class="row">
+	    <label for="revenue" class="col-md-2">Revenue:</label>
+	    <div class="col-md-2">
+	      <p id="revenue">{{revenue}}</p>
+	    </div>
+	    <label for="probability" class="col-md-2 clearfix">Probability:</label>
+	    <div class="col-md-2">
+	      <p id="probability">{{probability}}</p>
+	    </div>
+	  </div>
+	  <div class="row">
+	    <label for="startDate" class="col-md-2 clearfix">Start Date:</label>
+	    <div class="col-md-2">
+	      <p id="startDate">{{startDate}}</p>
+	    </div>
+	    <label for="endDate" class="col-md-2 clearfix">End Date:</label>
+	    <div class="col-md-2">
+	      <p id="endDate">{{endDate}}</p>
+	    </div>
+	  </div>
+	  <div class="row">
+	    <label for="situation" class="col-md-2 clearfix">Situation:</label>
+	    <div class="col-md-6">
+	      <p id="situation">{{situation}}</p>
+	    </div>
+	  </div>
+	  <div class="row">
+	    <label for="solution" class="col-md-2 clearfix">Solution:</label>
+	    <div class="col-md-6">
+	      <p id="solution">{{solution}}</p>
+	    </div>
+	  </div>
+	</div>
+    </div>
+  </div>
+</template>

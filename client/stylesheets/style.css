@@ -1,0 +1,78 @@
+.grid-block, .main, .project, .comments li, .comment-form {
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 8px 25px rgba(0, 50, 50, 0.35);
+}
+body {
+    background: #eee;
+    color: #666666;
+}
+a {
+    text-decoration: none;
+    font-weight:bold;
+}
+a:hover {
+    text-decoration: underline;
+    font-weight:bold;
+}
+label {
+    text-align: right;
+}
+.navbar { margin-bottom: 10px }
+.navbar .navbar-inner {
+    border-radius: 0px 0px 3px 3px;
+}
+#spinner { height: 300px }
+.project {
+    *zoom: 1;
+    -webkit-transition: all 300ms 0ms;
+    -webkit-transition-delay: ease-in;
+    -moz-transition: all 300ms 0ms ease-in;
+    -o-transition: all 300ms 0ms ease-in;
+    transition: all 300ms 0ms ease-in;
+    position: relative;
+    opacity: 1;
+}
+.project:before, .project:after {
+    content: "";
+    display: table;
+}
+.project:after { clear: both }
+.project.invisible { opacity: 0 }
+.project .upvote {
+    display: block;
+    margin: 7px 12px 0 0;
+    float: left;
+}
+.project .project-content { float: left }
+.project .project-content h3 {
+    margin: 0;
+    line-height: 1.4;
+    font-size: 18px;
+}
+.project .project-content h3 a {
+    display: inline-block;
+    margin-right: 5px;
+}
+.project .project-content h3 span {
+    font-weight: normal;
+    font-size: 14px;
+    display: inline-block;
+    color: #aaaaaa;
+}
+.project .project-content p { margin: 0 }
+.project .discuss {
+    display: block;
+    float: right;
+    margin-top: 7px;
+}
+.dropdown-menu span {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    line-height: 20px;
+    color: #bbb;
+    white-space: nowrap;
+}

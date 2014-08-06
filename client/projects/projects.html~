@@ -1,0 +1,14 @@
+<template name="projects">
+  <h1><u>Projects</u></h1>
+  <div class="row">
+	<div class="projects">
+	  {{#each projects}}
+	  <row>
+	  <div class="col-lg-10">
+	    {{> projectLineItem}}
+	  </div>
+	  </row>
+	  {{/each}}
+	</div>
+  </div>
+</template>
