@@ -1,4 +1,0 @@
-<template name="projectPage">
-  <h1>{{name}}</h1>
-  {{> projectLineItem}}
-</template>

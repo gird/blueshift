@@ -1,1 +1,58 @@
-<template name="companies"></template>
+<template name="companies">
+  <h1>Companies</h1>
+    <div class="companies">
+      <div class="col-lg-10">
+        <table class="table">
+          <thead>
+            <tr>
+            <th>Company Name</th>
+            <th>Owner</th>
+            </tr>
+	  </thead>
+	  <tbody>
+	    {{#each companies}}
+	      {{> companyListRow}}
+	    {{/each}}
+	  </tbody>
+	</table>
+      </div>
+    </div>
+</template>
+
+<template name="companyListRow">
+  <tr>
+    <td> <a href="{{pathFor 'companyView'}}"> {{this.name}} </a> </td>
+    <td>  {{this.owner_id}} </td>
+  </tr>
+</template>
+
+<template name="companyView">
+  <h1><a href="{{pathFor 'companies'}}">Company</a></h1><h3>{{name}}</h3>
+  <div class="company">
+    <div class="pull-right">
+      <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">Edit</button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">Delete</button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">Clone</button>
+        </div>
+      </div>
+    </div>
+    <p><strong>Parent Company: </strong>{{parentName(parent_id)}}</p>
+    <p><strong>Industry: </strong>{{industry}}</p>
+    <p><strong>Type: </strong>{{type}}</p>
+    <p><strong>Phone: </strong>{{phone}}</p>
+    <p><strong>Billing Street: </strong>{{billingstreet}}</p>
+    <p><strong>Billing City: </strong>{{billingcity}}</p>
+    <p><strong>Billing State: </strong>{{billingstate}}</p>
+    <p><strong>Billing Zip: </strong>{{billingzip}}</p>
+    <p><strong>Shipping Street: </strong>{{shippingstreet}}</p>
+    <p><strong>Shipping City: </strong>{{shippingcity}}</p>
+    <p><strong>Shipping State: </strong>{{shippingstate}}</p>
+    <p><strong>Shipping Zip: </strong>{{shippingzip}}</p>
+  </div>
+</template>

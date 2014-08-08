@@ -1,14 +1,56 @@
 <template name="projects">
-  <h1><u>Projects</u></h1>
-  <div class="row">
-	<div class="projects">
-	  {{#each projects}}
-	  <row>
-	  <div class="col-lg-10">
-	    {{> projectLineItem}}
-	  </div>
-	  </row>
-	  {{/each}}
-	</div>
+  <h1>Projects</h1>
+    <div class="projects">
+      <div class="col-lg-10">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Project Name</th>
+              <th>Status</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+            </tr>
+	  </thead>
+	  <tbody>
+	    {{#each projects}}
+	      {{> projectListRow}}
+	    {{/each}}
+	  </tbody>
+	</table>
+      </div>
+    </div>
+</template>
+
+<template name="projectListRow">
+  <tr>
+    <td> <a href="{{pathFor 'projectView'}}"> {{this.name}} </a> </td>
+    <td>  {{this.status}} </td>
+    <td>  {{this.startDate}} </td>
+    <td>  {{this.endDate}} </td>
+  </tr>
+</template>
+
+<template name="projectView">
+  <h1><a href="{{pathFor 'projects'}}">Project</a></h1><h3>{{name}}</h3>
+  <div class="project">
+    <div class="pull-right">
+      <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">Edit</button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">Delete</button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">Clone</button>
+        </div>
+      </div>
+    </div>
+    <p><strong>Start Date: </strong>{{startDate}}</p>
+    <p><strong>End Date: </strong>{{endDate}}</p>
+    <p><strong>Situation: </strong>{{situation}}</p>
+    <p><strong>Solution: </strong>{{solution}}</p>
   </div>
+
+
 </template>

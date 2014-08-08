@@ -12,11 +12,11 @@ Template.companyView.helpers({
     return companyName;
   }
 });
-/*Template.companyView.company = function(parentid){
+Template.companyView.company = function(parentid){
 
     var companyName = Companies.findOne( {_id: parentid}, {name:1, _id:0});
     if(companyName == ''){
       companyName = 'No Parent';
     }
     return companyName;
-};*/
+};
