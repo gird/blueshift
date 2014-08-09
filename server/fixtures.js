@@ -15,7 +15,7 @@ if (Companies.find().count() === 0) {
     shippingstate: 'NY',
     shippingzip: '10240',
     phone: '423-455-8721',
-    type: 'target'
+    type: 'Competitor'
   });
   Companies.insert({
     _id: 'company100',
@@ -32,7 +32,7 @@ if (Companies.find().count() === 0) {
     shippingstate: 'MA',
     shippingzip: '54876',
     phone: '232-435-1121',
-    type: 'target'
+    type: 'Prospect'
   });
   Companies.insert({
     _id: 'company300',
@@ -49,7 +49,7 @@ if (Companies.find().count() === 0) {
     shippingstate: 'MA',
     shippingzip: '50096',
     phone: '943-955-9921',
-    type: 'target'
+    type: 'Prospect'
   });
 }
 //create some sample Users
@@ -75,26 +75,30 @@ if (Opportunities.find().count() === 0) {
   Opportunities.insert({
     _id: 'opp200',
     name: 'Potential Robot Project',
-    owner_id: 'gkenawell@foliage.com',
-    project_id: 'project200'
+    owner_id: 'gkenawell@gird.us',
+    project_id: 'project200',
+    company_id: 'company200'
   });
   Opportunities.insert({
     _id: 'opp100',
     name: 'Potential Lightsaber project',
-    owner_id: 'kkenawell@foliage.com',
-    project_id: 'project100'
+    owner_id: 'kkenawell@gird.us',
+    project_id: 'project100',
+    company_id: 'company100'
   });
   Opportunities.insert({
     _id: 'opp300',
     name: 'Robot ECO',
-    owner_id: 'gkenawell@foliage.com',
-    project_id: 'project200'
+    owner_id: 'gkenawell@gird.us',
+    project_id: 'project200',
+    company_id: 'company200'
   });
   Opportunities.insert({
     _id: 'opp400',
     name: 'Potential Unknown Project',
-    owner_id: 'gkenawell@foliage.com',
-    project_id: 'project100'
+    owner_id: 'gkenawell@gird.us',
+    project_id: 'project100',
+    company_id: 'company100'
   });
 }
 
@@ -217,3 +221,4 @@ if (Resources.find().count() === 0) {
     skills: ['skill100']
   });
 }
+

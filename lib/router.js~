@@ -20,8 +20,8 @@ Router.map(function() {
     data: function() { return Companies.findOne(this.params._id); }
   });
   this.route('opportunityView', {
-    path: '/companies/:_id',
-    data: function() { return Companies.findOne(this.params._id); }
+    path: '/opportunities/:_id',
+    data: function() { return Opportunities.findOne(this.params._id); }
   });
 });
 

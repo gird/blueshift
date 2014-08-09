@@ -9,3 +9,32 @@ Meteor.publish('opportunities', function() {
 Meteor.publish('companies', function() {
   return Companies.find();
 });
+
+Meteor.publish('project_roles', function() {
+  return Companies.find();
+});
+
+Meteor.publish('rate_book_roles', function() {
+  return Companies.find();
+});
+
+Meteor.publish('rate_books', function() {
+  return Companies.find();
+});
+
+Meteor.publish('roles', function() {
+  return Companies.find();
+});
+
+Meteor.publish('skills', function() {
+  return Companies.find();
+});
+
+Meteor.publish('users', function() {
+  return Companies.find();
+});
+
+Meteor.publish('fields', function() {
+  return Companies.find();
+});
+

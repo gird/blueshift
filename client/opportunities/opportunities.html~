@@ -1,6 +1,5 @@
 <template name="opportunities">
   <h1>Opportunities</h1>
-  <div class="row">
     <div class="opportunities">
       <div class="col-lg-10">
         <table class="table">
@@ -18,7 +17,6 @@
 	</table>
       </div>
     </div>
-  </div>
 </template>
 
 <template name="opportunityListRow">

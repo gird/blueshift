@@ -1,0 +1,16 @@
+//create some sample Feilds
+if (Fields.find().count() === 0) {
+  Fields.insert({
+    name: 'Stage',
+    type: 'picklist',
+    uielement: 'dropdown',
+    collection: 'Opportunities',
+    values: [ {name: 'Prospect'} ]
+  });
+ Fields.insert({
+    name: 'Amount',
+    type: 'number',
+    uielement: 'inputbox',
+    collection: 'Opportunities'
+  });
+}

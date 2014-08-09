@@ -27,7 +27,11 @@
 </template>
 
 <template name="companyView">
-  <h1><a href="{{pathFor 'companies'}}">Company</a></h1><h3>{{name}}</h3>
+  <h1><a href="{{pathFor 'companies'}}">Company</a></h1>
+  <h2>{{name}}</h2>
+  {{#if parent_id}}
+    <p><strong> &nbsp; Parent: </strong><a href="{{pathFor 'companyParent'}}">{{parent}}</a></p>
+  {{/if}}
   <div class="company">
     <div class="pull-right">
       <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
@@ -42,7 +46,6 @@
         </div>
       </div>
     </div>
-    <p><strong>Parent Company: </strong>{{parentName "parent_id"}}</p>
     <p><strong>Industry: </strong>{{industry}}</p>
     <p><strong>Type: </strong>{{type}}</p>
     <p><strong>Phone: </strong>{{phone}}</p>

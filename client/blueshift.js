@@ -1,3 +1,10 @@
 Meteor.subscribe("projects");
 Meteor.subscribe("opportunities");
 Meteor.subscribe("companies");
+Meteor.subscribe("project_roles");
+Meteor.subscribe("rate_book_roles");
+Meteor.subscribe("rate_books");
+Meteor.subscribe("roles");
+Meteor.subscribe("skills");
+Meteor.subscribe("users");
+Meteor.subscribe("fields");

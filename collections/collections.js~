@@ -1,3 +1,35 @@
 Projects = new Meteor.Collection('projects');
 Companies = new Meteor.Collection('companies');
 Opportunities = new Meteor.Collection('opportunities');
+Project_Roles = new Meteor.Collection('project_roles');
+Rate_Book_Roles = new Meteor.Collection('rate_book_roles');
+Rate_Books = new Meteor.Collection('rate_books');
+Resources = new Meteor.Collection('resources');
+Roles = new Meteor.Collection('roles');
+Skills = new Meteor.Collection('skills');
+Users = new Meteor.Collection('users');
+Fields = new Meteor.Collection('fields', {
+  schema: {
+    name: {
+      type: String,
+      max: 32
+    },
+    type: {
+      type: String,
+      max: 32
+    },
+    uielement: {
+      type: String,
+      max: 32
+    },
+    collection: {
+      type: String,
+      max: 32
+    },
+    values: {
+      type: [Object],
+      optional: true,
+      maxCount: 20
+    }
+  }
+});

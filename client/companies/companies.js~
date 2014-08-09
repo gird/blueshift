@@ -4,19 +4,55 @@ Template.companies.helpers({
   }
 });
 Template.companyView.helpers({
-  parentName: function(id) {
-    var companyName = Companies.findOne( {_id: id}, {name:1, _id:0});
-    if(companyName == ''){
-      companyName = 'No Parent';
-    }
-    return companyName;
+  'parent': function() {
+    var child = this;
+    var parent = Companies.findOne(this.parent_id).name;
+    return _.extend(child, _.omit(parent, '_id'));;
+  },
+  'testMe': function() {
+    var teste = Companies.findOne(this.parent_id).name;
+    return teste;
   }
 });
-Template.companyView.company = function(parentid){
 
-    var companyName = Companies.findOne( {_id: parentid}, {name:1, _id:0});
-    if(companyName == ''){
-      companyName = 'No Parent';
+/*
+
+
+<!-- 3. Reactive Join #2: Overpublishing. (and joining with data context) -->
+<template name="PostList">
+  {{#each posts}}
+    <h1>{{title}}</h1>
+    {{#with joinWithAuthor}}
+      <h2>{{author}}</h2>
+    {{/with}}
+  {{/each}}
+</template>
+
+if (Meteor.isServer) {
+  Meteor.publish('getPopularPosts', function() {
+    return Posts.find({ }, { sort: { score: -1 }, limit: 10 };
+  });
+  
+  Meteor.publish('getEveryAuthors', function() {
+    return Meteor.users.find({ }, { fields: { username: 1 }}));
+  });
+}
+ 
+if (Meteor.isClient) {
+  Template.PostList.created = function() {
+    Meteor.subscribe('getPopularPosts');
+    Meteor.subscribe('getEveryAuthors');
+  }
+  
+  Template.PostList.helpers({
+    'posts': function() {
+      Posts.find();
     }
-    return companyName;
-};
+    'joinWithAuthor': function() {
+      var post = this;
+      var author = Meteor.users.findOne(this.userId).username;
+      return _.extend(post, _.omit(author, '_id'));
+    }
+  });
+}
+*/
