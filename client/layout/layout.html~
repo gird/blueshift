@@ -1,7 +1,6 @@
 <template name="layout">
   {{>navigation}}
-
+  <div class="container-fluid">
     {{> yield}}
-
-
+  </div>
 </template>

@@ -33,6 +33,7 @@
 <template name="projectView">
   <h1><a href="{{pathFor 'projects'}}">Project</a></h1><h3>{{name}}</h3>
   <div class="project">
+  <div class="col-xs-1">
     <div class="pull-right">
       <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
         <div class="btn-group">
@@ -51,6 +52,7 @@
     <p><strong>Situation: </strong>{{situation}}</p>
     <p><strong>Solution: </strong>{{solution}}</p>
     <p><strong>Company: </strong><a href="{{pathFor 'projectCompany'}}">{{company}}</a></p>
+  </div>
   </div>
   
   <div class="panel-group" id="accordion">
@@ -130,7 +132,7 @@
 
 <template name="projectRolesListRow">
   <tr>
-    <td> <a href="{{pathFor 'projectRoleView'}}"> {{rate_book_role_id}} </a> </td>
+    <td> <a href="{{pathFor 'projectRoleView'}}"> {{role}} </a> </td>
     <td>  {{status}} </td>
     <td>  {{startDate}} </td>
     <td>  {{endDate}} </td>
