@@ -27,6 +27,30 @@
 </template>
 
 <template name="opportunityView">
-  <h1><a href="{{pathFor 'opportunities'}}">Opportunity</a></h1>
-  <h3>{{name}}</h3>
+  <h1><a href="{{pathFor 'opportunities'}}">Opportunity</a></h1><h3>{{name}}</h3>
+  <div class="opportunity">
+    <div class="pull-right">
+      <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">Edit</button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">Delete</button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">Clone</button>
+        </div>
+      </div>
+    </div>
+    <p><strong>Owner Id: </strong>{{owner_id}}</p>
+    <p><strong>Project: </strong><a href="{{pathFor 'opportunityProject'}}">{{project}}</a></p>
+    <p><strong>Company: </strong><a href="{{pathFor 'opportunityCompany'}}">{{company}}</a></p>
+  </div>
+</template>
+
+<template name="projectOpportunitiesListRow">
+  <tr>
+    <td> <a href="{{pathFor 'opportunityView'}}"> {{name}} </a> </td>
+    <td>  {{owner_id}} </td>
+  </tr>
 </template>

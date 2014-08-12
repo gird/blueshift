@@ -1,28 +1,60 @@
 Router.configure({
   layoutTemplate: 'layout',
-  loading: ('loading'),
+  loading: ('loading')/*,
   waitOn: function() { 
     return [Meteor.subscribe('Projects', 'Companies')]
-  }
+  }*/
 });
 
 Router.map(function() {
   this.route('home', {path: '/'});
   this.route('projects', {path: '/projects'});
+  this.route('projectRoles', {path: '/projectRoles'});
   this.route('opportunities', {path: '/opportunities'});
   this.route('companies', {path: '/companies'});
+  this.route('contacts', {path: '/contacts'});
   this.route('projectView', {
     path: '/projects/:_id',
     data: function() { return Projects.findOne(this.params._id); }
+  });
+  this.route('projectRoleView', {
+    path: '/projectRoles/:_id',
+    data: function() { return Project_Roles.findOne(this.params._id); }
   });
   this.route('companyView', {
     path: '/companies/:_id',
     data: function() { return Companies.findOne(this.params._id); }
   });
+  this.route('companyParent', {
+    path: '/companies/:parent_id',
+    data: function() { return Companies.findOne(this.params.parent_id); }
+  });
   this.route('opportunityView', {
     path: '/opportunities/:_id',
     data: function() { return Opportunities.findOne(this.params._id); }
   });
+  this.route('contactView', {
+    path: '/contacts/:_id',
+    data: function() { return Contacts.findOne(this.params._id); }
+  });
+  this.route('contactCompany', {
+    path: '/companies/:company_id',
+    data: function() { return Companies.findOne(this.params.company_id); }
+  });
+  this.route('opportunityCompany', {
+    path: '/companies/:company_id',
+    data: function() { return Companies.findOne(this.params.company_id); }
+  });
+  this.route('projectCompany', {
+    path: '/companies/:company_id',
+    data: function() { return Companies.findOne(this.params.company_id); }
+  });
+  //Awaiting Requirements Decision Start
+  this.route('opportunityProject', {
+    path: '/projects/:project_id',
+    data: function() { return Projects.findOne(this.params.project_id); }
+  });
+  //Awaiting Requirements Decision End
 });
 
 Router.onBeforeAction('loading');

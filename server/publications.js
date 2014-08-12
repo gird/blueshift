@@ -10,6 +10,10 @@ Meteor.publish('companies', function() {
   return Companies.find();
 });
 
+Meteor.publish('contacts', function() {
+  return Contacts.find();
+});
+
 Meteor.publish('project_roles', function() {
   return Project_Roles.find();
 });

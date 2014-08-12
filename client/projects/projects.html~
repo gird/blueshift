@@ -50,7 +50,96 @@
     <p><strong>End Date: </strong>{{endDate}}</p>
     <p><strong>Situation: </strong>{{situation}}</p>
     <p><strong>Solution: </strong>{{solution}}</p>
+    <p><strong>Company: </strong><a href="{{pathFor 'projectCompany'}}">{{company}}</a></p>
   </div>
+  
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#projectRoles">
+          Project Roles
+          </a>
+        </h4>
+      </div>
+      <div id="projectRoles" class="panel-collapse collapse">
+        <div class="panel-body">
+          {{#if projectRoles.count}}
+	  <div class="childProjectRoles">
+	    <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
+              <div class="btn-group">
+                <button type="button" class="btn btn-default">Add</button>
+              </div>
+            </div>
+	    <table class="table">
+	      <thead>
+		<tr>
+		  <th>Name</th>
+		  <th>Status</th>
+		  <th>Start Date</th>
+		  <th>End Date</th>
+		</tr>
+	      </thead>
+	      <tbody>
+		{{#each projectRoles}}
+		  {{> projectRolesListRow}}
+		{{/each}}
+	      </tbody>
+	    </table>
+	  </div>
+	  {{else}}
+	    <p><strong> There are currently no Project Roles for this Project. <a href="#">Create one</a>.</strong></p>
+	  {{/if}}
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#opportunities">
+          Related Opportunities
+          </a>
+        </h4>
+      </div>
+      <div id="opportunities" class="panel-collapse collapse">
+        <div class="panel-body">
+          {{#if projectOpportunities.count}}
+	  <div class="relatedOpportunities">
+	    <table class="table">
+	      <thead>
+		<tr>
+		  <th>Name</th>
+		  <th>Owner</th>
+		</tr>
+	      </thead>
+	      <tbody>
+		{{#each projectOpportunities}}
+		  {{> projectOpportunitiesListRow}}
+		{{/each}}
+	      </tbody>
+	    </table>
+	  </div>
+	  {{else}}
+	    <p><strong> Somethings wrong :\ There are no opportunities for this project and there should be.</strong></p>
+	  {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 
+<template name="projectRolesListRow">
+  <tr>
+    <td> <a href="{{pathFor 'projectRoleView'}}"> {{rate_book_role_id}} </a> </td>
+    <td>  {{status}} </td>
+    <td>  {{startDate}} </td>
+    <td>  {{endDate}} </td>
+  </tr>
+</template>
 
+<template name="projectOpportunitiesListRow">
+  <tr>
+    <td> <a href="{{pathFor 'opportunityView'}}"> {{name}} </a> </td>
+    <td>  {{owner_id}} </td>
+  </tr>
 </template>

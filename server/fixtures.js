@@ -160,37 +160,13 @@ if (Rate_Book_Roles.find().count() === 0) {
     _id: 'rbr1',
     rate_book_id: 'rb1',
     role_id: 'role1',
-    rate: 120,
-    cost: 50
+    rate: 120
   });
   Rate_Book_Roles.insert({
     _id: 'rbr2',
     rate_book_id: 'rb1',
     role_id: 'role2',
-    rate: 175,
-    cost: 65
-  });
-}
-
-//create some sample Project Roles
-if (Project_Roles.find().count() === 0) {
-  Project_Roles.insert({
-    rate_book_role_id: 'rbr1',
-    startDate: '2014-01-01',
-    endDate: '2014-12-01',
-    status: 'Assigned',
-    allocation: '0.50',
-    probability: '0.85',
-    project_id: 'project200'
-  });
-  Project_Roles.insert({
-    rate_book_role_id: 'rbr2',
-    startDate: '2014-01-11',
-    endDate: '2014-11-01',
-    status: 'Claimed',
-    allocation: '0.70',
-    probability: '0.95',
-    project_id: 'project200'
+    rate: 175
   });
 }
 

@@ -6,7 +6,14 @@ if (Fields.find().count() === 0) {
     type: 'picklist',
     uielement: 'dropdown',
     collection: 'Opportunities',
-    values: [{name: 'Prospect'},{name: 'Discovery'},{name: 'Qualified'},{name: 'Proposal'},{name: 'Verbal'},{name: 'Closed Won'}, {name: 'Closed Lost'}]
+    values: [
+      {name: 'Prospect'},
+      {name: 'Discovery'},
+      {name: 'Qualified'},
+      {name: 'Proposal'},
+      {name: 'Verbal'},
+      {name: 'Closed Won'},
+      {name: 'Closed Lost'}]
   },
   {
     name: 'Amount',

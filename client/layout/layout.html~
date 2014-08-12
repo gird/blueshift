@@ -1,14 +1,7 @@
 <template name="layout">
-  <div class="container">
-    <nav class="navbar navbar-inverse" role="navigation">
-      <ul class="nav navbar-nav">
-        <li>
-          <a class="brand" href="{{pathFor 'projectsList'}}">Blueshift</a>
-        </li>
-      </ul>
-    </nav>        
-  <div id="main" class="row-fluid">
+  {{>navigation}}
+
     {{> yield}}
-  </div>
-</div>
+
+
 </template>

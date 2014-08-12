@@ -1,17 +1,26 @@
-Template.opportunities.helpers({
-  opportunities: function() {
-    return Opportunities.find();
+Template.projectRoles.helpers({
+  projectRoles: function() {
+    return Project_Roles.find();
   }
 });
 
-Template.opportunityView.helpers({
-  'company': function() {
+Template.projectRoleView.helpers({
+  /*'company': function() {
     var company = Companies.findOne(this.company_id).name;
     return company;
-  },
+  },*/
   'project': function() {
     var project = Projects.findOne(this.project_id).name;
     return project;
+  },
+  'rate': function() {
+    var rate = Rate_Book_Roles.findOne(this.rate_book_role_id).rate;
+    return rate;
+  },
+  'role': function() {
+    var roleId = Rate_Book_Roles.findOne(this.rate_book_role_id).role_id;
+    var role = Roles.findOne(roleId).name;
+    return role;
   }
   /*,
   children: function() {

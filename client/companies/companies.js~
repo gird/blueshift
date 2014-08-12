@@ -3,18 +3,22 @@ Template.companies.helpers({
     return Companies.find();
   }
 });
+
 Template.companyView.helpers({
   'parent': function() {
-    var child = this;
     var parent = Companies.findOne(this.parent_id).name;
-    return _.extend(child, _.omit(parent, '_id'));;
+    return parent;
   },
-  'testMe': function() {
-    var teste = Companies.findOne(this.parent_id).name;
-    return teste;
+  children: function() {
+    return children = Companies.find({ parent_id: this._id });
+  },
+  childOpportunities: function() {
+    return childOpportunities = Opportunities.find({ company_id: this._id });
+  },
+  childProjects: function() {
+    return childProjects = Projects.find({ company_id: this._id });
   }
 });
-
 /*
 
 

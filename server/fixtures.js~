@@ -172,28 +172,6 @@ if (Rate_Book_Roles.find().count() === 0) {
   });
 }
 
-//create some sample Project Roles
-if (Project_Roles.find().count() === 0) {
-  Project_Roles.insert({
-    rate_book_role_id: 'rbr1',
-    startDate: '2014-01-01',
-    endDate: '2014-12-01',
-    status: 'Assigned',
-    allocation: '0.50',
-    probability: '0.85',
-    project_id: 'project200'
-  });
-  Project_Roles.insert({
-    rate_book_role_id: 'rbr2',
-    startDate: '2014-01-11',
-    endDate: '2014-11-01',
-    status: 'Claimed',
-    allocation: '0.70',
-    probability: '0.95',
-    project_id: 'project200'
-  });
-}
-
 //create some sample Skills
 if (Skills.find().count() === 0) {
   Skills.insert({
@@ -222,18 +200,3 @@ if (Resources.find().count() === 0) {
   });
 }
 
-//create some sample Feilds
-if (Fields.find().count() === 0) {
-  Fields.insert({
-    name: 'Stage',
-    type: 'picklist',
-    uielement: 'dropdown',
-    collection: 'Opportunities'
-  });
- Fields.insert({
-    name: 'Amount',
-    type: 'number',
-    uielement: 'inputbox',
-    collection: 'Opportunities'
-  });
-}

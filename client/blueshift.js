@@ -1,6 +1,7 @@
 Meteor.subscribe("projects");
 Meteor.subscribe("opportunities");
 Meteor.subscribe("companies");
+Meteor.subscribe("contacts");
 Meteor.subscribe("project_roles");
 Meteor.subscribe("rate_book_roles");
 Meteor.subscribe("rate_books");

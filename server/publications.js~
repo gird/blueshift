@@ -11,30 +11,30 @@ Meteor.publish('companies', function() {
 });
 
 Meteor.publish('project_roles', function() {
-  return Companies.find();
+  return Project_Roles.find();
 });
 
 Meteor.publish('rate_book_roles', function() {
-  return Companies.find();
+  return Rate_Book_Roles.find();
 });
 
 Meteor.publish('rate_books', function() {
-  return Companies.find();
+  return Rate_Books.find();
 });
 
 Meteor.publish('roles', function() {
-  return Companies.find();
+  return Roles.find();
 });
 
 Meteor.publish('skills', function() {
-  return Companies.find();
+  return Skills.find();
 });
 
 Meteor.publish('users', function() {
-  return Companies.find();
+  return Users.find();
 });
 
 Meteor.publish('fields', function() {
-  return Companies.find();
+  return Fields.find();
 });
 

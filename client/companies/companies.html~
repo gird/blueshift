@@ -30,7 +30,7 @@
   <h1><a href="{{pathFor 'companies'}}">Company</a></h1>
   <h2>{{name}}</h2>
   {{#if parent_id}}
-    <p><strong> &nbsp; Parent: </strong><a href="{{pathFor 'companyView/parent_id'}}">{{parent}}</a></p>
+    <p><strong> &nbsp; Parent: </strong><a href="{{pathFor 'companyParent'}}">{{parent}}</a></p>
   {{/if}}
   <div class="company">
     <div class="pull-right">
@@ -58,4 +58,144 @@
     <p><strong>Shipping State: </strong>{{shippingstate}}</p>
     <p><strong>Shipping Zip: </strong>{{shippingzip}}</p>
   </div>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#opportunities">
+          Opportunities
+          </a>
+        </h4>
+      </div>
+      <div id="opportunities" class="panel-collapse collapse">
+        <div class="panel-body">
+          {{#if childOpportunities.count}}
+	  <div class="childOpportunities">
+	    <table class="table">
+	      <thead>
+		<tr>
+		  <th>Name</th>
+		  <th>Owner</th>
+		</tr>
+	      </thead>
+	      <tbody>
+		{{#each childOpportunities}}
+		  {{> childOpportunitiesListRow}}
+		{{/each}}
+	      </tbody>
+	    </table>
+	  </div>
+	  {{else}}
+	    <p><strong> There are no opportunities for this company. <a href="#">Create an Opportunity</a>.</strong></p>
+	  {{/if}}
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#projects">
+          Projects
+          </a>
+        </h4>
+      </div>
+      <div id="projects" class="panel-collapse collapse">
+        <div class="panel-body">
+          {{#if childProjects.count}}
+	  <div class="childProjects">
+	    <table class="table">
+	      <thead>
+		<tr>
+		  <th>Name</th>
+		  <th>Owner</th>
+		</tr>
+	      </thead>
+	      <tbody>
+		{{#each childProjects}}
+		  {{> childProjectsListRow}}
+		{{/each}}
+	      </tbody>
+	    </table>
+	  </div>
+	  {{else}}
+	    <p><strong> There are no active projects for this company. <a href="#">Create a Project</a>.</strong></p>
+	  {{/if}}
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#contacts">
+            Contacts
+          </a>
+        </h4>
+      </div>
+      <div id="contacts" class="panel-collapse collapse">
+        <div class="panel-body">
+          Anim pariatur cliche reprehendinable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#children">
+            Child Companies
+          </a>
+        </h4>
+      </div>
+      <div id="children" class="panel-collapse collapse">
+        <div class="panel-body">
+          {{#if children.count}}
+	  <div class="children">
+	    <table class="table">
+	      <thead>
+		<tr>
+		  <th>Name</th>
+		  <th>Owner</th>
+		</tr>
+	      </thead>
+	      <tbody>
+		{{#each children}}
+		  {{> childCompanyListRow}}
+		{{/each}}
+	      </tbody>
+	    </table>
+	  </div>
+	  {{else}}
+	    <p><strong> There are no child companies under this company. <a href="#">Create a Child Relationship</a>.</strong></p>
+	  {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="childOpportunitiesListRow">
+  <tr>
+    <td> <a href="{{pathFor 'opportunityView'}}"> {{name}} </a> </td>
+    <td>  {{owner_id}} </td>
+  </tr>
+</template>
+
+<template name="childProjectsListRow">
+  <tr>
+    <td> <a href="{{pathFor 'projectView'}}"> {{name}} </a> </td>
+    <td>  {{status}} </td>
+  </tr>
+</template>
+
+<template name="childContactsListRow">
+  <tr>
+    <td> <a href="#"> {{name}} </a> </td>
+    <td>  {{owner_id}} </td>
+  </tr>
+</template>
+
+<template name="childCompanyListRow">
+  <tr>
+    <td> <a href="{{pathFor 'companyView'}}"> {{name}} </a> </td>
+    <td>  {{owner_id}} </td>
+  </tr>
 </template>
