@@ -13,8 +13,8 @@ Template.projectView.helpers({
   },
   projectRoles: function() {
     var projectRoles = Project_Roles.find({ project_id: this._id });
-    projectRoles.forEach(function() {
-      var roleId = Rate_Book_Roles.findOne({_id:this.rate_book_role_id}).role_id;
+    projectRoles.forEach(function(projectRole) {
+      var roleId = Rate_Book_Roles.findOne({_id:projectRole.rate_book_role_id}).role_id;
       var role = Roles.findOne({_id: roleId}); 
     })
     return projectRoles;

@@ -27,7 +27,7 @@
 </template>
 
 <template name="projectRoleView">
-  <h1><a href="{{pathFor 'projectRoleProject'}}">{{project}}</a></h1><h2>{{roleName(this)}}</h2>
+  <h1><a href="{{pathFor 'projectRoleProject'}}">{{project}}</a></h1><h2>{{role}}</h2>
   <div class="projectRole">
     <div class="pull-right">
       <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
@@ -48,5 +48,6 @@
     <p><strong>Allocation: </strong>{{allocation}}</p>
     <p><strong>Probability: </strong>{{probability}}</p>
     <p><strong>Rate: </strong>${{rate}}</p>
+    <p><strong>Rate Book Role: </strong>{{rate_book_role_id}}</p>
   </div>
 </template>

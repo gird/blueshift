@@ -113,7 +113,8 @@ if (Projects.find().count() === 0) {
     probability: '0.85',
     situation: 'set all o of this stuffReset all of this',
     solution: 'Reset all of tall of this stuffReset all of this',
-    company_id: 'company200'
+    company_id: 'company200',
+    rate_book_id: 'rb1'
   });
   Projects.insert({
     _id: 'project100',
@@ -124,7 +125,8 @@ if (Projects.find().count() === 0) {
     probability: '0.65',
     situation: 'Reset all of  thisof this stuffReset all of this',
     solution: 'set alhis stuffRestuffReset all of this',
-    company_id: 'company200'
+    company_id: 'company200',
+    rate_book_id: 'rb2'
   });
 }
 

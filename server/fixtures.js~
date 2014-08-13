@@ -160,15 +160,13 @@ if (Rate_Book_Roles.find().count() === 0) {
     _id: 'rbr1',
     rate_book_id: 'rb1',
     role_id: 'role1',
-    rate: 120,
-    cost: 50
+    rate: 120
   });
   Rate_Book_Roles.insert({
     _id: 'rbr2',
     rate_book_id: 'rb1',
     role_id: 'role2',
-    rate: 175,
-    cost: 65
+    rate: 175
   });
 }
 

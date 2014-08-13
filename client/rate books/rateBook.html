@@ -1,0 +1,97 @@
+<template name="rateBooks">
+  <h1>Rate Books</h1>
+    <div class="rateBooks">
+      <div class="col-lg-10">
+        <table class="table">
+          <thead>
+            <tr>
+            <th>Rate Book Name</th>
+            <th>Is Default?</th>
+            </tr>
+	  </thead>
+	  <tbody>
+	    {{#each rateBooks}}
+	      {{> rateBookListRow}}
+	    {{/each}}
+	  </tbody>
+	</table>
+      </div>
+    </div>
+</template>
+
+<template name="rateBookListRow">
+  <tr>
+    <td><a href="{{pathFor 'rateBookView'}}"> {{this._id}} </a></td>
+    <td>{{this.isDefault}}</td>
+  </tr>
+</template>
+
+<template name="rateBookView">
+  <h1><a href="{{pathFor 'rateBooks'}}">Rate Books</a></h1><h2>{{name}}</h2>
+  <div class="rateBook">
+    <div class="pull-right">
+      <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">Edit</button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">Delete</button>
+        </div>
+      </div>
+    </div>
+    <p><strong>isDefault: </strong>{{isDefault}}</p>
+    <p><strong>id: </strong>{{_id}}</p>
+  </div>
+
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#projectRoles">
+          Project Roles
+          </a>
+        </h4>
+      </div>
+      <div id="projectRoles" class="panel-collapse collapse">
+        <div class="panel-body">
+          {{#if rateBookRoles.count}}
+	  <div class="childProjectRoles">
+	    <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
+              <div class="btn-group">
+                <button type="button" class="btn btn-default">Add</button>
+              </div>
+            </div>
+	    <table class="table">
+	      <thead>
+		<tr>
+		  <th>Name</th>
+		  <th>Status</th>
+		  <th>Start Date</th>
+		  <th>End Date</th>
+		</tr>
+	      </thead>
+	      <tbody>
+		{{#each rateBookRoles}}
+		  {{> rateBookRolesListRow}}
+		{{/each}}
+	      </tbody>
+	    </table>
+	  </div>
+	  {{else}}
+	    <p><strong> There are currently no Project Roles for this Project. <a href="#">Create one</a>.</strong></p>
+	  {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="rateBookRolesListRow">
+  <tr>
+    <td> <a href="{{pathFor 'projectRoleView'}}"> {{role}} </a> </td>
+    <td>  {{status}} </td>
+    <td>  {{startDate}} </td>
+    <td>  {{endDate}} </td>
+  </tr>
+</template>
+

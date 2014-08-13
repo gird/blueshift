@@ -21,6 +21,10 @@ Router.map(function() {
     path: '/projectRoles/:_id',
     data: function() { return Project_Roles.findOne(this.params._id); }
   });
+  this.route('projectRoleProject', {
+    path: '/projects/:project_id',
+    data: function() { return Projects.findOne(this.params.project_id); }
+  });
   this.route('companyView', {
     path: '/companies/:_id',
     data: function() { return Companies.findOne(this.params._id); }
@@ -48,6 +52,14 @@ Router.map(function() {
   this.route('projectCompany', {
     path: '/companies/:company_id',
     data: function() { return Companies.findOne(this.params.company_id); }
+  });
+  this.route('rateBookView', {
+    path: '/rateBooks/:_id',
+    data: function() { return Rate_Books.findOne(this.params._id); }
+  });
+  this.route('projectRateBook', {
+    path: '/rateBooks/:rate_book_id',
+    data: function() { return Rate_Books.findOne(this.params.rate_book_id); }
   });
   //Awaiting Requirements Decision Start
   this.route('opportunityProject', {

@@ -11,6 +11,9 @@ Template.projectView.helpers({
   'company': function() {
      return company = Companies.findOne(this.company_id).name;
   },
+  'rateBook': function() {
+     return rateBook = Rate_Books.findOne(this.rate_book_id).name;
+  },
   projectRoles: function() {
     var projectRoles = Project_Roles.find({ project_id: this._id });
     projectRoles.forEach(function(projectRole) {

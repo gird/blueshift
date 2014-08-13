@@ -1,4 +1,4 @@
-.grid-block, .main, .projects, .project, .companies, .company, .opportunities, .opportunity, .contacts, .contact, .projectRole {
+.grid-block, .main, .projects, .project, .rateBooks, .rateBook, .companies, .company, .opportunities, .opportunity, .contacts, .contact, .projectRole {
     background: #fff;
     border-radius: 5px;
     padding: 10px;
@@ -26,22 +26,5 @@ a:hover {
 #spinner { height: 300px }
 
 .form-horizontal .form-control-static { 
-    padding-top: 5px;
-}
-@media all and (max-device-width: 720px){
-    h1 {
-        font-size: 24px;
-    }
-}
-
-@media all and (max-device-width: 640px){
-    h1 {
-        font-size: 35px;
-    }
-}
-
-@media all and (max-device-width: 320px){
-    h1 {
-        font-size: 60px;
-    }
+    padding-top: 50px;
 }
