@@ -47,39 +47,69 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#projectRoles">
-          Project Roles
+          <a data-toggle="collapse" data-parent="#accordion" href="#rateBookRoles">
+          Roles
           </a>
         </h4>
       </div>
-      <div id="projectRoles" class="panel-collapse collapse">
+      <div id="rateBookRoles" class="panel-collapse collapse">
         <div class="panel-body">
           {{#if rateBookRoles.count}}
-	  <div class="childProjectRoles">
-	    <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
+            <div class="childProjectRoles">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each rateBookRoles}}
+                    {{> rateBookRolesListRow}}
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+          {{else}}
+            <p><strong> There are currently no Roles for this Rate Book. <a href="#">Create one</a>.</strong></p>
+          {{/if}}
+            <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
               <div class="btn-group">
                 <button type="button" class="btn btn-default">Add</button>
               </div>
             </div>
-	    <table class="table">
-	      <thead>
-		<tr>
-		  <th>Name</th>
-		  <th>Status</th>
-		  <th>Start Date</th>
-		  <th>End Date</th>
-		</tr>
-	      </thead>
-	      <tbody>
-		{{#each rateBookRoles}}
-		  {{> rateBookRolesListRow}}
-		{{/each}}
-	      </tbody>
-	    </table>
-	  </div>
-	  {{else}}
-	    <p><strong> There are currently no Project Roles for this Project. <a href="#">Create one</a>.</strong></p>
-	  {{/if}}
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#rateBookProjects">
+          Projects
+          </a>
+        </h4>
+      </div>
+      <div id="rateBookProjects" class="panel-collapse collapse">
+        <div class="panel-body">
+          {{#if rateBookProjects.count}}
+            <div class="childProjectRoles">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each rateBookProjects}}
+                    {{> rateBookProjListRow}}
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+          {{else}}
+            <p><strong> There are currently no Projects related to this Rate Book. </strong></p>
+          {{/if}}
         </div>
       </div>
     </div>
@@ -88,10 +118,14 @@
 
 <template name="rateBookRolesListRow">
   <tr>
-    <td> <a href="{{pathFor 'projectRoleView'}}"> {{role}} </a> </td>
-    <td>  {{status}} </td>
-    <td>  {{startDate}} </td>
-    <td>  {{endDate}} </td>
+    <td> {{role}} </td>
+    <td> {{rate}} </td>
   </tr>
 </template>
 
+<template name="rateBookProjListRow">
+  <tr>
+    <td> {{name}} </td>
+    <td> {{status}} </td>
+  </tr>
+</template>
