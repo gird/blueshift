@@ -1,144 +1,139 @@
 <template name="projects">
-  <h1>Projects</h1>
+    <h1>Projects</h1>
     <div class="projects">
         <table class="table">
-          <thead>
-            <tr>
-              <th>Project Name</th>
-              <th>Status</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-            </tr>
-	  </thead>
-	  <tbody>
-	    {{#each projects}}
-	      {{> projectListRow}}
-	    {{/each}}
-	  </tbody>
-	</table>
+            <thead>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Status</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each projects}} {{> projectListRow}} {{/each}}
+            </tbody>
+        </table>
     </div>
 </template>
 
 <template name="projectListRow">
-  <tr>
-    <td> <a href="{{pathFor 'projectView'}}"> {{this.name}} </a> </td>
-    <td>  {{this.status}} </td>
-    <td>  {{this.startDate}} </td>
-    <td>  {{this.endDate}} </td>
-  </tr>
+    <tr>
+        <td> <a href="{{pathFor 'projectView'}}"> {{this.name}} </a> 
+        </td>
+        <td>{{this.status}}</td>
+        <td>{{this.startDate}}</td>
+        <td>{{this.endDate}}</td>
+    </tr>
 </template>
 
 <template name="projectView">
-  <h1><a href="{{pathFor 'projects'}}">Project</a></h1><h3>{{name}}</h3>
-  <div class="project">
-    <div class="pull-right">
-      <div class="btn-group" style="margin: 10px 10px 10px;">
-        <div class="btn-group">
-          <button type="button" class="btn btn-default">Edit</button>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default">Delete</button>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default">Clone</button>
-        </div>
-      </div>
-    </div>
-    <p><strong>Start Date: </strong>{{startDate}}</p>
-    <p><strong>End Date: </strong>{{endDate}}</p>
-    <p><strong>Situation: </strong>{{situation}}</p>
-    <p><strong>Solution: </strong>{{solution}}</p>
-    <p><strong>Company: </strong><a href="{{pathFor 'projectCompany'}}">{{company}}</a></p>
-    <p><strong>Rate Book: </strong><a href="{{pathFor 'projectRateBook'}}">{{rateBook}}</a></p>
-  </div>
-  
-  <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <div class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#projectRoles">
-          Project Roles
-          </a>
-        </div>
-      </div>
-      <div id="projectRoles" class="panel-collapse collapse">
-        <div class="panel-body">
-          {{#if projectRoles.count}}
-	  <div class="childProjectRoles">
-	    <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
-              <div class="btn-group">
-                <button type="button" class="btn btn-default">Add</button>
-              </div>
+    <h1><a href="{{pathFor 'projects'}}">Project</a></h1>
+    <h3>{{name}}</h3>
+    <div class="project">
+        <div class="pull-right">
+            <div class="btn-group" style="margin: 10px 10px 10px;">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">Edit</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">Delete</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">Clone</button>
+                </div>
             </div>
-	    <table class="table">
-	      <thead>
-		<tr>
-		  <th>Name</th>
-		  <th>Status</th>
-		  <th>Start Date</th>
-		  <th>End Date</th>
-		</tr>
-	      </thead>
-	      <tbody>
-		{{#each projectRoles}}
-		  {{> projectRolesListRow}}
-		{{/each}}
-	      </tbody>
-	    </table>
-	  </div>
-	  {{else}}
-	    <p><strong> There are currently no Project Roles for this Project. <a href="#">Create one</a>.</strong></p>
-	  {{/if}}
         </div>
-      </div>
+        <p><strong>Start Date: </strong>{{startDate}}</p>
+        <p><strong>End Date: </strong>{{endDate}}</p>
+        <p><strong>Situation: </strong>{{situation}}</p>
+        <p><strong>Solution: </strong>{{solution}}</p>
+        <p><strong>Company: </strong><a href="{{pathFor 'projectCompany'}}">{{company}}</a>
+        </p>
+        <p><strong>Rate Book: </strong><a href="{{pathFor 'projectRateBook'}}">{{rateBook}}</a>
+        </p>
     </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#opportunities">
+
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#projectRoles">
+                    Project Roles
+                </a>
+            </h4>
+            <div id="projectRoles" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {{#if projectRoles.count}}
+                    <div class="childProjectRoles">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each projectRoles}} {{> projectRolesListRow}} {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-default">New</button>
+                    {{else}}
+                    <p><strong> There are currently no Project Roles for this Project. <a href="#">Create one</a>.</strong>
+                    </p>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#opportunities">
           Related Opportunities
-          </a>
-        </h4>
-      </div>
-      <div id="opportunities" class="panel-collapse collapse">
-        <div class="panel-body">
-          {{#if projectOpportunities.count}}
-	  <div class="relatedOpportunities">
-	    <table class="table">
-	      <thead>
-		<tr>
-		  <th>Name</th>
-		  <th>Owner</th>
-		</tr>
-	      </thead>
-	      <tbody>
-		{{#each projectOpportunities}}
-		  {{> projectOpportunitiesListRow}}
-		{{/each}}
-	      </tbody>
-	    </table>
-	  </div>
-	  {{else}}
-	    <p><strong> Somethings wrong :\ There are no opportunities for this project and there should be.</strong></p>
-	  {{/if}}
+        </a>
+      </h4>
+
+            <div id="opportunities" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {{#if projectOpportunities.count}}
+                    <div class="relatedOpportunities">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Owner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each projectOpportunities}} {{> projectOpportunitiesListRow}} {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    {{else}}
+                    <p><strong> Somethings wrong :\ There are no opportunities for this project and there should be.</strong>
+                    </p>
+                    {{/if}}
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <template name="projectRolesListRow">
-  <tr>
-    <td> <a href="{{pathFor 'projectRoleView'}}"> {{role}} </a> </td>
-    <td>  {{status}} </td>
-    <td>  {{startDate}} </td>
-    <td>  {{endDate}} </td>
-  </tr>
+    <tr>
+        <td> <a href="{{pathFor 'projectRoleView'}}"> {{role}} </a> 
+        </td>
+        <td>{{status}}</td>
+        <td>{{startDate}}</td>
+        <td>{{endDate}}</td>
+    </tr>
 </template>
 
 <template name="projectOpportunitiesListRow">
-  <tr>
-    <td> <a href="{{pathFor 'opportunityView'}}"> {{name}} </a> </td>
-    <td>  {{owner_id}} </td>
-  </tr>
+    <tr>
+        <td> <a href="{{pathFor 'opportunityView'}}"> {{name}} </a> 
+        </td>
+        <td>{{owner_id}}</td>
+    </tr>
 </template>

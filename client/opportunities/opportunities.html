@@ -1,60 +1,60 @@
 <template name="opportunities">
-  <h1>Opportunities {{>opportunityListButtons}}</h1>
+    <h1>Opportunities {{>opportunityListButtons}}</h1>
     <div class="opportunities">
         <table class="table">
-          <thead>
-            <tr>
-              <th>Opportunity Name</th>
-              <th>Owner</th>
-            </tr>
-	  </thead>
-	  <tbody>
-	    {{#each opportunities}}
-	      {{> opportunityListRow}}
-	    {{/each}}
-	  </tbody>
-	</table>
+            <thead>
+                <tr>
+                    <th>Opportunity Name</th>
+                    <th>Owner</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each opportunities}} {{> opportunityListRow}} {{/each}}
+            </tbody>
+        </table>
 
     </div>
 </template>
 
 <template name="opportunityListRow">
-  <tr>
-    <td><a href="{{pathFor 'opportunityView'}}"> {{this.name}} </a></td>
-    <td>{{this.owner_id}}</td>
-  </tr>
+    <tr>
+        <td><a href="{{pathFor 'opportunityView'}}"> {{this.name}} </a>
+        </td>
+        <td>{{this.owner_id}}</td>
+    </tr>
 </template>
 
 <template name="opportunityView">
-  <h1><a href="{{pathFor 'opportunities'}}">Opportunity</a></h1><h3>{{name}}</h3>
-  <div class="opportunity">
-    <div class="pull-right">
-      {{> opportunityViewButtons}}
+    <h1><a href="{{pathFor 'opportunities'}}">Opportunity</a></h1>
+    <h3>{{name}}</h3>
+    <div class="opportunity">
+        <div class="pull-right">
+            {{> opportunityViewButtons}}
+        </div>
+        <p><strong>Owner Id: </strong>{{owner_id}}</p>
+        <p><strong>Project: </strong><a href="{{pathFor 'opportunityProject'}}">{{project}}</a>
+        </p>
+        <p><strong>Company: </strong><a href="{{pathFor 'opportunityCompany'}}">{{company}}</a>
+        </p>
     </div>
-    <p><strong>Owner Id: </strong>{{owner_id}}</p>
-    <p><strong>Project: </strong><a href="{{pathFor 'opportunityProject'}}">{{project}}</a></p>
-    <p><strong>Company: </strong><a href="{{pathFor 'opportunityCompany'}}">{{company}}</a></p>
-  </div>
 </template>
 
 <template name="opportunityViewButtons">
-  <div class="btn-group" style="margin: 10px 10px 10px;">
-    <div class="btn-group">
-      <button type="button" class="btn btn-default">Edit</button>
+    <div class="btn-group" style="margin: 10px 10px 10px;">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default">Edit</button>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default">Delete</button>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default">Clone</button>
+        </div>
     </div>
-    <div class="btn-group">
-      <button type="button" class="btn btn-default">Delete</button>
-    </div>
-    <div class="btn-group">
-      <button type="button" class="btn btn-default">Clone</button>
-    </div>
-  </div>
 </template>
 
 <template name="opportunityListButtons">
-  <div class="btn-group" style="margin: 10px 10px 10px;">
-    <div class="btn-group">
-      <button type="button" class="btn btn-default">Create New</button>
-    </div>
-  </div>
+
+    <button type="button" class="btn btn-default">Create New</button>
+
 </template>

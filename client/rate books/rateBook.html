@@ -19,7 +19,7 @@
 
 <template name="rateBookListRow">
   <tr>
-    <td><a href="{{pathFor 'rateBookView'}}"> {{this._id}} </a></td>
+    <td><a href="{{pathFor 'rateBookView'}}"> {{this.name}} </a></td>
     <td>{{this.isDefault}}</td>
   </tr>
 </template>
@@ -27,29 +27,23 @@
 <template name="rateBookView">
   <h1><a href="{{pathFor 'rateBooks'}}">Rate Books</a></h1><h2>{{name}}</h2>
   <div class="rateBook">
-    <div class="pull-right">
-      <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
-        <div class="btn-group">
+
+      <div class="btn-group" style="margin: 10px 10px 10px;">
           <button type="button" class="btn btn-default">Edit</button>
-        </div>
-        <div class="btn-group">
           <button type="button" class="btn btn-default">Delete</button>
-        </div>
       </div>
-    </div>
+
     <p><strong>isDefault: </strong>{{isDefault}}</p>
     <p><strong>id: </strong>{{_id}}</p>
   </div>
 
   <div class="panel-group" id="accordion">
     <div class="panel panel-default">
-      <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#rateBookRoles">
           Roles
           </a>
         </h4>
-      </div>
       <div id="rateBookRoles" class="panel-collapse collapse">
         <div class="panel-body">
           {{#if rateBookRoles.count}}
@@ -69,24 +63,17 @@
               </table>
             </div>
           {{else}}
-            <p><strong> There are currently no Roles for this Rate Book. <a href="#">Create one</a>.</strong></p>
+            <p>There are currently no Roles for this Rate Book. {{>rateBookRolesButtons}}</p>
           {{/if}}
-            <div class="btn-group btn-group-justified" style="margin: 10px 10px 10px;">
-              <div class="btn-group">
-                <button type="button" class="btn btn-default">Add</button>
-              </div>
-            </div>
         </div>
       </div>
     </div>
     <div class="panel panel-default">
-      <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#rateBookProjects">
           Projects
           </a>
         </h4>
-      </div>
       <div id="rateBookProjects" class="panel-collapse collapse">
         <div class="panel-body">
           {{#if rateBookProjects.count}}
@@ -121,9 +108,15 @@
   </tr>
 </template>
 
+<template name="rateBookRolesButtons">
+    <div class="btn-group" style="margin: 10px 10px 10px;">
+        <button type="button" class="btn btn-default">Create one</button>
+    </div>
+</template>
+
 <template name="rateBookProjListRow">
   <tr>
-    <td> {{name}} </td>
+    <td> <a href="{{pathFor 'projectView'}}">{{name}} </a></td>
     <td> {{status}} </td>
   </tr>
 </template>

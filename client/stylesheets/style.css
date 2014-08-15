@@ -1,30 +1,48 @@
-.grid-block, .main, .projects, .project, .rateBooks, .rateBook, .companies, .company, .opportunities, .opportunity, .contacts, .contact, .projectRole, .roles{
+.grid-block,
+.main,
+.projects,
+.project,
+.rateBooks,
+.rateBook,
+.companies,
+.company,
+.opportunities,
+.opportunity,
+.contacts,
+.contact,
+.projectRole,
+.roles,
+.panel-group {
     background: #fff;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
     box-shadow: 0 8px 25px rgba(0, 50, 50, 0.35);
 }
-
+.panel-body {
+    border-radius: 5px;
+}
 body {
     background: #eee;
     color: #666666;
 }
 a {
     text-decoration: none;
-    font-weight:bold;
+    font-weight: bold;
 }
 a:hover {
     text-decoration: underline;
-    font-weight:bold;
+    font-weight: bold;
 }
-
-.navbar { margin-bottom: 10px }
+.navbar {
+    margin-bottom: 10px
+}
 .navbar .navbar-inner {
     border-radius: 0px 0px 3px 3px;
 }
-#spinner { height: 300px }
-
-.form-horizontal .form-control-static { 
+#spinner {
+    height: 300px
+}
+.form-horizontal .form-control-static {
     padding-top: 5px;
 }
