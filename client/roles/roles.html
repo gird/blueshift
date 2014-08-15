@@ -1,0 +1,35 @@
+<template name="roles">
+  <h1>Roles</h1>
+    <div class="roles">
+      <div class="col-lg-10">
+        <table class="table">
+          <thead>
+            <tr>
+            <th>Name</th>
+            </tr>
+	  </thead>
+	  <tbody>
+	    {{#each roles}}
+	      {{> roleListRow}}
+	    {{/each}}
+        {{> newRoleRow}}
+	  </tbody>
+	</table>
+      </div>
+    </div>
+</template>
+
+<template name="roleListRow">
+  <tr>
+    <td> <a href="{{pathFor 'contactView'}}"> {{this.name}} </a> </td>
+  </tr>
+</template>
+
+<template name="newRoleRow">
+  <tr>
+    <td>
+      <input id="newRoleInput" placeholder="Enter new role..."/>
+      <button id="addNewRole">Add Role</button>
+    </td>
+  </tr>
+</template>
