@@ -1,22 +1,20 @@
 <template name="companies">
   <h1>Companies</h1>
-    <div class="companies">
-      <div class="col-lg-10">
-        <table class="table">
-          <thead>
-            <tr>
-            <th>Company Name</th>
-            <th>Owner</th>
-            </tr>
-	  </thead>
-	  <tbody>
-	    {{#each companies}}
-	      {{> companyListRow}}
-	    {{/each}}
-	  </tbody>
-	</table>
-      </div>
-    </div>
+<div class="companies">
+    <table class="table">
+      <thead>
+        <tr>
+        <th>Company Name</th>
+        <th>Owner</th>
+        </tr>
+  </thead>
+  <tbody>
+    {{#each companies}}
+      {{> companyListRow}}
+    {{/each}}
+  </tbody>
+</table>
+</div>
 </template>
 
 <template name="companyListRow">
