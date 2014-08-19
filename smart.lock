@@ -2,14 +2,17 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "iron-router": {},
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router",
+        "branch": "v0.8.2"
+      },
       "spin": {},
       "bootstrap3-less": {}
     },
     "packages": {
       "iron-router": {
-        "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.8.2",
+        "git": "https://github.com/EventedMind/iron-router",
+        "branch": "v0.8.2",
         "commit": "05415a8891ea87a00fb1e2388585f2ca5a38e0da"
       },
       "spin": {

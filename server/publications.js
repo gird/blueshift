@@ -3,7 +3,7 @@ Meteor.publish('projects', function() {
 });
 
 Meteor.publish('opportunities', function() {
-  return Opportunities.find();
+  return Opportunities.find({owner_id: this.userId});
 });
 
 Meteor.publish('companies', function() {
@@ -34,9 +34,9 @@ Meteor.publish('skills', function() {
   return Skills.find();
 });
 
-Meteor.publish('users', function() {
+/*Meteor.publish('users', function() {
   return Users.find();
-});
+});*/
 
 Meteor.publish('fields', function() {
   return Fields.find();

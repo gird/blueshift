@@ -52,7 +52,7 @@ if (Companies.find().count() === 0) {
     type: 'Prospect'
   });
 }
-//create some sample Users
+/*create some sample Users
 if (Users.find().count() === 0) {
   Users.insert({
     _id: 'gkenawell@gird.us',
@@ -69,7 +69,7 @@ if (Users.find().count() === 0) {
     first_name: 'John',
     last_name: 'Smith'
   });
-}
+}*/
 //create some sample Opportunities
 if (Opportunities.find().count() === 0) {
   Opportunities.insert({

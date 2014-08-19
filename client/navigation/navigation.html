@@ -9,16 +9,17 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="{{pathFor 'home'}}">Blueshift</a>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="nav navbar-nav">
-            <li><a href="{{pathFor 'home'}}">Dashboard</a></li>
-            <li><a href="{{pathFor 'opportunities'}}">Opportunities</a></li>
-            <li><a href="{{pathFor 'projects'}}">Projects</a></li>
-            <li><a href="{{pathFor 'companies'}}">Companies</a></li>
-            <li><a href="{{pathFor 'roles'}}">Roles</a></li>
-            <li><a href="{{pathFor 'rateBooks'}}">Rate Books</a></li>
-          </ul>
-        </div>
+        <a class="navbar-brand pull-right">{{> loginButtons}}</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="nav navbar-nav pull-right">
+          <li><a href="{{pathFor 'home'}}">Dashboard</a></li>
+          <li><a href="{{pathFor 'opportunities'}}">Opportunities</a></li>
+          <li><a href="{{pathFor 'projects'}}">Projects</a></li>
+          <li><a href="{{pathFor 'companies'}}">Companies</a></li>
+          <li><a href="{{pathFor 'roles'}}">Roles</a></li>
+          <li><a href="{{pathFor 'rateBooks'}}">Rate Books</a></li>
+        </ul>
       </div>
     </div>
   </nav>

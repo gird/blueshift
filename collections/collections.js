@@ -5,5 +5,5 @@ Opportunities = new Meteor.Collection('opportunities');
 Resources = new Meteor.Collection('resources');
 Roles = new Meteor.Collection('roles');
 Skills = new Meteor.Collection('skills');
-Users = new Meteor.Collection('users');
+//Users = new Meteor.Collection('users');
 Fields = new Meteor.Collection('fields');

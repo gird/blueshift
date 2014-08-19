@@ -8,3 +8,5 @@ insecure
 iron-router
 less
 bootstrap3-less
+accounts-ui
+accounts-password
