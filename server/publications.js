@@ -4,6 +4,7 @@ Meteor.publish('projects', function() {
 
 Meteor.publish('opportunities', function() {
   return Opportunities.find({owner_id: this.userId});
+  //return Opportunities.find();
 });
 
 Meteor.publish('companies', function() {

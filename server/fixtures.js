@@ -72,7 +72,7 @@ if (Users.find().count() === 0) {
 }*/
 //create some sample Opportunities
 if (Opportunities.find().count() === 0) {
-  Opportunities.insert({
+  Opportunities.upsert({
     _id: 'opp200',
     name: 'Potential Robot Project',
     owner_id: 'gkenawell@gird.us',
