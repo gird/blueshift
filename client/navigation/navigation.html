@@ -9,7 +9,11 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="{{pathFor 'home'}}">Blueshift</a>
-        <a class="navbar-brand pull-right">{{> loginButtons}}</a>
+        <a class="loginButton pull-right">
+            <button class="btn btn-default">
+               {{> loginButtons}}
+            </button>
+          </a>
       </div>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="nav navbar-nav">

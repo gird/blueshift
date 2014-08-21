@@ -23,31 +23,39 @@
       {{#if editing}}
         {{> editRoleRow}}
       {{else}}
-        <td> {{this.name}}</td>
-        <td>
-            <div class="btn-group">
-              <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#" class="delete_role">Delete</a></li>
-                <li><a href="#" class="edit_role">Edit</a></li>
-              </ul>
-            </div>
-        </td>
+        {{> roleListItem}}
       {{/if}}
   </tr>
 </template>
 
 <template name="newRoleRow">
+
   <tr>
     <td>
-      <div class="role_form">
-          <input type="text" class="role_name" placeholder="Enter new role..."/>
-          <input type="submit" class="submit_role" value="Add Role"/>
+      <div class="role_form input-group">
+          <input type="text" class="new_role_name form-control" placeholder="Enter new role..."/>
+          <span class="input-group-btn">
+              <button type="submit" class="submit_new_role btn btn-default" disabled="{{isDisabled}}"> Add Role </button>
+          </span>
         </div>
     </td>
   </tr>
+
+</template>
+
+<template name="roleListItem">
+    <td><div class="roleName-text">{{this.name}}</div></td>
+    <td>
+        <div class="btn-group">
+          <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#" class="delete_role">Delete</a></li>
+            <li><a href="#" class="edit_role">Edit</a></li>
+          </ul>
+        </div>
+    </td>
 </template>
 
 <template name="editRoleRow">
