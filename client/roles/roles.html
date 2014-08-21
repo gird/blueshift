@@ -20,8 +20,22 @@
 
 <template name="roleListRow">
   <tr>
-    <td> <a href="{{pathFor 'contactView'}}"> {{this.name}} </a> </td>
-    <td><a href="#" class="delete_role">x</a></td>
+      {{#if editing}}
+        {{> editRoleRow}}
+      {{else}}
+        <td> {{this.name}}</td>
+        <td>
+            <div class="btn-group">
+              <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#" class="delete_role">Delete</a></li>
+                <li><a href="#" class="edit_role">Edit</a></li>
+              </ul>
+            </div>
+        </td>
+      {{/if}}
   </tr>
 </template>
 
@@ -34,4 +48,14 @@
         </div>
     </td>
   </tr>
+</template>
+
+<template name="editRoleRow">
+    <td>
+      <div class="edit_role_form">
+        <input type="text" class="edit_role_name" value="{{this.name}}"/>
+        <input type="submit" class="submit_edit_role" value="Save"/>
+      </div>
+    </td>
+    <td> </td>
 </template>
