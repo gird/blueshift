@@ -1,3 +1,9 @@
+subscriptionHandle = Meteor.subscribe("rate_books");
+
+Template.rateBookView.subscriptionReady=function(){
+    return subscriptionHandle.ready();
+};
+
 Template.rateBooks.helpers({
   rateBooks: function() {
     return Rate_Books.find();

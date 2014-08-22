@@ -18,7 +18,7 @@
 </template>
 
 <template name="projectListButtons">
-    <a href="{{pathFor 'newProject'}}"> 
+    <a href="{{pathFor 'newProject'}}">
         <button type="button" class="btn btn-default">Create New</button>
     </a>
 </template>
@@ -47,71 +47,7 @@
         <p><strong>Rate Book: </strong><a href="{{pathFor 'projectRateBook'}}">{{rateBook}}</a>
         </p>
     </div>
-
-    <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#projectRoles">
-                    Project Roles
-                </a>
-            </h4>
-            <div id="projectRoles" class="panel-collapse collapse">
-                <div class="panel-body">
-                    {{#if projectRoles.count}}
-                    <div class="childProjectRoles">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Status</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each projectRoles}} {{> projectRolesListRow}} {{/each}}
-                            </tbody>
-                        </table>
-                    </div>
-                    {{else}}
-                    <p><strong> There are currently no Project Roles for this Project.</strong>
-                    </p>
-                    {{/if}}
-                    <button type="button" class="btn btn-default">New</button>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-success">
-            <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#opportunities">
-          Related Opportunities
-        </a>
-      </h4>
-
-            <div id="opportunities" class="panel-collapse collapse">
-                <div class="panel-body">
-                    {{#if projectOpportunities.count}}
-                    <div class="relatedOpportunities">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Owner</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each projectOpportunities}} {{> projectOpportunitiesListRow}} {{/each}}
-                            </tbody>
-                        </table>
-                    </div>
-                    {{else}}
-                    <p><strong> Somethings wrong :\ There are no opportunities for this project and there should be.</strong>
-                    </p>
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-    </div>
+    {{> projectRelatedLists}}
 </template>
 
 <template name="projectRolesListRow">
@@ -137,5 +73,78 @@
         <button type="button" class="btn btn-default">Edit</button>
         <button type="button" class="btn btn-default delete_project">Delete</button>
         <button type="button" class="btn btn-default">Clone</button>
+    </div>
+</template>
+
+<template name="projectRelatedLists">
+    <div class="panel-group" id="accordion">
+        {{> projectRelated_projectRoles}} 
+        {{> projectRelated_opportunities}}
+    </div>
+</template>
+
+<template name="projectRelated_projectRoles">
+    <div class="panel panel-default">
+        <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#projectRoles">
+                    Project Roles
+                </a>
+            </h4>
+        <div id="projectRoles" class="panel-collapse collapse in">
+            <div class="panel-body">
+                {{#if projectRoles.count}}
+                <div class="childProjectRoles">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each projectRoles}} 
+                                {{> projectRolesListRow}} 
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{else}}
+                <p>There are currently no Project Roles for this Project.</p>
+                {{/if}}
+                <button type="button" class="btn btn-default">New</button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="projectRelated_opportunities">
+    <div class="panel panel-success">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#opportunities">Related Opportunities</a>
+        </h4>
+        <div id="opportunities" class="panel-collapse collapse">
+            <div class="panel-body">
+                {{#if projectOpportunities.count}}
+                <div class="relatedOpportunities">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each projectOpportunities}} {{> projectOpportunitiesListRow}} {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{else}}
+                <p><strong> Somethings wrong :\ There are no opportunities for this project and there should be.</strong>
+                </p>
+                {{/if}}
+            </div>
+        </div>
     </div>
 </template>

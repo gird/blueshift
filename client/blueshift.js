@@ -4,7 +4,7 @@ Meteor.subscribe("companies");
 Meteor.subscribe("contacts");
 Meteor.subscribe("project_roles");
 Meteor.subscribe("rate_book_roles");
-Meteor.subscribe("rate_books");
+//Meteor.subscribe("rate_books");
 Meteor.subscribe("roles");
 Meteor.subscribe("skills");
 //Meteor.subscribe("users");

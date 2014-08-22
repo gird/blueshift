@@ -13,7 +13,19 @@ Template.projectView.helpers({
     },
     'rateBook': function () {
         return rateBook = Rate_Books.findOne(this.rate_book_id).name;
-    },
+    }
+});
+
+Template.projectViewButtons.events({
+    'click .delete_project': function (e) {
+        e.preventDefault();
+        Projects.remove(this._id);
+    }
+});
+
+//Template.projectRelatedLists.helpers({});
+
+Template.projectRelated_projectRoles.helpers({
     projectRoles: function () {
         var projectRoles = Project_Roles.find({
             project_id: this._id
@@ -27,17 +39,13 @@ Template.projectView.helpers({
             });
         })
         return projectRoles;
-    },
+    }
+});
+
+Template.projectRelated_opportunities.helpers({
     projectOpportunities: function () {
         return projectOpportunities = Opportunities.find({
             project_id: this._id
         });
-    }
-});
-
-Template.projectViewButtons.events({
-    'click .delete_project': function (e) {
-        e.preventDefault();
-        Projects.remove(this._id);
     }
 });
