@@ -34,3 +34,10 @@ Template.projectView.helpers({
         });
     }
 });
+
+Template.projectViewButtons.events({
+    'click .delete_project': function (e) {
+        e.preventDefault();
+        Projects.remove(this._id);
+    }
+});

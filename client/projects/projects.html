@@ -1,5 +1,5 @@
 <template name="projects">
-    <h1>Projects</h1>
+    <h1>Projects {{> projectListButtons}}</h1> 
     <div class="projects">
         <table class="table">
             <thead>
@@ -17,6 +17,12 @@
     </div>
 </template>
 
+<template name="projectListButtons">
+    <a href="{{pathFor 'newProject'}}"> 
+        <button type="button" class="btn btn-default">Create New</button>
+    </a>
+</template>
+
 <template name="projectListRow">
     <tr>
         <td> <a href="{{pathFor 'projectView'}}"> {{this.name}} </a> 
@@ -28,13 +34,14 @@
 </template>
 
 <template name="projectView">
-    <h1><a href="{{pathFor 'projects'}}">Project</a></h1>
-    <h3>{{name}} {{>projectViewButtons}}</h3>
+    <h3><a href="{{pathFor 'projects'}}">Project</a></h3>
+    <h1>{{name}} {{>projectViewButtons}}</h1>
     <div class="project">
         <p><strong>Start Date: </strong>{{startDate}}</p>
         <p><strong>End Date: </strong>{{endDate}}</p>
         <p><strong>Situation: </strong>{{situation}}</p>
         <p><strong>Solution: </strong>{{solution}}</p>
+        <p><strong>Probability: </strong>{{probability}}</p>
         <p><strong>Company: </strong><a href="{{pathFor 'projectCompany'}}">{{company}}</a>
         </p>
         <p><strong>Rate Book: </strong><a href="{{pathFor 'projectRateBook'}}">{{rateBook}}</a>
@@ -128,7 +135,7 @@
 <template name="projectViewButtons">
     <div class="btn-group" style="margin: 10px 10px 10px;">
         <button type="button" class="btn btn-default">Edit</button>
-        <button type="button" class="btn btn-default">Delete</button>
+        <button type="button" class="btn btn-default delete_project">Delete</button>
         <button type="button" class="btn btn-default">Clone</button>
     </div>
 </template>

@@ -34,6 +34,14 @@ a:hover {
     text-decoration: underline;
     font-weight: bold;
 }
+.hideA {
+    text-decoration: none;
+    font-weight: normal;
+}
+.hideA:hover {
+    text-decoration: none;
+    font-weight: normal;
+}
 .navbar {
     margin-bottom: 10px
 }

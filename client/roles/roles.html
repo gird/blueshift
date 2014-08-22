@@ -29,18 +29,16 @@
 </template>
 
 <template name="newRoleRow">
-
   <tr>
     <td>
-      <div class="role_form input-group">
-          <input type="text" class="new_role_name form-control" placeholder="Enter new role..."/>
+      <div class="role_form input-group col-sm-6">
+          <input type="text" class="new_role_name form-control" placeholder="Enter new role..."/> 
           <span class="input-group-btn">
               <button type="submit" class="submit_new_role btn btn-default" disabled="{{isDisabled}}"> Add Role </button>
           </span>
         </div>
     </td>
   </tr>
-
 </template>
 
 <template name="roleListItem">
@@ -50,7 +48,7 @@
           <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu" role="menu">
+          <ul class="dropdown-menu dropdown-menu-right" role="menu">
             <li><a href="#" class="delete_role">Delete</a></li>
             <li><a href="#" class="edit_role">Edit</a></li>
           </ul>
@@ -60,9 +58,12 @@
 
 <template name="editRoleRow">
     <td>
-      <div class="edit_role_form">
-        <input type="text" class="edit_role_name" value="{{this.name}}"/>
-        <input type="submit" class="submit_edit_role" value="Save"/>
+      <div class="edit_role_form input-group col-sm-6">
+        <input type="text" class="edit_role_name form-control" value="{{this.name}}"/>
+        <span class="input-group-btn">
+            <button type="submit" class="submit_edit_role btn btn-default">Save</button>
+            <button type="cancel" class="cancel_edit_role btn btn-default">Cancel</button>
+        </span>
       </div>
     </td>
     <td> </td>
