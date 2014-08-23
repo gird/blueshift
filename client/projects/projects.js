@@ -7,7 +7,7 @@ Template.projects.helpers({
     }
 });
 
-Template.projectView.helpers({
+Template.projectViewDetail.helpers({
     'company': function () {
         return company = Companies.findOne(this.company_id).name;
     },

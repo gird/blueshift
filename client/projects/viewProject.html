@@ -1,41 +1,24 @@
-<template name="projects">
-    <h1>Projects {{> projectListButtons}}</h1> 
-    <div class="projects">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Project Name</th>
-                    <th>Status</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each projects}} {{> projectListRow}} {{/each}}
-            </tbody>
-        </table>
+<template name="projectView">
+    <h1>
+        <a href="{{pathFor 'projects'}}">
+             Project
+        </a>
+        <span class="glyphicon glyphicon-briefcase"></span>
+        {{name}} 
+        {{>projectViewButtons}}
+    </h1>
+    {{> projectViewDetail}}
+    {{> projectRelatedLists}}
+</template>
+
+<template name="projectViewButtons">
+    <div class="btn-group" style="margin: 10px 10px 10px;">
+        <button type="button" class="btn btn-default">Edit</button>
+        <button type="button" class="btn btn-default delete_project">Delete</button>
     </div>
 </template>
 
-<template name="projectListButtons">
-    <a href="{{pathFor 'newProject'}}">
-        <button type="button" class="btn btn-default">Create New</button>
-    </a>
-</template>
-
-<template name="projectListRow">
-    <tr>
-        <td> <a href="{{pathFor 'projectView'}}"> {{this.name}} </a> 
-        </td>
-        <td>{{this.status}}</td>
-        <td>{{this.startDate}}</td>
-        <td>{{this.endDate}}</td>
-    </tr>
-</template>
-
-<template name="projectView">
-    <h3><a href="{{pathFor 'projects'}}">Project</a></h3>
-    <h1>{{name}} {{>projectViewButtons}}</h1>
+<template name="projectViewDetail">
     <div class="project">
         <p><strong>Start Date: </strong>{{startDate}}</p>
         <p><strong>End Date: </strong>{{endDate}}</p>
@@ -47,34 +30,9 @@
         <p><strong>Rate Book: </strong><a href="{{pathFor 'projectRateBook'}}">{{rateBook}}</a>
         </p>
     </div>
-    {{> projectRelatedLists}}
 </template>
 
-<template name="projectRolesListRow">
-    <tr>
-        <td> <a href="{{pathFor 'projectRoleView'}}"> {{role}} </a> 
-        </td>
-        <td>{{status}}</td>
-        <td>{{startDate}}</td>
-        <td>{{endDate}}</td>
-    </tr>
-</template>
-
-<template name="projectOpportunitiesListRow">
-    <tr>
-        <td> <a href="{{pathFor 'opportunityView'}}"> {{name}} </a> 
-        </td>
-        <td>{{owner_id}}</td>
-    </tr>
-</template>
-
-<template name="projectViewButtons">
-    <div class="btn-group" style="margin: 10px 10px 10px;">
-        <button type="button" class="btn btn-default">Edit</button>
-        <button type="button" class="btn btn-default delete_project">Delete</button>
-        <button type="button" class="btn btn-default">Clone</button>
-    </div>
-</template>
+<!--Start of Lists related to the Project-->
 
 <template name="projectRelatedLists">
     <div class="panel-group" id="accordion">
@@ -119,6 +77,17 @@
     </div>
 </template>
 
+<template name="projectRolesListRow">
+    <tr>
+        <td> <a href="{{pathFor 'projectRoleView'}}"> {{role}} </a> 
+        </td>
+        <td>{{status}}</td>
+        <td>{{startDate}}</td>
+        <td>{{endDate}}</td>
+    </tr>
+</template>
+
+
 <template name="projectRelated_opportunities">
     <div class="panel panel-success">
         <h4 class="panel-title">
@@ -148,3 +117,12 @@
         </div>
     </div>
 </template>
+
+<template name="projectOpportunitiesListRow">
+    <tr>
+        <td> <a href="{{pathFor 'opportunityView'}}"> {{name}} </a> 
+        </td>
+        <td>{{owner_id}}</td>
+    </tr>
+</template>
+<!--End of Lists related to Project-->

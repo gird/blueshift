@@ -1,0 +1,209 @@
+<template name="rateBookView">
+    {{#if subscriptionReady}}
+    <h1><a href="{{pathFor 'rateBooks'}}">Rate Books</a></h1>
+    <h2>{{name}} {{> rateBookViewButtons}}</h2>
+    {{> rateBookDetails}}
+    {{> rateBookRelatedLists}}
+    {{/if}}
+</template>
+
+<template name="rateBookViewButtons">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default">Edit</button>
+        <button type="button" class="btn btn-default">Delete</button>
+    </div>
+</template>
+
+<template name="rateBookDetails">
+    <div class="rateBook">
+        <p><strong>isDefault: </strong>{{isDefault}}</p>
+        <p><strong>id: </strong>{{_id}}</p>
+    </div>
+</template>
+
+<template name="rateBookRelatedLists">
+    <div class="panel-group" id="accordion">
+        {{> rateBookRelated_rateBookRoles}}
+        {{> rateBookRelated_projects}}
+    </div>
+</template>
+
+<!--Start of Rate Book Roles related list templates-->
+<template name="rateBookRelated_rateBookRoles">
+    <div class="panel panel-default">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#rateBookRoles">
+          Rate Book Roles
+          </a>
+        </h4>
+        <div id="rateBookRoles" class="panel-collapse collapse in">
+            <div class="panel-body">
+                {{#if rateBookRoles.count}}
+                <div class="childProjectRoles">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Rate</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each rateBookRoles}} 
+                                {{> rateBookRolesListRow}} 
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{else}}
+                <p>There are currently no Roles for this Rate Book.</p>
+                {{/if}}
+                {{> rateBookRolesButtons}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="rateBookRolesListRow">
+    <tr>
+        <td>{{role}}</td>
+        <td>{{rate}}</td>
+        <td>{{> rateBookRolesListRowOptions}}</td>
+    </tr>
+</template>
+
+<template name="rateBookRolesListRowOptions">
+    <div class="btn-group">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="delete_ratebookrole">Delete</a>
+            </li>
+            <li><a href="#" class="edit_ratebookrole">Edit</a>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<template name="rateBookRolesButtons">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default new-rate-book-role">Add</button>
+    </div>
+</template>
+<!--End of Rate Book Roles related list templates-->
+
+<!--Start of Projects related list templates-->
+<template name="rateBookRelated_projects">
+    <div class="panel panel-default">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#rateBookProjects">
+          Projects using this Rate Book
+          </a>
+        </h4>
+        <div id="rateBookProjects" class="panel-collapse collapse">
+            <div class="panel-body">
+                {{#if rateBookProjects.count}}
+                <div class="childProjectRoles">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each rateBookProjects}} 
+                                {{> rateBookProjectListRow}} 
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{else}}
+                <p><strong> There are currently no Projects related to this Rate Book. </strong>
+                </p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="rateBookProjectListRow">
+    <tr>
+        <td> <a href="{{pathFor 'projectView'}}">{{name}} </a>
+        </td>
+        <td>{{status}}</td>
+    </tr>
+</template>
+<!--End of Projects related list templates-->
+
+<!--template name="roles">
+  <h1>Roles</h1>
+    <div class="roles">
+        <table class="table">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+	  </thead>
+	  <tbody>
+	    {{#each roles}}
+	      {{> roleListRow}}
+	    {{/each}}
+        {{> newRoleRow}}
+	  </tbody>
+	</table>
+    </div>
+</template>
+
+<template name="roleListRow">
+  <tr>
+      {{#if editing}}
+        {{> editRoleRow}}
+      {{else}}
+        {{> roleListItem}}
+      {{/if}}
+  </tr>
+</template>
+
+<template name="newRoleRow">
+  <tr>
+    <td>
+      <div class="role_form input-group col-sm-6">
+          <input type="text" class="new_role_name form-control" placeholder="Enter new role..."/> 
+          <span class="input-group-btn">
+              <button type="submit" class="submit_new_role btn btn-default" disabled="{{isDisabled}}"> Add Role </button>
+          </span>
+        </div>
+    </td>
+  </tr>
+</template>
+
+<template name="roleListItem">
+    <td><div class="roleName-text">{{this.name}}</div></td>
+    <td>
+        <div class="btn-group">
+          <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="delete_role">Delete</a></li>
+            <li><a href="#" class="edit_role">Edit</a></li>
+          </ul>
+        </div>
+    </td>
+</template>
+
+<template name="editRoleRow">
+    <td>
+      <div class="edit_role_form input-group col-sm-6">
+        <input type="text" class="edit_role_name form-control" value="{{this.name}}"/>
+        <span class="input-group-btn">
+            <button type="submit" class="submit_edit_role btn btn-default">Save</button>
+            <button type="cancel" class="cancel_edit_role btn btn-default">Cancel</button>
+        </span>
+      </div>
+    </td>
+    <td> </td>
+</template-->

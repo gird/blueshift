@@ -1,20 +1,18 @@
 <template name="roles">
-  <h1>Roles</h1>
+    <h1>Roles</h1>
     <div class="roles">
         <table class="table">
-          <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-            </tr>
-	  </thead>
-	  <tbody>
-	    {{#each roles}}
-	      {{> roleListRow}}
-	    {{/each}}
-        {{> newRoleRow}}
-	  </tbody>
-	</table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each roles}} {{> roleListRow}} {{/each}} 
+                {{> newRoleRow}}
+            </tbody>
+        </table>
     </div>
 </template>
 

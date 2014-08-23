@@ -1,0 +1,35 @@
+ <template name="projects">
+    <h1>Projects {{> projectListButtons}}</h1> 
+    <div class="projects">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Status</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each projects}} {{> projectListRow}} {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>
+
+
+<template name="projectListButtons">
+    <a href="{{pathFor 'newProject'}}">
+        <button type="button" class="btn btn-default">Create New</button>
+    </a>
+</template>
+
+<template name="projectListRow">
+    <tr>
+        <td> <a href="{{pathFor 'projectView'}}"> {{this.name}} </a> 
+        </td>
+        <td>{{this.status}}</td>
+        <td>{{this.startDate}}</td>
+        <td>{{this.endDate}}</td>
+    </tr>
+</template>

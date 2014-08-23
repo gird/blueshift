@@ -7,7 +7,8 @@
         "branch": "v0.8.2"
       },
       "spin": {},
-      "bootstrap3-less": {}
+      "bootstrap3-less": {},
+      "typeahead": {}
     },
     "packages": {
       "iron-router": {
@@ -24,6 +25,11 @@
         "git": "https://github.com/simison/bootstrap3-less",
         "tag": "v0.2.1",
         "commit": "dc94a51ed00d7de6d6f2b6d65107a876d849ad61"
+      },
+      "typeahead": {
+        "git": "https://github.com/sergeyt/meteor-typeahead.git",
+        "tag": "v0.0.11",
+        "commit": "b97b4a92edeceb8f76aa8e6eb0f71252b34d4de3"
       },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",

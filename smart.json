@@ -1,10 +1,11 @@
 {
   "packages": {
     "iron-router": {
-        "git": "https://github.com/EventedMind/iron-router" ,
-        "branch": "v0.8.2"
+      "git": "https://github.com/EventedMind/iron-router",
+      "branch": "v0.8.2"
     },
     "spin": {},
-    "bootstrap3-less": {}
+    "bootstrap3-less": {},
+    "typeahead": {}
   }
 }
