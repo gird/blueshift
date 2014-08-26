@@ -18,10 +18,21 @@
 
 <template name="rateBookListRow">
     <tr>
-        <td><a href="{{pathFor 'rateBookView'}}"> {{this.name}} </a>
-        </td>
-        <td>{{> rateBookListRowOptions}}</td>
+      {{#if editing}}
+        {{> editRateBookRoleRow}}
+      {{else}}
+        {{> rateBookListItem}}
+      {{/if}}
     </tr>
+</template>
+
+<template name="rateBookListItem">
+
+    <td>
+        <a href="{{pathFor 'rateBookView'}}"> {{nameDefault}} </a>
+    </td>
+    <td>{{> rateBookListRowOptions}}</td>
+
 </template>
 
 <template name="rateBookListRowOptions">
@@ -34,7 +45,7 @@
             </li>
             <li><a href="#" class="edit_ratebook">Edit</a>
             </li>
-            <li><a href="#" class="setDefulat_ratebook">Set as Default</a>
+            <li><a href="#" class="setDefault_ratebook">Set as Default</a>
             </li>
         </ul>
     </div>
@@ -46,9 +57,22 @@
       <div class="role_form input-group col-sm-6">
           <input type="text" class="new_rateBook_name form-control" placeholder="Enter Rate Book..."/>
           <span class="input-group-btn">
-              <button type="submit" class="submit_new_rateBook btn btn-default" disabled="true"> Add Rate Book </button>
+              <button type="submit" class="submit_new_ratebook btn btn-default" disabled="{{submitIsDisabled}}"> Add Rate Book </button>
           </span>
         </div>
     </td>
   </tr>
+</template>
+
+<template name="editRateBookRoleRow">
+    <td>
+      <div class="edit_ratebook_form input-group col-sm-6">
+        <input type="text" class="edit_ratebook_name form-control" value="{{this.name}}"/>
+        <span class="input-group-btn">
+            <button type="submit" class="submit_edit_ratebook btn btn-default">Save</button>
+            <button type="cancel" class="cancel_edit_ratebook btn btn-default">Cancel</button>
+        </span>
+      </div>
+    </td>
+    <td> </td>
 </template>

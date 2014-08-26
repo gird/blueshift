@@ -1,14 +1,8 @@
-subscriptionHandle = Meteor.subscribe("rate_books");
+//subscriptionHandle = Meteor.subscribe("rate_books");
 
 Template.rateBookView.subscriptionReady=function(){
-    return subscriptionHandle.ready();
+    return rateBooksSubscriptionHandle.ready();
 };
-
-Template.rateBooks.helpers({
-  rateBooks: function() {
-    return Rate_Books.find();
-  }
-});
 
 Template.rateBookRelated_rateBookRoles.helpers({
   rateBookRoles: function() {

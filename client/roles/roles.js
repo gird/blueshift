@@ -68,11 +68,8 @@ var focus_field_by_class = function (className) {
 Template.roleListRow.editing = function () {
   return Session.equals('editing_rolename', this._id);
 };
-Template.newRoleRow.isDisabled = function () {
+Template.newRoleRow.submitIsDisabled = function () {
     return Session.equals('adding_rolename', null);
-};
-Template.newRoleRow.newRoleName = function () {
-    return Session.get('adding_rolename');
 };
 
 Template.roleListItem.events({
