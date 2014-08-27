@@ -20,13 +20,19 @@ Template.rateBookRelated_projects.helpers({
   }
 });
 
-Template.rateBookRolesButtons.helpers({
+Template.newRateBookRoleModal.helpers({
     roles: function() {
         return Roles.find();
     }
 });
 
-Template.rateBookRolesButtons.events({
+Template.newRateBookRoleRow.helpers({
+    roles: function() {
+        return Roles.find();
+    }
+});
+
+Template.newRateBookRoleModal.events({
     'click .submit_new_ratebookrole': function() {
         var roleId = $('.ratebookrole_roleid').val();
         var rate = $('.ratebookrole_rate').val();
@@ -37,3 +43,20 @@ Template.rateBookRolesButtons.events({
         });
     }
 });
+
+Template.rateBookRolesListRowOptions.events({
+    'click a.delete_ratebookrole': function(e) {
+        e.preventDefault();
+        Rate_Book_Roles.remove(this._id);
+    },
+    'click a.edit_role': function () {
+        /*Session.set('editing_ratebookrolename', this._id);
+        $('submit_new_role').prop('disabled', true);
+        Meteor.flush(); // update DOM before focus
+        //focus_field_by_class('edit_role_name');
+        var input = $('.edit_role_name');
+        input.focus();
+        input.select();*/
+    }
+});
+        

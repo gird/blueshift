@@ -52,6 +52,7 @@
                             {{#each rateBookRoles}} 
                                 {{> rateBookRolesListRow}} 
                             {{/each}}
+                            <!--{{> newRateBookRoleRow}}-->
                         </tbody>
                     </table>
                 </div>
@@ -69,6 +70,31 @@
         <td>{{role}}</td>
         <td>{{rate}}</td>
         <td>{{> rateBookRolesListRowOptions}}</td>
+    </tr>
+</template>
+
+<template name="newRateBookRoleRow">
+    <tr>
+        <td>
+            <div class="ratebookrole_form input-group col-sm-6">
+                <div class="col-md-10">
+                    <select class="form-control new_ratebookrole_id">
+                        {{#each roles}}
+                        <option value="{{this._id}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="ratebookrole_form input-group col-sm-6">
+                <input type="text" class="new_ratebookrole_rate form-control" placeholder="Enter $rate$" />
+                <span class="input-group-btn">
+                    <button type="submit" class="submit_new_ratebookrole2 btn btn-default" disabled="false"> Add Role </button>
+                </span>
+            </div>
+        </td>
+        <td></td>
     </tr>
 </template>
 
@@ -90,35 +116,46 @@
     <div class="btn-group">
         <button type="button" class="btn btn-default new-rate-book-role" data-toggle="modal" data-target="#newRateBookRoleModal">Add</button>
     </div>
+    {{> newRateBookRoleModal}}
+</template>
+
+<template name="newRateBookRoleModal">
     <div class="modal fade" id="newRateBookRoleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Add Role to {{name}}</h4>
+                    </div>
+                    <div class="modal-body">
                         <div class="form-group">
-                            <label for="role_input">Role</label>
-                            <select class="form-control ratebookrole_roleid">
-                                {{#each roles}} 
-                                    <option value="{{this._id}}">{{this.name}}</option> 
-                                {{/each}}
-                            </select>
+                            <label for="role_input" class="col-md-2 control-label">Role</label>
+                            <div class="col-md-10">
+                                <select class="form-control ratebookrole_roleid">
+                                    {{#each roles}}
+                                    <option value="{{this._id}}">{{this.name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group col-sm-6">
-                            <label for="project-probability">Rate</label>
-                            <input type="number" class="form-control ratebookrole_rate">
+                        <div class="form-group">
+                            <label for="project-probability" class="col-md-2 control-label">Rate</label>
+                            <div class="col-md-10">
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    <input type="text" class="form-control ratebookrole_rate" placeholder="Enter Amount">
+                                </div>
+                            </div>
                         </div>
-                        <br/>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default cancel_new_ratebookrole" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary submit_new_ratebookrole">Save changes</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_new_ratebookrole" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit_new_ratebookrole">Save changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
