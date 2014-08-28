@@ -2,7 +2,7 @@
     {{#if subscriptionReady}}
     <h1><a href="{{pathFor 'rateBooks'}}">Rate Books</a></h1>
     <h2>{{name}} {{> rateBookViewButtons}}</h2>
-    {{> rateBookDetails}}
+    <!--{{> rateBookDetails}} Don't need this-->
     {{> rateBookRelatedLists}}
     {{/if}}
 </template>
@@ -65,13 +65,15 @@
     </div>
 </template>
 
+<!-- fix me-->
 <template name="rateBookRolesListRow">
     <tr>
         <td>{{role}}</td>
-        <td>{{rate}}</td>
+        <td><div class="ratebookrolerate_{{_id}}">{{rate}}</div></td>
         <td>{{> rateBookRolesListRowOptions}}</td>
     </tr>
 </template>
+<!-- end fix me-->
 
 <template name="newRateBookRoleRow">
     <tr>
@@ -104,9 +106,9 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
-            <li><a href="#" class="delete_ratebookrole">Delete</a>
+            <li><a href="#" class="edit_ratebookrole">Edit Rate</a>
             </li>
-            <li><a href="#" class="edit_ratebookrole">Edit</a>
+            <li><a href="#" class="delete_ratebookrole">Delete</a>
             </li>
         </ul>
     </div>
@@ -117,6 +119,7 @@
         <button type="button" class="btn btn-default new-rate-book-role" data-toggle="modal" data-target="#newRateBookRoleModal">Add</button>
     </div>
     {{> newRateBookRoleModal}}
+    {{> editRateBookRoleModal}}
 </template>
 
 <template name="newRateBookRoleModal">
@@ -134,6 +137,7 @@
                             <label for="role_input" class="col-md-2 control-label">Role</label>
                             <div class="col-md-10">
                                 <select class="form-control ratebookrole_roleid">
+                                    <option value="" selected disabled>Select a Role...</option>
                                     {{#each roles}}
                                     <option value="{{this._id}}">{{this.name}}</option>
                                     {{/each}}
@@ -153,7 +157,38 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default cancel_new_ratebookrole" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary submit_new_ratebookrole">Save changes</button>
+                        <button type="button" class="btn btn-primary submit_new_ratebookrole" disabled="{{submitIsDisabled}}">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="editRateBookRoleModal">
+    <div class="modal fade" id="editRateBookRoleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Edit Role for {{this.name}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="project-probability" class="col-md-2 control-label">Rate</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    <input type="text" class="form-control edit_ratebookrole_rate" placeholder="Enter Amount">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_new_ratebookrole" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit_new_ratebookrole" disabled="{{submitIsDisabled}}">Save changes</button>
                     </div>
                 </form>
             </div>
