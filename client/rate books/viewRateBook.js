@@ -6,6 +6,7 @@ Template.rateBookView.subscriptionReady=function(){
 
 Session.set('adding_ratebookrole_roleid', null);
 Session.set('adding_ratebookrole_rate', null);
+Session.set('editting_ratebookrole_id', null);
 
 Template.rateBookRelated_rateBookRoles.helpers({
   rateBookRoles: function() {
@@ -88,11 +89,8 @@ Template.rateBookRolesListRowOptions.events({
     },
     'click a.edit_ratebookrole': function () {
         var editModal = $('#editRateBookRoleModal');
-        var ratebookrole = $(this).closest('tr').find('td.ratebookrole').html();
-        var rate = $('.ratebookrolerate').val();
-        console.log('test ' +  rate);
-        // and set them in the modal:
-        $('.edit_ratebookrole_rate', editModal).val(rate);
+        $('.edit_ratebookrole_rate', editModal).val(this.rate);
+        Session.set('editting_ratebookrole_id', this._id);
         // and finally show the modal
         editModal.modal({ show: true });
     }
@@ -106,3 +104,36 @@ Template.newRateBookRoleModal.submitIsDisabled = function () {
         return false; 
     }
 };
+
+Template.editRateBookRoleModal.events({
+    'click .submit_edit_ratebookrole': function() {
+        var rate = $('.edit_ratebookrole_rate').val();
+        Rate_Book_Roles.update({_id: Session.get('editting_ratebookrole_id')}, {$set: {rate: rate}});
+        $('#editRateBookRoleModal').modal('hide');
+        $('.edit_ratebookrole_rate').val(null);
+    }/*,
+    'click select.ratebookrole_roleid': function() {
+        if($('.ratebookrole_roleid').val() != ''){
+            Session.set('adding_ratebookrole_roleid', $('.ratebookrole_roleid').val());
+        }
+    },
+    'keyup input.ratebookrole_rate': function (evt) {
+        if (evt.which) {
+            var rate = $('.ratebookrole_rate').val();
+            console.log(rate);
+            console.log(rate == 0);
+            if(rate > 0) {
+                Session.set('adding_ratebookrole_rate', $('.adding_ratebookrole_rate').val());
+            } 
+            if (rate <= 0){
+                Session.set('adding_ratebookrole_rate', null);
+            }
+        }
+    },
+    'click .cancel_new_ratebookrole': function() {
+        $('.ratebookrole_roleid').val(null);
+        Session.set('adding_ratebookrole_roleid', null);
+        $('.ratebookrole_rate').val(null);
+        Session.set('adding_ratebookrole_rate', null);
+    }*/  
+});

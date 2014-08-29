@@ -20,7 +20,7 @@
     <tr>
         <td><a href="{{pathFor 'opportunityView'}}"> {{this.name}} </a>
         </td>
-        <td>{{this.company}} fix me</td>
+        <td>{{company}}</td>
     </tr>
 </template>
 
@@ -45,5 +45,7 @@
 </template>
 
 <template name="opportunityListButtons">
-    <button type="button" class="btn btn-default">Create New</button>
+    <div class="btn-group">
+        <button type="button" class="btn btn-default">Create New</button>
+    </div>
 </template>

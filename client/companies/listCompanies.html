@@ -1,0 +1,33 @@
+<template name="companies">
+    <h1>Companies {{> companyListButtons}}</h1>
+    <div class="companies">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Owner</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each companies}} {{> companyListRow}} {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<template name="companyListRow">
+    <tr>
+        <td> <a href="{{pathFor 'companyView'}}"> {{this.name}} </a> 
+        </td>
+        <td>{{this.owner_id}}</td>
+    </tr>
+</template>
+
+<template name="companyListButtons">
+    <div class="btn-group">
+        <a href="{{pathFor 'newCompany'}}">
+            <button type="button" class="btn btn-default new_company">Create New</button>
+        </a>
+        
+    </div>
+</template>

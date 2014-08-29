@@ -1,18 +1,15 @@
-Template.projects.helpers({
-    projects: function () {
-        return Projects.find();
-    },
-    waitOn: function () {
-        Meteor.subscribe('projects');
-    }
-});
+Template.projectView.subscriptionReady=function(){
+    return projectsSubscriptionHandle.ready();
+};
 
 Template.projectViewDetail.helpers({
     'company': function () {
-        return company = Companies.findOne(this.company_id).name;
+        company = Companies.findOne(this.company_id);
+        return company.name;
     },
     'rateBook': function () {
-        return rateBook = Rate_Books.findOne(this.rate_book_id).name;
+        rateBook = Rate_Books.findOne(this.rate_book_id);
+        return rateBook.name;
     }
 });
 
@@ -22,8 +19,6 @@ Template.projectViewButtons.events({
         Projects.remove(this._id);
     }
 });
-
-//Template.projectRelatedLists.helpers({});
 
 Template.projectRelated_projectRoles.helpers({
     projectRoles: function () {

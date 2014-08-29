@@ -1,0 +1,82 @@
+<template name="newCompany">
+    <h1>Create New Company</h1>
+    <div class="project">
+        {{> newCompanyDetails}}
+    </div>
+</template>
+
+<template name="newCompanyDetails">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="company-name" class="col-sm-12">Company Name</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="company-name" placeholder="Enter a name...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="company-type" class="col-sm-12">Type</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="company-type" placeholder="Enter a type...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="company-type" class="col-sm-12">Industry</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="company-industry" placeholder="Enter an industry...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="company-phone" class="col-sm-12">Phone</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="company-phone" placeholder="Enter a phone number...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="company-billingstreet" class="col-sm-12">Billing</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="company-billingstreet" placeholder="Enter a street...">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="company-billingcity" placeholder="Enter a city...">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="company-billingstate" placeholder="Enter a state...">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="company-billingzip" placeholder="Enter a zip...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="company-shippingstreet" class="col-sm-12">Shipping</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="company-shippingstreet" placeholder="street...">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="company-shippingcity" placeholder="city...">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="company-shippingstate" placeholder="state...">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="company-shippingzip" placeholder="zip...">
+            </div>
+        </div>
+        
+        <div class="btn-group" style="margin: 10px 10px 10px;">
+            <a href="{{pathFor 'companies'}}"><button type="submit" class="btn btn-primary company-submit">Save New</button></a>
+            <a href="{{pathFor 'companies'}}"><button type="submit" class="btn btn-primary company-cancel">Cancel</button></a>
+        </div>
+    </form>
+</template>

@@ -1,27 +1,3 @@
-<template name="companies">
-    <h1>Companies</h1>
-    <div class="companies">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Company Name</th>
-                    <th>Owner</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each companies}} {{> companyListRow}} {{/each}}
-            </tbody>
-        </table>
-    </div>
-</template>
-
-<template name="companyListRow">
-    <tr>
-        <td> <a href="{{pathFor 'companyView'}}"> {{this.name}} </a> 
-        </td>
-        <td>{{this.owner_id}}</td>
-    </tr>
-</template>
 
 <template name="companyView">
     <h1><a href="{{pathFor 'companies'}}">Company</a></h1>
@@ -198,7 +174,7 @@
 <template name="companyViewButtons">
     <div class="btn-group" style="margin: 10px 10px 10px;">
         <button type="button" class="btn btn-default">Edit</button>
-        <button type="button" class="btn btn-default">Delete</button>
+        <button type="button" class="btn btn-default delete_company">Delete</button>
         <button type="button" class="btn btn-default">Clone</button>
     </div>
 </template>

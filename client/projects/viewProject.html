@@ -1,20 +1,23 @@
 <template name="projectView">
+    {{#if subscriptionReady}}
     <h1>
         <a href="{{pathFor 'projects'}}">
-             Project
+             <span class="glyphicon glyphicon-briefcase"></span>&nbsp;Project
         </a>
-        <span class="glyphicon glyphicon-briefcase"></span>
+    </h1>
+    <h2>
         {{name}} 
         {{>projectViewButtons}}
-    </h1>
+    </h2>
     {{> projectViewDetail}}
     {{> projectRelatedLists}}
+    {{/if}}
 </template>
 
 <template name="projectViewButtons">
     <div class="btn-group" style="margin: 10px 10px 10px;">
-        <button type="button" class="btn btn-default">Edit</button>
-        <button type="button" class="btn btn-default delete_project">Delete</button>
+        <button type="button" class="btn btn-default edit_project"><span class="glyphicon glyphicon-pencil"></span></button>
+        <button type="button" class="btn btn-default delete_project"><span class="glyphicon glyphicon-trash"></span></button>
     </div>
 </template>
 
@@ -25,10 +28,8 @@
         <p><strong>Situation: </strong>{{situation}}</p>
         <p><strong>Solution: </strong>{{solution}}</p>
         <p><strong>Probability: </strong>{{probability}}</p>
-        <p><strong>Company: </strong><a href="{{pathFor 'projectCompany'}}">{{company}}</a>
-        </p>
-        <p><strong>Rate Book: </strong><a href="{{pathFor 'projectRateBook'}}">{{rateBook}}</a>
-        </p>
+        <p><strong>Company: </strong><a href="{{pathFor 'projectCompany'}}">{{company}}</a></p>
+        <p><strong>Rate Book: </strong><a href="{{pathFor 'projectRateBook'}}">{{rateBook}}</a></p>
     </div>
 </template>
 

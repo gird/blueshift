@@ -3,8 +3,8 @@ Meteor.publish('projects', function() {
 });
 
 Meteor.publish('opportunities', function() {
-  return Opportunities.find({owner_id: this.userId});
-  //return Opportunities.find();
+  //return Opportunities.find({owner_id: this.userId});
+  return Opportunities.find();
 });
 
 Meteor.publish('companies', function() {
@@ -17,6 +17,10 @@ Meteor.publish('contacts', function() {
 
 Meteor.publish('project_roles', function() {
   return Project_Roles.find();
+});
+
+Meteor.publish('project_role_skills', function() {
+  return Project_Role_Skills.find();
 });
 
 Meteor.publish('rate_book_roles', function() {
@@ -35,9 +39,13 @@ Meteor.publish('skills', function() {
   return Skills.find();
 });
 
-/*Meteor.publish('users', function() {
+/* 
+Removed with the addiction of metoer-accounts
+
+Meteor.publish('users', function() {
   return Users.find();
-});*/
+});
+*/
 
 Meteor.publish('fields', function() {
   return Fields.find();

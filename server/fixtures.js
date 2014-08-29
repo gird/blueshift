@@ -52,55 +52,6 @@ if (Companies.find().count() === 0) {
     type: 'Prospect'
   });
 }
-/*create some sample Users
-if (Users.find().count() === 0) {
-  Users.insert({
-    _id: 'gkenawell@gird.us',
-    first_name: 'Greg',
-    last_name: 'Kenawell'
-  });
-  Users.insert({
-    _id: 'kkenawell@gird.us',
-    first_name: 'Kendall',
-    last_name: 'Kenawell'
-  });
-  Users.insert({
-    _id: 'jsmith@gird.us',
-    first_name: 'John',
-    last_name: 'Smith'
-  });
-}*/
-//create some sample Opportunities
-if (Opportunities.find().count() === 0) {
-  Opportunities.upsert({
-    _id: 'opp200',
-    name: 'Potential Robot Project',
-    owner_id: 'gkenawell@gird.us',
-    project_id: 'project200',
-    company_id: 'company200'
-  });
-  Opportunities.insert({
-    _id: 'opp100',
-    name: 'Potential Lightsaber project',
-    owner_id: 'kkenawell@gird.us',
-    project_id: 'project100',
-    company_id: 'company100'
-  });
-  Opportunities.insert({
-    _id: 'opp300',
-    name: 'Robot ECO',
-    owner_id: 'gkenawell@gird.us',
-    project_id: 'project200',
-    company_id: 'company200'
-  });
-  Opportunities.insert({
-    _id: 'opp400',
-    name: 'Potential Unknown Project',
-    owner_id: 'gkenawell@gird.us',
-    project_id: 'project100',
-    company_id: 'company100'
-  });
-}
 
 //create some sample Projects
 if (Projects.find().count() === 0) {
@@ -130,6 +81,7 @@ if (Projects.find().count() === 0) {
   });
 }
 
+/*
 //create some sample Roles
 if (Roles.find().count() === 0) {
   Roles.insert({
@@ -171,20 +123,7 @@ if (Rate_Book_Roles.find().count() === 0) {
     rate: 175
   });
 }
-
-//create some sample Skills
-if (Skills.find().count() === 0) {
-  Skills.insert({
-    _id: 'skill100',
-    name: 'C#',
-    description: 'Draft'
-  });
-  Skills.insert({
-    _id: 'skill200',
-    name: 'Robot Building',
-    description: 'Draft'
-  });
-}
+*/
 
 //create some sample Resources
 if (Resources.find().count() === 0) {

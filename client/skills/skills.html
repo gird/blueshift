@@ -1,0 +1,68 @@
+<template name="skills">
+    <h1>Skills</h1>
+    <div class="skills">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each skills}} {{> skillListRow}} {{/each}} 
+                {{> newSkillRow}}
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<template name="skillListRow">
+  <tr>
+      {{#if editing}}
+        {{> editSkillRow}}
+      {{else}}
+        {{> skillListItem}}
+      {{/if}}
+  </tr>
+</template>
+
+<template name="newSkillRow">
+  <tr>
+    <td>
+      <div class="skill_form input-group col-sm-6">
+          <input type="text" class="new_skill_name form-control" placeholder="Enter new skill..."/> 
+          <span class="input-group-btn">
+              <button type="submit" class="submit_new_skill btn btn-default" disabled="{{submitIsDisabled}}"> Add Skill </button>
+          </span>
+        </div>
+    </td>
+  </tr>
+</template>
+
+<template name="skillListItem">
+    <td><div class="skillName-text">{{this.name}}</div></td>
+    <td>
+        <div class="btn-group">
+          <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" skill="menu">
+            <li><a href="#" class="delete_skill"><span class="glyphicon glyphicon-trash"></span></a></li>
+            <li><a href="#" class="edit_skill"><span class="glyphicon glyphicon-pencil"></span></a></li>
+          </ul>
+        </div>
+    </td>
+</template>
+
+<template name="editSkillRow">
+    <td>
+      <div class="edit_skill_form input-group col-sm-6">
+        <input type="text" class="edit_skill_name form-control" value="{{this.name}}"/>
+        <span class="input-group-btn">
+            <button type="cancel" class="cancel_edit_skill btn btn-default"><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel</button>
+            <button type="submit" class="submit_edit_skill btn btn-default"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Save</button>
+        </span>
+      </div>
+    </td>
+    <td> </td>
+</template>

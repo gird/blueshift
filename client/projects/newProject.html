@@ -6,31 +6,86 @@
 </template>
 
 <template name="newProjectDetails">
-    <form>
+    <form class="form-horizontal">
         <div class="form-group">
-            <label for="project-title">Title</label>
-            <input type="text" class="form-control" id="project-title" placeholder="Enter a title...">
-        </div>
-        <div class="form-group col-sm-6">
-            <label for="project-start-date">Start Date</label>
-            <input type="date" class="form-control" id="project-start-date" placeholder="...">
-        </div>
-        <div class="form-group col-sm-6">
-            <label for="project-end-date">End Date</label>
-            <input type="date" class="form-control" id="project-end-date" placeholder="...">
+            <label for="project-title" class="col-md-2">Title</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control " id="project-title" placeholder="Enter a title...">
+            </div>
         </div>
         <div class="form-group">
-            <label for="project-situation">Situation</label>
-            <textarea class="form-control" id="project-situation" rows="3"></textarea>
+            <label for="project-start-date" class="col-md-2">Start Date</label>
+            <div class="col-lg-10">
+                <input type="date" class="form-control" id="project-start-date" placeholder="...">
+            </div>
         </div>
         <div class="form-group">
-            <label for="project-solution">Solution</label>
-            <textarea class="form-control" id="project-solution" rows="3"></textarea>
+            <label for="project-end-date" class="col-md-2">End Date</label>
+            <div class="col-lg-10">
+                <input type="date" class="form-control" id="project-end-date" placeholder="...">
+            </div>
         </div>
-        <div class="form-group col-sm-6">
-            <label for="project-probability">Probability</label>
-            <input type="number" class="form-control" id="project-probability">
+        <div class="form-group">
+            <label for="project-situation" class="col-md-2">Situation</label>
+            <div class="col-md-10">
+                <textarea class="form-control" id="project-situation" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="project-solution" class="col-md-2">Solution</label>
+            <div class="col-md-10">
+                <textarea class="form-control" id="project-solution" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="project-probability" class="col-md-2">Probability</label>
+            <div class="col-md-10">
+                <input type="number" class="form-control" id="project-probability">
+            </div>    
         </div>
         <a href="{{pathFor 'projects'}}"><button type="submit" class="btn btn-primary project-submit">Create</button></a>
     </form>
 </template>
+<!--
+<template name="newRateBookRoleModal">
+    <div class="modal fade" id="newRateBookRoleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Add Role to {{name}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="role_input" class="col-md-2 control-label">Role</label>
+                            <div class="col-md-10">
+                                <select class="form-control ratebookrole_roleid">
+                                    <option value="" selected disabled>Select a Role...</option>
+                                    {{#each roles}}
+                                    <option value="{{this._id}}">{{this.name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-probability" class="col-md-2 control-label">Rate</label>
+                            <div class="col-md-10">
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    <input type="text" class="form-control ratebookrole_rate" placeholder="Enter Amount">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_new_ratebookrole" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit_new_ratebookrole" disabled="{{submitIsDisabled}}">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template-->
