@@ -127,6 +127,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Owner</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -138,6 +139,7 @@
                 <p><strong> There are no active projects for this company. <a href="#">Create a Project</a>.</strong>
                 </p>
                 {{/if}}
+                {{> childProjectsListButtons}}
             </div>
         </div>
     </div>
@@ -148,8 +150,36 @@
         <td> <a href="{{pathFor 'projectView'}}"> {{name}} </a> 
         </td>
         <td>{{status}}</td>
+        <td>{{> childProjectsListRowOptions}}</td>
     </tr>
 </template>
+
+<template name="childProjectsListRowOptions">
+    <div class="btn-group">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="edit_childProject"><span class="glyphicon glyphicon-pencil"></span></a>
+            </li>
+            <li><a href="#" class="delete_childProject"><span class="glyphicon glyphicon-trash"></span></a>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<template name="childProjectsListButtons">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default new_company_project" data-toggle="modal" data-target="#"><span class="glyphicon glyphicon-plus"></span> New</button>
+    </div>     
+    
+    <!--{{> newRateBookRoleModal}}
+    {{> editRateBookRoleModal}}-->
+</template>
+
+
+
+
 
 <template name="companyRelated_contacts">
     <div class="panel panel-default">
