@@ -11,15 +11,24 @@ Template.rateBooks.helpers({
 });
 
 Template.rateBookListItem.helpers({
-  'nameDefault': function() {
+    /*'nameDefault': function() {
+        var nameOfThis = Rate_Books.findOne(this._id);
+        if(nameOfThis.isDefault == true){
+            return nameOfThis.name + ' (Default)';
+        } else { 
+            return nameOfThis.name; 
+        }
+    }*/
+});
+
+Template.rateBookListItem.showDefault = function () {
     var nameOfThis = Rate_Books.findOne(this._id);
     if(nameOfThis.isDefault == true){
-        return nameOfThis.name + ' (Default)';
+        return true;
     } else { 
-        return nameOfThis.name; 
+        return false; 
     }
-  }
-});
+}
 
 Session.set('editing_ratebookname', null);
 

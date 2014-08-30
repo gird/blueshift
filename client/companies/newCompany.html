@@ -73,10 +73,11 @@
                 <input type="text" class="form-control" id="company-shippingzip" placeholder="zip...">
             </div>
         </div>
-        
-        <div class="btn-group" style="margin: 10px 10px 10px;">
-            <a href="{{pathFor 'companies'}}"><button type="submit" class="btn btn-primary company-submit">Save New</button></a>
-            <a href="{{pathFor 'companies'}}"><button type="submit" class="btn btn-primary company-cancel">Cancel</button></a>
+        <div class="text-right">
+            <div class="btn-group" style="margin: 10px 10px 10px;">
+                <a href="{{pathFor 'companies'}}"><button type="submit" class="btn btn-primary company-cancel"><span class="glyphicon glyphicon-remove"></span></button></a>
+                <a href="{{pathFor 'companies'}}"><button type="submit" class="btn btn-primary company-submit"><span class="glyphicon glyphicon-floppy-disk"></span></button></a>
+            </div>
         </div>
     </form>
 </template>

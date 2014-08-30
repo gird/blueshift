@@ -1,6 +1,6 @@
 projectsSubscriptionHandle = Meteor.subscribe("projects");
 Meteor.subscribe("opportunities");
-Meteor.subscribe("companies");
+companiesSubscriptionHandle = Meteor.subscribe("companies");
 Meteor.subscribe("contacts");
 Meteor.subscribe("project_roles");
 Meteor.subscribe("project_role_skills");

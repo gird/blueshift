@@ -1,11 +1,25 @@
-
 <template name="companyView">
-    <h1><a href="{{pathFor 'companies'}}">Company</a></h1>
-    <h2>{{name}} {{>companyViewButtons}}</h2>
-    {{#if parent_id}}
-    <p><strong> &nbsp; Parent: </strong><a href="{{pathFor 'companyParent'}}">{{parent}}</a>
-    </p>
+    {{#if subscriptionReady}}
+        <h1><a href="{{pathFor 'companies'}}">Company</a></h1>
+        <h2>{{name}} {{>companyViewButtons}}</h2>
+        {{#if parent_id}}
+        <p><strong> &nbsp; Parent: </strong><a href="{{pathFor 'companyParent'}}">{{parent}}</a>
+        </p>
+        {{/if}}
+
+        {{> companyViewDetails}}
+        {{> companyRelatedLists}}
     {{/if}}
+</template>
+
+<template name="companyViewButtons">
+    <div class="btn-group" style="margin: 10px 10px 10px;">
+        <button type="button" class="btn btn-default edit_company"><span class="glyphicon glyphicon-pencil"></span></button>
+        <button type="button" class="btn btn-default delete_company"><span class="glyphicon glyphicon-trash"></span></button>
+    </div>
+</template>
+
+<template name="companyViewDetails">
     <div class="company">
         <p><strong>Industry: </strong>{{industry}}</p>
         <p><strong>Type: </strong>{{type}}</p>
@@ -19,9 +33,19 @@
         <p><strong>Shipping State: </strong>{{shippingstate}}</p>
         <p><strong>Shipping Zip: </strong>{{shippingzip}}</p>
     </div>
+</template>
 
+<template name="companyRelatedLists">
     <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
+        {{> companyRelated_opportunities}}
+        {{> companyRelated_projects}}
+        {{> companyRelated_contacts}}
+        {{> companyRelated_children}}
+    </div>
+</template>
+
+<template name="companyRelated_opportunities">
+    <div class="panel panel-default">
             <h3 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#opportunities">
               Opportunities
@@ -36,6 +60,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Owner</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,95 +72,10 @@
                     <p><strong> There are no opportunities for this company. <a href="#">Create an Opportunity</a>.</strong>
                     </p>
                     {{/if}}
+                    {{> childOpportunitiesListButtons}}
                 </div>
             </div>
         </div>
-        <div class="panel panel-default">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#projects">
-                Projects
-                </a>
-            </h4>
-            <div id="projects" class="panel-collapse collapse">
-                <div class="panel-body">
-                    {{#if childProjects.count}}
-                    <div class="childProjects">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Owner</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each childProjects}} {{> childProjectsListRow}} {{/each}}
-                            </tbody>
-                        </table>
-                    </div>
-                    {{else}}
-                    <p><strong> There are no active projects for this company. <a href="#">Create a Project</a>.</strong>
-                    </p>
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#contacts">
-                Contacts
-                </a>
-            </h4>
-            <div id="contacts" class="panel-collapse collapse">
-                <div class="panel-body">
-                    {{#if childContacts.count}}
-                    <div class="childContacts">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Owner</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each childContacts}} {{> childContactsListRow}} {{/each}}
-                            </tbody>
-                        </table>
-                    </div>
-                    {{else}}
-                    <p><strong> There are no contacts under this company. <a href="#">Create a Contact</a>.</strong>
-                    </p>
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#children">Child Companies</a>
-            </h4>
-            <div id="children" class="panel-collapse collapse">
-                <div class="panel-body">
-                    {{#if children.count}}
-                    <div class="children">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Owner</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each children}} {{> childCompanyListRow}} {{/each}}
-                            </tbody>
-                        </table>
-                    </div>
-                    {{else}}
-                    <p><strong> There are no child companies under this company. <a href="#">Create a Child Relationship</a>.</strong>
-                    </p>
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-    </div>
 </template>
 
 <template name="childOpportunitiesListRow">
@@ -143,7 +83,64 @@
         <td> <a href="{{pathFor 'opportunityView'}}"> {{name}} </a> 
         </td>
         <td>{{owner_id}}</td>
+        <td>{{> childOpportunitiesListRowOptions}}</td>
     </tr>
+</template>
+
+<template name="childOpportunitiesListRowOptions">
+    <div class="btn-group">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="edit_childOpportunity"><span class="glyphicon glyphicon-pencil"></span></a>
+            </li>
+            <li><a href="#" class="delete_childOpportunity"><span class="glyphicon glyphicon-trash"></span></a>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<template name="childOpportunitiesListButtons">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default new_company_opportunity" data-toggle="modal" data-target="#"><span class="glyphicon glyphicon-plus"></span> New</button>
+    </div>     
+    
+    <!--{{> newRateBookRoleModal}}
+    {{> editRateBookRoleModal}}-->
+</template>
+
+
+<template name="companyRelated_projects">
+    <div class="panel panel-default">
+        <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#projects">
+                Projects
+                </a>
+            </h4>
+        <div id="projects" class="panel-collapse collapse">
+            <div class="panel-body">
+                {{#if childProjects.count}}
+                <div class="childProjects">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each childProjects}} {{> childProjectsListRow}} {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{else}}
+                <p><strong> There are no active projects for this company. <a href="#">Create a Project</a>.</strong>
+                </p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
 </template>
 
 <template name="childProjectsListRow">
@@ -152,6 +149,38 @@
         </td>
         <td>{{status}}</td>
     </tr>
+</template>
+
+<template name="companyRelated_contacts">
+    <div class="panel panel-default">
+        <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#contacts">
+                Contacts
+                </a>
+            </h4>
+        <div id="contacts" class="panel-collapse collapse">
+            <div class="panel-body">
+                {{#if childContacts.count}}
+                <div class="childContacts">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each childContacts}} {{> childContactsListRow}} {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{else}}
+                <p><strong> There are no contacts under this company. <a href="#">Create a Contact</a>.</strong>
+                </p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
 </template>
 
 <template name="childContactsListRow">
@@ -163,18 +192,40 @@
     </tr>
 </template>
 
+<template name="companyRelated_children">
+    <div class="panel panel-default">
+        <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#children">Child Companies</a>
+            </h4>
+        <div id="children" class="panel-collapse collapse">
+            <div class="panel-body">
+                {{#if children.count}}
+                <div class="children">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each children}} {{> childCompanyListRow}} {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{else}}
+                <p><strong> There are no child companies under this company. <a href="#">Create a Child Relationship</a>.</strong>
+                </p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>
+
 <template name="childCompanyListRow">
     <tr>
         <td> <a href="{{pathFor 'companyView'}}"> {{name}} </a> 
         </td>
         <td>{{owner_id}}</td>
     </tr>
-</template>
-
-<template name="companyViewButtons">
-    <div class="btn-group" style="margin: 10px 10px 10px;">
-        <button type="button" class="btn btn-default">Edit</button>
-        <button type="button" class="btn btn-default delete_company">Delete</button>
-        <button type="button" class="btn btn-default">Clone</button>
-    </div>
 </template>

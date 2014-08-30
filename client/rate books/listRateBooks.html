@@ -29,7 +29,13 @@
 <template name="rateBookListItem">
 
     <td>
-        <a href="{{pathFor 'rateBookView'}}"> {{nameDefault}} </a>
+        {{#if showDefault}}
+            <span class="glyphicon glyphicon-star"></span>
+        {{/if}}
+        <a href="{{pathFor 'rateBookView'}}"> 
+            {{name}}
+        </a>
+        
     </td>
     <td>{{> rateBookListRowOptions}}</td>
 
@@ -41,11 +47,11 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
-            <li><a href="#" class="delete_ratebook">Delete</a>
+            <li><a href="#" class="delete_ratebook"><span class="glyphicon glyphicon-trash"></span></a>
             </li>
-            <li><a href="#" class="edit_ratebook">Edit</a>
+            <li><a href="#" class="edit_ratebook"><span class="glyphicon glyphicon-pencil"></span></a>
             </li>
-            <li><a href="#" class="setDefault_ratebook">Set as Default</a>
+            <li><a href="#" class="setDefault_ratebook"><span class="glyphicon glyphicon-star"></span></a>
             </li>
         </ul>
     </div>
@@ -57,7 +63,7 @@
       <div class="role_form input-group col-sm-6">
           <input type="text" class="new_rateBook_name form-control" placeholder="Enter Rate Book..."/>
           <span class="input-group-btn">
-              <button type="submit" class="submit_new_ratebook btn btn-default" disabled="{{submitIsDisabled}}"> Add Rate Book </button>
+              <button type="submit" class="submit_new_ratebook btn btn-default" disabled="{{submitIsDisabled}}"> <span class="glyphicon glyphicon-plus"></span> </button>
           </span>
         </div>
     </td>
@@ -69,8 +75,8 @@
       <div class="edit_ratebook_form input-group col-sm-6">
         <input type="text" class="edit_ratebook_name form-control" value="{{this.name}}"/>
         <span class="input-group-btn">
-            <button type="submit" class="submit_edit_ratebook btn btn-default">Save</button>
-            <button type="cancel" class="cancel_edit_ratebook btn btn-default">Cancel</button>
+            <button type="submit" class="submit_edit_ratebook btn btn-default"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+            <button type="cancel" class="cancel_edit_ratebook btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
         </span>
       </div>
     </td>
