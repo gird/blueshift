@@ -136,7 +136,7 @@
                     </table>
                 </div>
                 {{else}}
-                <p><strong> There are no active projects for this company. <a href="#">Create a Project</a>.</strong>
+                <p><strong> There are no active projects for this company.</strong>
                 </p>
                 {{/if}}
                 {{> childProjectsListButtons}}
@@ -197,6 +197,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Owner</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -205,9 +206,10 @@
                     </table>
                 </div>
                 {{else}}
-                <p><strong> There are no contacts under this company. <a href="#">Create a Contact</a>.</strong>
+                <p><strong> There are no contacts under this company.</strong>
                 </p>
                 {{/if}}
+                {{> childContactsListButtons}}
             </div>
         </div>
     </div>
@@ -219,8 +221,34 @@
         </td>
         <td> <a href="{{pathFor 'contactView'}}"> {{last_name}} </a> 
         </td>
+        <td>{{> childContactsListRowOptions}}</td>
     </tr>
 </template>
+
+
+<template name="childContactsListRowOptions">
+    <div class="btn-group">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="edit_childContact"><span class="glyphicon glyphicon-pencil"></span></a>
+            </li>
+            <li><a href="#" class="delete_childContact"><span class="glyphicon glyphicon-trash"></span></a>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<template name="childContactsListButtons">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default new_company_contact" data-toggle="modal" data-target="#"><span class="glyphicon glyphicon-plus"></span> Add</button>
+    </div>     
+    
+    <!--{{> newRateBookRoleModal}}
+    {{> editRateBookRoleModal}}-->
+</template>
+
 
 <template name="companyRelated_children">
     <div class="panel panel-default">
@@ -236,6 +264,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Owner</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -244,9 +273,10 @@
                     </table>
                 </div>
                 {{else}}
-                <p><strong> There are no child companies under this company. <a href="#">Create a Child Relationship</a>.</strong>
+                <p><strong> There are currently no child companies.</strong>
                 </p>
                 {{/if}}
+                {{> childCompaniesListButtons}}
             </div>
         </div>
     </div>
@@ -257,5 +287,30 @@
         <td> <a href="{{pathFor 'companyView'}}"> {{name}} </a> 
         </td>
         <td>{{owner_id}}</td>
+        <td>{{> childCompaniesListRowOptions}}</td>
     </tr>
+</template>
+
+
+<template name="childCompaniesListRowOptions">
+    <div class="btn-group">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="edit_childCompany"><span class="glyphicon glyphicon-pencil"></span></a>
+            </li>
+            <li><a href="#" class="delete_childCompany"><span class="glyphicon glyphicon-trash"></span></a>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<template name="childCompaniesListButtons">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default new_company_company" data-toggle="modal" data-target="#"><span class="glyphicon glyphicon-plus"></span> Relationship</button>
+    </div>     
+    
+    <!--{{> newRateBookRoleModal}}
+    {{> editRateBookRoleModal}}-->
 </template>
