@@ -14,20 +14,24 @@
 .roles,
 .skills,
 .panel-group {
-    background: #fff;
+    background: #F6EED8;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
-    box-shadow: 0 8px 25px rgba(0, 50, 50, 0.35);
+    box-shadow: 0 8px 25px rgba(0, 50, 50, 0.45);
 }
 
 .panel {
   border-bottom: 1;
-  background-color:#fff;
+  background-color:#F6EED8;
   box-shadow: 0 8px 25px rgba(0, 50, 50, 0.35);
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+}
+.panel.panel-default {
+  background-color:#F6EED8;
+    border-color:#7A6A53;
 }
 
 .panel-body {
@@ -38,10 +42,15 @@
     box-shadow: 0 4px 6px rgba(0, 50, 50, 0.15);
     border-radius: 5px;
 }
-body {
-    background: #eee;
-    color: #666666;
+.btn.btn-default {
+    background-color:#D9CEB2;
+    border-color:#F6EED8;
 }
+.btn.btn-default:hover {
+    background-color:#D9CEB2;
+    border-color:#7A6A53;
+}
+
 a {
     text-decoration: none;
     font-weight: bold;
@@ -59,7 +68,17 @@ a:hover {
     font-weight: normal;
 }
 .navbar {
-    margin-bottom: 10px
+    margin-bottom: 10px;
+}
+.navbar.navbar-inverse {
+    background-color:#4C4234;
+    color: #F6EED8;
+}
+.navbar.navbar-inverse a {
+    color: #F6EED8;
+}
+ul.nav.navbar-nav li a {
+    color: #F6EED8;
 }
 .navbar .navbar-inner {
     border-radius: 0px 0px 3px 3px;

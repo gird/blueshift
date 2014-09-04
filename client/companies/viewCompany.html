@@ -6,9 +6,9 @@
         <p><strong> &nbsp; Parent: </strong><a href="{{pathFor 'companyParent'}}">{{parent}}</a>
         </p>
         {{/if}}
-
-        {{> companyViewDetails}}
-        {{> companyRelatedLists}}
+        <div class="col-md-6">{{> companyViewDetails}}</div>
+        <div class="col-md-6">{{> companyRelatedLists}}</div>
+        <div class="col-md-6">{{> companyViewDetails}}</div>
     {{/if}}
 </template>
 
