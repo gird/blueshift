@@ -1,0 +1,56 @@
+<template name="resources">
+    <h1>Resources</h1>
+    <div class="resources">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each resources}} {{> resourceListRow}} {{/each}} 
+            </tbody>  
+        </table>
+    </div>
+</template>
+
+<template name="resourceListRow">
+  <tr>
+      {{#if editing}}
+        {{> editResourceRow}}
+      {{else}}
+        {{> resourceListItem}}
+      {{/if}}
+  </tr>
+</template>
+
+<template name="resourceListItem">
+    <td><div class="resourceName-text">{{this.firstname}}</div></td>
+    <td><div class="resourceName-text">{{this.lastname}}</div></td>
+    <td>
+        <div class="btn-group">
+          <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" resource="menu">
+            <li><a href="#" class="delete_resource">Delete</a></li>
+            <li><a href="#" class="edit_resource">Edit</a></li>
+          </ul>
+        </div>
+    </td>
+</template>
+
+<template name="editResourceRow">
+    <td>
+      <div class="edit_resource_form input-group col-sm-6">
+        <input type="text" class="edit_resource_name form-control" value="{{this.name}}"/>
+        <span class="input-group-btn">
+            <button type="submit" class="submit_edit_resource btn btn-default">Save</button>
+            <button type="cancel" class="cancel_edit_resource btn btn-default">Cancel</button>
+        </span>
+      </div>
+    </td>
+    <td> </td>
+</template>

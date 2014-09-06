@@ -39,6 +39,10 @@ Meteor.publish('skills', function() {
   return Skills.find();
 });
 
+Meteor.publish('resources', function() {
+    return Resources.find();
+});
+
 /* 
 Removed with the addiction of metoer-accounts
 
