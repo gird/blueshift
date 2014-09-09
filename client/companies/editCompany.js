@@ -4,12 +4,6 @@ Template.editCompany.helpers({
   }
 });
 
-Template.editCompanyDetails.helpers({
-  company: function() {
-    return Companies.findOne(Session.get('selectedCompanyId'));
-  }
-});
-
 Template.editCompany.events = {
  
 };
