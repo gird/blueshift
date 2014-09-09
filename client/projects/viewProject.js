@@ -1,5 +1,10 @@
 Template.projectView.subscriptionReady=function(){
-    return projectsSubscriptionHandle.ready();
+    //return projectsSubscriptionHandle.ready();
+    if (rateBookRolesSubscriptionHandle.ready() && projectsSubscriptionHandle.ready() && rolesSubscriptionHandle.ready() && projectRolesSubscriptionHandle.ready()){
+        return true;
+    } else {
+        return false;
+    }
 };
 
 Template.projectViewDetail.helpers({
@@ -26,6 +31,7 @@ Template.projectRelated_projectRoles.helpers({
         var projectRoles = Project_Roles.find({
             project_id: this._id
         });
+        console.log(projectRoles);
         projectRoles.forEach(function (projectRole) {
             var roleId = Rate_Book_Roles.findOne({
                 _id: projectRole.rate_book_role_id

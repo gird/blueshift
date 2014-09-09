@@ -19,6 +19,14 @@ Meteor.publish('project_roles', function() {
   return Project_Roles.find();
 });
 
+Meteor.publish('project_roles_for_project', function(projectId) {
+  return Project_Roles.find({_id: projectId});
+});
+
+Meteor.publish('ratebookroles_for_project', function(projectIds) {
+  return Rate_Book_Roles.find({_id: {$in: projectIds}});
+});
+
 Meteor.publish('project_role_skills', function() {
   return Project_Role_Skills.find();
 });
