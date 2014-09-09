@@ -56,8 +56,6 @@ Template.newProjectRoleModal.helpers({
             });
             roles.push({rate_book_role_id: ratebookrole._id, role_name: role.name});
         });
-        
-        console.log(roles);
         return roles;
     }
 });

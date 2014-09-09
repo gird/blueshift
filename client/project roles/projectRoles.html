@@ -33,8 +33,14 @@
         {{role}}
         {{> projectRoleViewButtons}}
     </h2>
-    {{> projectRoleViewDetail}}
-    {{> projectRoleRelatedLists}}
+
+    <div class="col-md-6">
+        {{> projectRoleViewDetail}}
+    </div>
+    <div class="col-md-6">
+        {{> projectRoleRelatedLists}}
+    </div>
+
 </template>
 
 <template name="projectRoleViewButtons">

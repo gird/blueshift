@@ -10,10 +10,10 @@
         {{>projectViewButtons}}
     </h2>
     <div class="col-md-6">
-    {{> projectViewDetail}}
+        {{> projectViewDetail}}
     </div>
-    <div class="col-md-6">
-    {{> projectRelatedLists}}
+    <div class="col-md-12">
+        {{> projectRelatedLists}}
     </div>
     {{/if}}
 </template>
@@ -42,7 +42,8 @@
 <template name="projectRelatedLists">
     <div class="panel-group" id="accordion">
         {{> projectRelated_projectRoles}} 
-        {{> projectRelated_opportunities}}
+        {{> projectRolesTimeline}}
+        {{> projectRelated_opportunities}}        
     </div>
 </template>
 
