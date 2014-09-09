@@ -7,7 +7,7 @@
         </p>
         {{/if}}
         <div class="col-md-6">{{> companyViewDetails}}</div>
-        {{> companyRelatedLists}}
+        <div class="col-md-6">{{> companyRelatedLists}}</div>
         <div class="col-md-6">{{> companyViewDetails}}</div>
     {{/if}}
 </template>
@@ -36,32 +36,18 @@
 </template>
 
 <template name="companyRelatedLists">
-    <div class="col-md-6">
-        <div class="panel-group" id="accordion1">
-            {{> companyRelated_opportunities}}
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="panel-group" id="accordion2">
-            {{> companyRelated_projects}}
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="panel-group" id="accordion3">
-            {{> companyRelated_contacts}}
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="panel-group" id="accordion4">
-            {{> companyRelated_children}}
-        </div>
+    <div class="panel-group" id="accordion">
+        {{> companyRelated_opportunities}}
+        {{> companyRelated_projects}}
+        {{> companyRelated_contacts}}
+        {{> companyRelated_children}}
     </div>
 </template>
 
 <template name="companyRelated_opportunities">
     <div class="panel panel-default">
             <h3 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion1" href="#opportunities">
+              <a data-toggle="collapse" data-parent="#accordion" href="#opportunities">
               Opportunities
               </a>
             </h3>
@@ -128,7 +114,7 @@
 <template name="companyRelated_projects">
     <div class="panel panel-default">
         <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion2" href="#projects">
+                <a data-toggle="collapse" data-parent="#accordion" href="#projects">
                 Projects
                 </a>
             </h4>
@@ -198,7 +184,7 @@
 <template name="companyRelated_contacts">
     <div class="panel panel-default">
         <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion3" href="#contacts">
+                <a data-toggle="collapse" data-parent="#accordion" href="#contacts">
                 Contacts
                 </a>
             </h4>
@@ -267,7 +253,7 @@
 <template name="companyRelated_children">
     <div class="panel panel-default">
         <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion4" href="#children">Child Companies</a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#children">Child Companies</a>
             </h4>
         <div id="children" class="panel-collapse collapse">
             <div class="panel-body">

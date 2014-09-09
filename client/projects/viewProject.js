@@ -45,3 +45,52 @@ Template.projectRelated_opportunities.helpers({
         });
     }
 });
+
+Template.newProjectRoleModal.helpers({
+    roles: function() {
+        var roles = [];
+        var ratebookroles = Rate_Book_Roles.find({rate_book_id: this.rate_book_id});
+        ratebookroles.forEach(function (ratebookrole) {
+            var role = Roles.findOne({
+                _id: ratebookrole.role_id
+            });
+            roles.push({rate_book_role_id: ratebookrole._id, role_name: role.name});
+        });
+        
+        console.log(roles);
+        return roles;
+    }
+});
+
+Template.newProjectRoleModal.events({
+    'click .submit_new_projectrole': function() {
+        var ratebookroleId = $('.projectrole_ratebookroleid').val();
+        var status = $('.projectrole_status').val();
+        var allocation = $('.projectrole_allocation').val();
+        var startdate = $('.projectrole_startdate').val();
+        var enddate = $('.projectrole_enddate').val();
+        var probability = $('.projectrole_probability').val();
+        var status = $('.projectrole_status').val();
+        
+        Project_Roles.insert({
+            rate_book_role_id: ratebookroleId,
+            allocation: allocation,
+            endDate: enddate,
+            probability: probability,
+            project_id: this._id,
+            startDate: startdate,
+            status: status
+        });
+        $('#newProjectRoleModal').modal('hide');
+        $('.projectrole_ratebookroleid').val(null);
+        //Session.set('adding_ratebookrole_roleid', null);
+        $('.ratebookrole_rate').val(null);
+        //Session.set('adding_ratebookrole_rate', null);
+        $('.projectrole_status').val(null);
+        $('.projectrole_allocation').val(null);
+        $('.projectrole_startdate').val(null);
+        $('.projectrole_enddate').val(null);
+        $('.projectrole_probability').val(null);
+        $('.projectrole_status').val(null);
+    }
+});
