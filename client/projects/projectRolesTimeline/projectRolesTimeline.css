@@ -1,6 +1,13 @@
 .vis.timeline .item {
-    border-color: #D9CEB2;
+    border-color: #7A6A53;
     background-color: #4C4234;
     color: #F6EED8;
+    border-width: 2px;
     box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.5);
+}
+.vis.timeline .item.selected {
+    border-color: #4C4234;
+    background-color: #D9CEB2;
+    color: #4C4234;
+    border-width: 2px;
 }

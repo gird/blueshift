@@ -8,7 +8,8 @@
       },
       "spin": {},
       "bootstrap3-less": {},
-      "typeahead": {}
+      "typeahead": {},
+      "moment": {}
     },
     "packages": {
       "iron-router": {
@@ -28,8 +29,13 @@
       },
       "typeahead": {
         "git": "https://github.com/sergeyt/meteor-typeahead.git",
-        "tag": "v0.0.11",
-        "commit": "b97b4a92edeceb8f76aa8e6eb0f71252b34d4de3"
+        "tag": "v0.0.12",
+        "commit": "1f5674a073489d09755022dd83b9fcc01fd8fcec"
+      },
+      "moment": {
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.8.1",
+        "commit": "722ea63783d594341023836b7d418ab2567dab8c"
       },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",

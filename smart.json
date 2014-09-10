@@ -6,6 +6,7 @@
     },
     "spin": {},
     "bootstrap3-less": {},
-    "typeahead": {}
+    "typeahead": {},
+    "moment": {}
   }
 }
