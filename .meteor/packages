@@ -5,10 +5,9 @@
 
 standard-app-packages
 insecure
-iron-router
+iron:router
 less
-bootstrap3-less
 accounts-ui
 accounts-password
-typeahead
-moment
+mrt:moment@2.8.1
+bootstrap3-less
