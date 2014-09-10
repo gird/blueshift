@@ -6,8 +6,9 @@ Template.projectRoles.helpers({
 
 Template.projectRoleView.helpers({
   'project': function() {
-    var project = Projects.findOne(this.project_id).name;
-    return project;
+    var project = Projects.findOne(this.project_id)
+    var projectName = project && project.name;
+    return projectName;
   }
 });
 
