@@ -54,8 +54,8 @@ Template.projectRolesTimeline.rendered = function () {
                 content: role.name,
                 start: projectRole.startDate,
                 end: projectRole.endDate
-                }
-            ]);
+            }
+        ]);
     });
     data.on('*', function (event, properties, senderId) {
         console.log('event', event, properties);
