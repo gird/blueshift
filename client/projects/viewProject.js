@@ -98,3 +98,10 @@ Template.newProjectRoleModal.events({
         $('.projectrole_status').val(null);
     }
 });
+
+Template.projectRolesListRowOptions.events({
+    'click a.delete_projectrole': function(e) {
+        e.preventDefault();
+        Project_Roles.remove(this._id);
+    }
+});

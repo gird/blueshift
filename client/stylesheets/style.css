@@ -11,23 +11,24 @@
 .contacts,
 .contact,
 .projectRole,
+.projectRoles,
 .roles,
 .skills,
 .resources,
 .timelinechart,
 .panel-group {
     background: #F6EED8;
-    border-radius: 5px;
+    border-radius: 2px;
     padding: 10px;
     margin-bottom: 10px;
-    box-shadow: 0 8px 25px rgba(0, 50, 50, 0.45);
+    box-shadow: 0 4px 15px rgba(0, 50, 50, 0.45);
 }
 
 .panel {
   border-bottom: 1;
   background-color:#F6EED8;
-  box-shadow: 0 8px 25px rgba(0, 50, 50, 0.35);
-  border-radius: 5px;
+  box-shadow: 0 4px 15px rgba(0, 50, 50, 0.35);
+  border-radius: 2px;
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -37,12 +38,12 @@
 }
 
 .panel-body {
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 .btn-group {
     box-shadow: 0 4px 6px rgba(0, 50, 50, 0.15);
-    border-radius: 5px;
+    border-radius: 2px;
 }
 .btn.btn-default {
     background-color:#D9CEB2;
@@ -99,3 +100,4 @@ ul.nav.navbar-nav li a {
 .dropdown-menu {
     min-width: 5px !important;
 }
+

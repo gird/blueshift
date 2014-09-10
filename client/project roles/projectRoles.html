@@ -91,7 +91,8 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Recommended Experience</th>
+                                <th>Exp</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,8 +115,24 @@
     <tr>
         <td>{{skill}}</td>
         <td>{{experience}}</td>
+        <td>{{> projectRoleSkillsListRowOptions}}</td>
     </tr>
 </template>
+
+<template name="projectRoleSkillsListRowOptions">
+    <div class="btn-group">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="edit_projectroleskill"><span class="glyphicon glyphicon-pencil"></span> </a>
+            </li>
+            <li><a href="#" class="delete_projectroleskill"><span class="glyphicon glyphicon-trash"></span></a>
+            </li>
+        </ul>
+    </div>
+</template>
+
 
 <template name="projectRoleSkillsButtons">
     <div class="btn-group">

@@ -65,6 +65,7 @@
                                 <th>Status</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -90,7 +91,22 @@
         <td>{{status}}</td>
         <td>{{startDate}}</td>
         <td>{{endDate}}</td>
+        <td>{{> projectRolesListRowOptions}}</td>
     </tr>
+</template>
+
+<template name="projectRolesListRowOptions">
+    <div class="btn-group">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="edit_projectrole"><span class="glyphicon glyphicon-pencil"></span> </a>
+            </li>
+            <li><a href="#" class="delete_projectrole"><span class="glyphicon glyphicon-trash"></span></a>
+            </li>
+        </ul>
+    </div>
 </template>
 
 
