@@ -9,6 +9,13 @@ Template.projectRolesTimeline.rendered = function () {
         console.log(i);
     }
     
+    /*
+    This needs a better reactive way of loading the timeline.  Instead of reloading the entire chart,  refresh the data within the timeline.
+    
+    Check out https://www.eventedmind.com/feed/meteor-build-a-reactive-data-source for a start.
+    https://meteor.hackpad.com/Meteor-Cookbook-Reactive-D3-Visualizations-YUR9JT4mrm9
+    */
+    
     Deps.autorun(function (c) {
         var options = {};
         var data = new vis.DataSet(options);
@@ -34,6 +41,7 @@ Template.projectRolesTimeline.rendered = function () {
           console.log('event', event, properties);
         });
         $(document).ready(function () {
+            // Below needs to be replaced, bad form reloading entire timeline after refresh
             $("#projectRolesTimelineChart").html("");
             var container = document.getElementById('projectRolesTimelineChart');
             var timeline = new vis.Timeline(container, data, options);
