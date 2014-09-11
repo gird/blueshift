@@ -35,7 +35,7 @@ Template.projectRelated_projectRoles.helpers({
         projectRoles.forEach(function (projectRole) {
             var role = Rate_Book_Roles.findOne({
                 _id: projectRole.rate_book_role_id
-            })
+            });
             var roleId = role && role.role_id;
             
             var role = Roles.findOne({
