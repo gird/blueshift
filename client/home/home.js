@@ -2,13 +2,13 @@ Template.home.helpers({
   revenue: function() {
     //return Opportunities.find();
     var projectroles = Project_Roles.find();
+    var projectroleSchedules = Project_Role_Schedule.find();
     var totalRevenue = 0;
-    projectroles.forEach(function(pr) {
-        var totaldays = moment(pr.endDate).diff(moment(pr.startDate), 'days', true);
-        console.log(totaldays);
-        totalRevenue = totaldays + totalRevenue;
+    projectroleSchedules.forEach(function(prs) {
+        totalRevenue = prs.revenue + totalRevenue;
+        console.log(totalRevenue);
+        console.log(prs.revenue);
     });
-    totalRevenue = totalRevenue * 125;
     return accounting.formatMoney(totalRevenue);
   }
 });

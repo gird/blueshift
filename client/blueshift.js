@@ -4,6 +4,7 @@ companiesSubscriptionHandle = Meteor.subscribe("companies");
 Meteor.subscribe("contacts");
 projectRolesSubscriptionHandle = Meteor.subscribe("project_roles");
 Meteor.subscribe("project_role_skills");
+Meteor.subscribe("project_role_schedule");
 rateBookRolesSubscriptionHandle = Meteor.subscribe("rate_book_roles");
 rateBooksSubscriptionHandle = Meteor.subscribe("rate_books");
 rolesSubscriptionHandle = Meteor.subscribe("roles");

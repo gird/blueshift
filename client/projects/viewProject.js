@@ -87,6 +87,25 @@ Template.newProjectRoleModal.events({
             startDate: startdate,
             status: status
         });
+        
+        var totaldays = moment(enddate).diff(moment(startdate), 'days', true);
+        var dayCount = 1;
+        
+        var ratebookrole = Rate_Book_Roles.findOne({_id: ratebookroleId});
+                
+        while(dayCount <= totaldays) {
+            var myDate = new Date(startdate);
+            myDate.setDate(myDate.getDate() + dayCount);
+            console.log(myDate);
+            Project_Role_Schedule.insert({
+                project_role_id: ratebookroleId,
+                revenue: ratebookrole.rate * allocation,
+                date: myDate
+            });
+            
+            ++dayCount;
+        }
+        
         $('#newProjectRoleModal').modal('hide');
         $('.projectrole_ratebookroleid').val(null);
         //Session.set('adding_ratebookrole_roleid', null);

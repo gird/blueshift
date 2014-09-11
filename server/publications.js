@@ -59,7 +59,10 @@ Meteor.publish('users', function() {
 });
 */
 
+Meteor.publish('project_role_schedule', function() {
+  return Project_Role_Schedule.find();
+});
+
 Meteor.publish('fields', function() {
   return Fields.find();
 });
-
