@@ -17,7 +17,7 @@
 .resources,
 .timelinechart,
 .panel-group {
-    background: #9E9A41;
+    background: #c8c579;
     border-radius: 2px;
     padding: 10px;
     margin-bottom: 10px;
@@ -32,7 +32,7 @@
     margin-bottom: 10px;
 }
 .panel.panel-default {
-    background-color: #F6EED8;
+    background-color: #dedcaf;
     border-color: #7A6A53;
     border-radius: 2px;
 }
@@ -54,6 +54,7 @@
 a {
     text-decoration: none;
     font-weight: bold;
+    color: #797cc8;
 }
 a:hover {
     text-decoration: underline;

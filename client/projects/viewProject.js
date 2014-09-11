@@ -97,9 +97,12 @@ Template.newProjectRoleModal.events({
             var myDate = new Date(startdate);
             myDate.setDate(myDate.getDate() + dayCount);
             console.log(myDate);
+            console.log('rate: ' + ratebookrole.rate );
+            console.log('allocation: '  + allocation );
+            console.log(ratebookrole.rate * allocation);
             Project_Role_Schedule.insert({
                 project_role_id: ratebookroleId,
-                revenue: ratebookrole.rate * allocation,
+                revenue: ratebookrole.rate * allocation / 100 * 8,
                 date: myDate
             });
             
