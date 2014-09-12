@@ -62,7 +62,7 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Status</th>
+                                <th>Resource</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th></th>
@@ -88,7 +88,7 @@
     <tr>
         <td> <a href="{{pathFor 'projectRoleView'}}"> {{role}} </a> 
         </td>
-        <td>{{status}}</td>
+        <td>{{resourceNames}}</td>
         <td>{{startDate}}</td>
         <td>{{endDate}}</td>
         <td>{{> projectRolesListRowOptions}}</td>
@@ -101,7 +101,7 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
-            <li><a href="#" class="edit_projectrole"><span class="glyphicon glyphicon-pencil"></span> </a>
+            <li><a href="#" class="edit_projectrole"><span class="glyphicon glyphicon-pencil"></span></a>
             </li>
             <li><a href="#" class="delete_projectrole"><span class="glyphicon glyphicon-trash"></span></a>
             </li>
@@ -269,4 +269,3 @@
         </div>
     </div>
 </template-->
-<!--End of Rate Book Roles related list templates-->

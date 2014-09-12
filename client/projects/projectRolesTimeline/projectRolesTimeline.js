@@ -15,24 +15,18 @@ Template.projectRolesTimeline.rendered = function () {
     var options = {
         editable: true,
         onMove: function (item, callback) {
-            //if (confirm('Do you really want to move the item to\n' +
-            //    'start: ' + item.start + '\n' +
-            //    'end: ' + item.end + '?')) {
-                callback(item); // send back item as confirmation (can be changed)
-                var updatedstart = moment(new Date(item.start)).format('YYYY-MM-DD');
-                var updatedend = moment(new Date(item.end)).format('YYYY-MM-DD');
-                
-                Project_Roles.update({
-                    _id: item.id
-                }, {
-                    $set: {
-                        startDate: updatedstart,
-                        endDate: updatedend
-                    }
-                });
-            //} else {
-            //    callback(null); // cancel editing item
-            //}
+            callback(item); // send back item as confirmation (allow change)
+            var updatedstart = moment(new Date(item.start)).format('YYYY-MM-DD');
+            var updatedend = moment(new Date(item.end)).format('YYYY-MM-DD');
+            
+            Project_Roles.update({
+                _id: item.id
+            }, {
+                $set: {
+                    startDate: updatedstart,
+                    endDate: updatedend
+                }
+            });
         }
 
     };
@@ -47,11 +41,12 @@ Template.projectRolesTimeline.rendered = function () {
             _id: roleId
         });
 
-        console.log(role.name);
+        var content = role.name;
+        
         data.add([
             {
                 id: projectRole._id,
-                content: role.name,
+                content: content,
                 start: projectRole.startDate,
                 end: projectRole.endDate
             }

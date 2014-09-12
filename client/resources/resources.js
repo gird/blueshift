@@ -44,3 +44,19 @@ Template.resourceListItem.events({
         input.select();
     }
 });
+
+Template.resourceRelated_skills.helpers({
+    childSkills: function () {
+        return this.skills;
+    }
+});
+
+Template.childSkillsListRow.helpers({
+    'skill': function () {
+        var skill = Skills.findOne({
+            _id: this.skill_id
+        });
+        var skillname = skill && skill.name;
+        return skillname;
+    }
+});

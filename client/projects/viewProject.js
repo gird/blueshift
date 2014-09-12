@@ -37,10 +37,17 @@ Template.projectRelated_projectRoles.helpers({
                 _id: projectRole.rate_book_role_id
             });
             var roleId = role && role.role_id;
-            
             var role = Roles.findOne({
                 _id: roleId
             });
+            
+            /*var resources = projectRole.resources;
+            resources.forEach(function(res){
+                var resource = Resources.findOne({
+                    _id: res.resource_id
+                });
+                console.log(resource.firstname + ' ' + resource.lastname);
+            });*/
         })
         return projectRoles;
     }
