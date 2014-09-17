@@ -34,14 +34,15 @@ Template.projectRolesTimeline.rendered = function () {
 
     projectRoles.forEach(function (projectRole) {
 
-        var roleId = Rate_Book_Roles.findOne({
+        var ratebookrole = Rate_Book_Roles.findOne({
             _id: projectRole.rate_book_role_id
-        }).role_id;
+        });
+        var roleId = ratebookrole && ratebookrole.role_id;
         var role = Roles.findOne({
             _id: roleId
         });
 
-        var content = role.name;
+        var content = role && role.name;
         
         data.add([
             {

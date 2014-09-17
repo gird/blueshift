@@ -10,11 +10,13 @@ Template.projectView.subscriptionReady=function(){
 Template.projectViewDetail.helpers({
     'company': function () {
         company = Companies.findOne(this.company_id);
-        return company.name;
+        companyName = company && company.name;
+        return companyName;
     },
     'rateBook': function () {
         rateBook = Rate_Books.findOne(this.rate_book_id);
-        return rateBook.name;
+        rateBookName = rateBook && rateBook.name;
+        return rateBookName;
     }
 });
 

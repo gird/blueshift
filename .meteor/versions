@@ -7,7 +7,6 @@ autoupdate@1.0.6
 binary-heap@1.0.0
 blaze-tools@1.0.0
 blaze@2.0.0
-bootstrap3-less@0.0.0
 callback-hook@1.0.0
 check@1.0.0
 ctl-helper@1.0.3
@@ -51,6 +50,7 @@ routepolicy@1.0.0
 service-configuration@1.0.1
 session@1.0.1
 sha@1.0.0
+simison:bootstrap3-less@0.3.0
 spacebars-compiler@1.0.2
 spacebars@1.0.1
 srp@1.0.0
