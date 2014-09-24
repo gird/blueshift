@@ -1,0 +1,140 @@
+
+<template name="projectRoleRelated_skills">
+    <div class="panel panel-default">
+        <h4 class="panel-title">
+                <a data-toggle="collapse" href="#projectRoleSkills">
+                    Relevant Skills
+                </a>
+                <span class="glyphicon glyphicon-wrench"></span>
+            </h4>
+        <div id="projectRoleSkills" class="panel-collapse collapse in">
+            <div class="panel-body">
+                {{#if projectRoleSkills.count}}
+                <div class="childProjectRoles">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Exp</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each projectRoleSkills}} 
+                                {{> projectRoleSkillsListRow}} 
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{else}}
+                <p>There are currently no Skills identified for this Project Role.</p>
+                {{/if}}
+                {{> projectRoleSkillsButtons}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="projectRoleSkillsListRow">
+    <tr>
+        <td>{{skill}}</td>
+        <td>{{experience}}</td>
+        <td>{{> projectRoleSkillsListRowOptions}}</td>
+    </tr>
+</template>
+
+<template name="projectRoleSkillsListRowOptions">
+    <div class="btn-group">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="edit_projectroleskill"><span class="glyphicon glyphicon-pencil"></span> </a>
+            </li>
+            <li><a href="#" class="delete_projectroleskill"><span class="glyphicon glyphicon-trash"></span></a>
+            </li>
+        </ul>
+    </div>
+</template>
+
+
+<template name="projectRoleSkillsButtons">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default new-projectRoleSkill" data-toggle="modal" data-target="#newProjectRoleSkillModal">Add</button>
+    </div>
+    {{> newProjectRoleSkillModal}}
+    {{> editProjectRoleSkillModal}}
+</template>
+
+<template name="newProjectRoleSkillModal">
+    <div class="modal fade" id="newProjectRoleSkillModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Add Skill to {{name}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Skill</label>
+                            <div class="col-md-10">
+                                <select class="form-control projectRoleSkill_skillid">
+                                    <option value="" selected disabled>Select a Skill...</option>
+                                    {{#each skills}}
+                                    <option value="{{this._id}}">{{this.name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Experience</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <input type="text" class="form-control projectRoleSkill_experience" placeholder="Enter desired amount of experience">
+                                    <span class="input-group-addon">Years</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_new_projectRoleSkill" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit_new_projectRoleSkill" disabled="{{submitIsDisabled}}">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="editProjectRoleSkillModal">
+    <div class="modal fade" id="editProjectRoleSkillModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Edit Skill for {{this.name}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Experience</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <input type="text" class="form-control edit_projectRoleSkill_experience">
+                                    <span class="input-group-addon">Years</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_edit_projectRoleSkill" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit_edit_projectRoleSkill" disabled="{{submitEditIsDisabled}}">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
