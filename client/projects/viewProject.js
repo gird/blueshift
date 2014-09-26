@@ -80,12 +80,10 @@ Template.newProjectRoleModal.helpers({
 Template.newProjectRoleModal.events({
     'click .submit_new_projectrole': function() {
         var ratebookroleId = $('.projectrole_ratebookroleid').val();
-        var status = $('.projectrole_status').val();
         var allocation = $('.projectrole_allocation').val();
         var startdate = $('.projectrole_startdate').val();
         var enddate = $('.projectrole_enddate').val();
         var probability = $('.projectrole_probability').val();
-        var status = $('.projectrole_status').val();
         
         Project_Roles.insert({
             rate_book_role_id: ratebookroleId,
@@ -94,7 +92,6 @@ Template.newProjectRoleModal.events({
             probability: probability,
             project_id: this._id,
             startDate: startdate,
-            status: status
         });
         
         var totaldays = moment(enddate).diff(moment(startdate), 'days', true);
@@ -123,12 +120,10 @@ Template.newProjectRoleModal.events({
         //Session.set('adding_ratebookrole_roleid', null);
         $('.ratebookrole_rate').val(null);
         //Session.set('adding_ratebookrole_rate', null);
-        $('.projectrole_status').val(null);
         $('.projectrole_allocation').val(null);
         $('.projectrole_startdate').val(null);
         $('.projectrole_enddate').val(null);
         $('.projectrole_probability').val(null);
-        $('.projectrole_status').val(null);
     }
 });
 

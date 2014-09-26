@@ -9,14 +9,16 @@ var projectrole = {
             if (!role) {
                 return 'No role name detected';
             } else {
-                return role.name;
+                return role && role.name;
             }
         }
     },
-    'rate': function () {
-        var rate = Rate_Book_Roles.findOne(this.rate_book_role_id).rate;
+    /*'rate': function () {
+        var rateBookRole = Rate_Book_Roles.findOne(this.rate_book_role_id);
+        var rate = rateBookRole && rateBookRole.rate;
         return rate;
-    },
+    },*/
+    
     'resourceNames': function () {
         var resourceNames = '';
         var resources = this.resources;

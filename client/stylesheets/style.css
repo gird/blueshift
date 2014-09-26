@@ -18,7 +18,7 @@
 .resources,
 .timelinechart,
 .panel-group {
-    background: #c8c579;
+    background: #bcbcbc;
     border-radius: 2px;
     padding: 10px;
     margin-bottom: 10px;
@@ -33,8 +33,8 @@
     margin-bottom: 10px;
 }
 .panel.panel-default {
-    background-color: #dedcaf;
-    border-color: #7A6A53;
+    background-color: #4dbfbf; 
+    border-color: #01a4a4;
     border-radius: 2px;
 }
 .panel-body {
@@ -45,12 +45,12 @@
     border-radius: 2px;
 }
 .btn.btn-default {
-    background-color: #D9CEB2;
-    border-color: #F6EED8;
+    background-color: #b57330;
+    border-color: #bcbcbc;
 }
 .btn.btn-default:hover {
-    background-color: #D9CEB2;
-    border-color: #7A6A53;
+    background-color: #b57330;
+    border-color: #616161;
 }
 a {
     text-decoration: none;
@@ -73,14 +73,14 @@ a:hover {
     margin-bottom: 10px;
 }
 .navbar.navbar-inverse {
-    background-color: #4C4234;
-    color: #F6EED8;
+    background-color: #616161;
+    color: #fff;
 }
 .navbar.navbar-inverse a {
-    color: #F6EED8;
+    color: #fff;
 }
 ul.nav.navbar-nav li a {
-    color: #F6EED8;
+    color: #fff;
 }
 .navbar .navbar-inner {
     border-radius: 0px 0px 3px 3px;
