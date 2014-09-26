@@ -31,7 +31,9 @@ var projectrole = {
                 var resource = Resources.findOne({
                     _id: res.resource_id
                 });
-                resourceNames = resourceNames + resource.firstname + ' ' + resource.lastname + ' (' + res.type + ') ' + ', ';
+                var resourceFirstName = resource && resource.firstname;
+                var resourceLastName = resource && resource.lastname;
+                resourceNames = resourceNames + resourceFirstName + ' ' + resourceLastName + ' (' + res.type + ') ' + ', ';
             });
             resourceNames = resourceNames.slice(0, resourceNames.length -2);
             return resourceNames;

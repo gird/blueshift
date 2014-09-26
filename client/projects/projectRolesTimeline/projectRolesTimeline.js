@@ -1,5 +1,6 @@
 Template.projectRolesTimeline.rendered = function () {
     Meteor.subscribe('project_roles');
+    Meteor.subscribe('resources');
     var projectRoles = Project_Roles.find({
         project_id: this.data._id
     });
@@ -13,7 +14,12 @@ Template.projectRolesTimeline.rendered = function () {
 
     //Deps.autorun(function (c) {
     var options = {
-        editable: true,
+        editable: {
+            add: false,
+            updateTime: true,
+            updateGroup: false,
+            remove: false
+        },
         onMove: function (item, callback) {
             callback(item); // send back item as confirmation (allow change)
             var updatedstart = moment(new Date(item.start)).format('YYYY-MM-DD');
@@ -41,8 +47,40 @@ Template.projectRolesTimeline.rendered = function () {
         var role = Roles.findOne({
             _id: roleId
         });
+        var roleName = role && role.name;
+        var resourceNames = '';
+        var resBegin = '';
+        var resEnd = '';
+        var resources = projectRole.resources;
+        if(!resources){
+            resourceNames = 'Not Assigned or Claimed';
+            var content = '<div><a href="/projectRoles/' + projectRole._id + '">' + roleName + '</a>&nbsp;<div class="btn-group btn-group-xs"><button type="button" class="btn btn-default projectRole_assign" data-toggle="modal" data-target="#projectRoleAssign"><span class="glyphicon glyphicon-search"></span></button></div></div>';
+        } else {
+            resources.forEach(function(res){
+                var resource = res && Resources.findOne({
+                    _id: res.resource_id
+                });
+                //First and Last names are retunring undefined, need to make sure i have the resource data before running code.
+                var resourceFirstName = resource && resource.firstname;
+                var resourceLastName = resource && resource.lastname;
+                
+                if(res.type == 'Assign') {
+                    resourceNames = resourceFirstName + ' ' + resourceLastName + ', ';
+                    resBegin = ':&nbsp;<a href="/resources/' + res.resource_id + '">';
+                    resEnd = '</a> ';
+                } else {
+                    resourceNames = resourceNames + resourceFirstName + ' ' + resourceLastName + ' (' + res.type + ') ' + ', ';
+                    resBegin = '<a href="#" id="poppy" class="btn-group-xs" data-toggle="popover" title="Claimed Resources" data-content="';
+                    
+                    resEnd = '"><span class="glyphicon glyphicon-comment"></span></a>';
+                }
+                resourceNames = resourceNames.slice(0, resourceNames.length -2);
+            });
+            var content = '<div> <a href="/projectRoles/' + projectRole._id + '">' + roleName + '</a>&nbsp;' + resBegin + resourceNames + resEnd + '</div>';
+        }
 
-        var content = role && role.name;
+        
+        
         
         data.add([
             {
@@ -61,7 +99,11 @@ Template.projectRolesTimeline.rendered = function () {
         //$("#projectRolesTimelineChart").html("");
         var container = document.getElementById('projectRolesTimelineChart');
         var timeline = new vis.Timeline(container, data, options);
+        
     });
     //});
 
+    $(function () {
+        $('#poppy').popover();
+    });
 };

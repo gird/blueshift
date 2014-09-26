@@ -5,6 +5,9 @@
     border-width: 2px;
     box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.5);
 }
+.vis.timeline .item a{
+    color: #4C4234;
+}
 .vis.timeline .item.selected {
     border-color: #fff;
     background-color: #b57330;
@@ -22,4 +25,14 @@
     border: 1px solid #01a4a4;
     background: #bcbcbc;
     border-radius: 3px;
+}
+
+.vis.timeline .item .delete {
+  background: url('img/timeline/delete.png') no-repeat top center;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  right: -24px;
+  cursor: pointer;
 }

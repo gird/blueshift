@@ -37,6 +37,18 @@
     border-color: #01a4a4;
     border-radius: 2px;
 }
+
+.panel.panel-default a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+}
+
+.panel.panel-default a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 .panel-body {
     border-radius: 2px;
 }

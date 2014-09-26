@@ -86,7 +86,7 @@
 
 <template name="projectRolesListRow">
     <tr>
-        <td> <a href="{{pathFor 'projectRoleView'}}"> {{role}} </a> 
+        <td> <a href="{{pathFor 'projectRoleView'}}" data-toggle="tooltip" title="{{resourceNames}}"> {{role}} </a> 
         </td>
         <td>{{resourceNames}}</td>
         <td>{{startDate}}</td>
