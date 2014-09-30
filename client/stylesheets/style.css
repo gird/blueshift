@@ -56,6 +56,17 @@
     box-shadow: 0 4px 6px rgba(0, 50, 50, 0.15);
     border-radius: 2px;
 }
+
+.btn-group.open .dropdown-menu>li>a,.btn-group.open .dropdown-menu {
+    color:#000; 
+    background-color:#fff;
+}
+
+.btn-group.open .dropdown-menu>li>a:hover {
+    color:#b57330;
+    background-color:#ddd;
+}
+
 .btn.btn-default {
     background-color: #b57330;
     border-color: #bcbcbc;
@@ -86,7 +97,7 @@ a:hover {
 }
 .navbar.navbar-inverse {
     background-color: #616161;
-    color: #fff;
+    
 }
 .navbar.navbar-inverse a {
     color: #fff;
@@ -103,10 +114,7 @@ ul.nav.navbar-nav li a {
 .form-horizontal .form-control-static {
     padding-top: 5px;
 }
-.loginButton {
-    padding-top: 8px;
-    padding-right: 5px;
-}
 .dropdown-menu {
     min-width: 5px !important;
+    background-color: #616161;
 }

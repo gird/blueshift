@@ -7,8 +7,8 @@ standard-app-packages
 insecure
 iron:router
 less
-accounts-ui
-accounts-password
 mrt:moment@2.8.1
 simison:bootstrap3-less
 lepozepo:accounting
+joshowens:accounts-entry
+
