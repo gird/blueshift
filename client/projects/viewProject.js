@@ -84,20 +84,32 @@ Template.newProjectRoleModal.events({
         var startdate = $('.projectrole_startdate').val();
         var enddate = $('.projectrole_enddate').val();
         var probability = $('.projectrole_probability').val();
+        var newProjectRole;
+        var ratebookrole = Rate_Book_Roles.findOne({_id: ratebookroleId});
         
-        Project_Roles.insert({
-            rate_book_role_id: ratebookroleId,
-            allocation: allocation,
-            endDate: enddate,
-            probability: probability,
-            project_id: this._id,
-            startDate: startdate,
+        Meteor.call('insertProjectRole', ratebookroleId, allocation, enddate, probability, this._id, startdate, function(error, result){
+            newProjectRole = result;
         });
+        
+        var role = ratebookrole && Roles.findOne({_id: ratebookrole.role_id});
+        var roleName = role && role.name;
+        
+        setTimeout(function(){
+            console.log('im an id: ' + newProjectRole); 
+            var content = '<div><a href="/projectRoles/' + newProjectRole + '">' + roleName + '</a>&nbsp;<div class="btn-group btn-group-xs"><button type="button" class="btn btn-default projectRole_assign" data-toggle="modal" data-target="#projectRoleAssign"><span class="glyphicon glyphicon-search"></span></button></div></div>';
+            data.add([
+                {
+                    id: newProjectRole,
+                    content: content,
+                    start: startdate,
+                    end: enddate
+                }
+            ]);
+        }, 2000);
         
         var totaldays = moment(enddate).diff(moment(startdate), 'days', true);
         var dayCount = 1;
         
-        var ratebookrole = Rate_Book_Roles.findOne({_id: ratebookroleId});
                 
         while(dayCount <= totaldays) {
             var myDate = new Date(startdate);

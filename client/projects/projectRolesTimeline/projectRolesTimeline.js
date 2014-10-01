@@ -1,3 +1,29 @@
+var options = {
+        editable: {
+            add: false,
+            updateTime: true,
+            updateGroup: false,
+            remove: false
+        },
+        onMove: function (item, callback) {
+            callback(item); // send back item as confirmation (allow change)
+            var updatedstart = moment(new Date(item.start)).format('YYYY-MM-DD');
+            var updatedend = moment(new Date(item.end)).format('YYYY-MM-DD');
+            
+            Project_Roles.update({
+                _id: item.id
+            }, {
+                $set: {
+                    startDate: updatedstart,
+                    endDate: updatedend
+                }
+            });
+        }
+
+    };
+
+data = new vis.DataSet(options);
+
 Template.projectRolesTimeline.rendered = function () {
     Meteor.subscribe('project_roles');
     Meteor.subscribe('resources');
@@ -13,6 +39,7 @@ Template.projectRolesTimeline.rendered = function () {
     */
 
     //Deps.autorun(function (c) {
+    /*
     var options = {
         editable: {
             add: false,
@@ -37,7 +64,10 @@ Template.projectRolesTimeline.rendered = function () {
 
     };
     var data = new vis.DataSet(options);
-
+    */
+    //Need to revisit the rendering of the timeline, may have better options to add data to datavis array through meteor methods.
+    data.clear();
+    
     projectRoles.forEach(function (projectRole) {
 
         var ratebookrole = Rate_Book_Roles.findOne({
@@ -52,6 +82,7 @@ Template.projectRolesTimeline.rendered = function () {
         var resBegin = '';
         var resEnd = '';
         var resources = projectRole.resources;
+        
         if(!resources){
             resourceNames = 'Not Assigned or Claimed';
             var content = '<div><a href="/projectRoles/' + projectRole._id + '">' + roleName + '</a>&nbsp;<div class="btn-group btn-group-xs"><button type="button" class="btn btn-default projectRole_assign" data-toggle="modal" data-target="#projectRoleAssign"><span class="glyphicon glyphicon-search"></span></button></div></div>';
@@ -70,6 +101,7 @@ Template.projectRolesTimeline.rendered = function () {
                     resEnd = '</a> ';
                 } else {
                     resourceNames = resourceNames + resourceFirstName + ' ' + resourceLastName + ' (' + res.type + ') ' + ', ';
+                    console.log(resourceNames);
                     resBegin = '<a href="#" id="poppy" class="btn-group-xs" data-toggle="popover" title="Claimed Resources" data-content="';
                     
                     resEnd = '"><span class="glyphicon glyphicon-comment"></span></a>';
@@ -81,15 +113,19 @@ Template.projectRolesTimeline.rendered = function () {
 
         
         
+        try {
+            data.add([
+                {
+                    id: projectRole._id,
+                    content: content,
+                    start: projectRole.startDate,
+                    end: projectRole.endDate
+                }
+            ]);        
+        } catch(err) {
+            console.log(err.message);
+        }
         
-        data.add([
-            {
-                id: projectRole._id,
-                content: content,
-                start: projectRole.startDate,
-                end: projectRole.endDate
-            }
-        ]);
     });
     data.on('*', function (event, properties, senderId) {
         console.log('event', event, properties);
@@ -104,6 +140,6 @@ Template.projectRolesTimeline.rendered = function () {
     //});
 
     $(function () {
-        $('#poppy').popover();
+        $('#poppy').popover('show');
     });
 };
