@@ -10,5 +10,6 @@ rateBooksSubscriptionHandle = Meteor.subscribe("rate_books");
 rolesSubscriptionHandle = Meteor.subscribe("roles");
 Meteor.subscribe("skills");
 Meteor.subscribe("resources");
-//Meteor.subscribe("users");
+Meteor.subscribe("resource_skills");
+Meteor.subscribe("users");
 Meteor.subscribe("fields");

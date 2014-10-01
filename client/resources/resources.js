@@ -1,8 +1,13 @@
+Template.newResourceSkillModal.rendered = function() {
+    Meteor.typeahead.inject();
+}
+
 Template.resources.helpers({
   resources: function() {
     return Resources.find();
   }
 });
+
 
 Session.set('editing_resourcename', null);
 
@@ -46,12 +51,14 @@ Template.resourceListItem.events({
 });
 
 Template.resourceRelated_skills.helpers({
-    childSkills: function () {
-        return this.skills;
+    resourceSkills: function() {
+        return Resource_Skills.find({
+            resource_id:this._id
+        });        
     }
 });
 
-Template.childSkillsListRow.helpers({
+Template.resourceSkillsListRow.helpers({
     'skill': function () {
         var skill = Skills.findOne({
             _id: this.skill_id
@@ -59,4 +66,63 @@ Template.childSkillsListRow.helpers({
         var skillname = skill && skill.name;
         return skillname;
     }
+});
+
+Template.newResourceSkillModal.helpers({
+    skills: function() {
+        return Skills.find();
+    }
+});
+
+// Below is for a typeahead demo. 
+Template.newResourceSkillModal.skillz = function(){
+    return Skills.find().fetch().map(function(it){ return it.name; });
+};
+
+Template.resourceSkillsListRowOptions.events({
+    'click a.delete_resourceskill': function(e) {
+        e.preventDefault();
+        Resource_Skills.remove(this._id);
+    }
+});
+
+Template.newResourceSkillModal.events({
+    'click .submit_new_resourceSkill': function() {
+        var skillId = $('.resourceSkill_skillid').val();
+        var experience = $('.resourceSkill_experience').val();
+        Resource_Skills.insert({
+            resource_id: this._id,
+            skill_id: skillId,
+            experience: experience
+        });
+        $('#newResourceSkillModal').modal('hide');
+        $('.resourceSkill_skillid').val(null);
+        Session.set('adding_resourceskill_skillid', null);
+        $('.resourceSkill_experience').val(null);
+        Session.set('adding_resourceskill_experience', null);
+    }/*,
+    'click select.ratebookrole_roleid': function() {
+        if($('.ratebookrole_roleid').val() != ''){
+            Session.set('adding_ratebookrole_roleid', $('.ratebookrole_roleid').val());
+        }
+    },
+    'keyup input.ratebookrole_rate': function (evt) {
+        if (evt.which) {
+            var rate = $('.ratebookrole_rate').val();
+            console.log(rate);
+            console.log(rate == 0);
+            if(rate > 0) {
+                Session.set('adding_ratebookrole_rate', $('.adding_ratebookrole_rate').val());
+            } 
+            if (rate <= 0){
+                Session.set('adding_ratebookrole_rate', null);
+            }
+        }
+    },
+    'click .cancel_new_ratebookrole': function() {
+        $('.ratebookrole_roleid').val(null);
+        Session.set('adding_ratebookrole_roleid', null);
+        $('.ratebookrole_rate').val(null);
+        Session.set('adding_ratebookrole_rate', null);
+    }*/
 });

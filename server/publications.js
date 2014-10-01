@@ -51,13 +51,9 @@ Meteor.publish('resources', function() {
     return Resources.find();
 });
 
-/* 
-Removed with the addiction of metoer-accounts
-
-Meteor.publish('users', function() {
-  return Users.find();
+Meteor.publish('resource_skills', function() {
+  return Resource_Skills.find();
 });
-*/
 
 Meteor.publish('project_role_schedule', function() {
   return Project_Role_Schedule.find();
@@ -65,4 +61,8 @@ Meteor.publish('project_role_schedule', function() {
 
 Meteor.publish('fields', function() {
   return Fields.find();
+});
+
+Meteor.publish('users', function() {
+  return Meteor.users.find();
 });
