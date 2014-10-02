@@ -8,5 +8,24 @@ Meteor.methods({
                 project_id: projectId,
                 startDate: startdate,
             });
+    },
+    insertProjectRoleSchedules: function (startdate, enddate, ratebookrole, allocation) {
+        var totaldays = moment(enddate).diff(moment(startdate), 'days', true);
+        var dayCount = 1;
+        var allDays = [];
+                
+        while(dayCount <= totaldays) {
+            var myDate = new Date(startdate);
+            myDate.setDate(myDate.getDate() + dayCount);
+            allDays.push({
+                date: myDate, 
+                revenue: ratebookrole.rate * allocation / 100 * 8 //hours
+            });
+            ++dayCount;
+        }
+        var new_prs = Project_Role_Schedule.insert({
+            project_role_id: ratebookrole._id,
+            days: allDays
+        });
     }
 });

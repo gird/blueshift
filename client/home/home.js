@@ -5,9 +5,10 @@ Template.home.helpers({
     var projectroleSchedules = Project_Role_Schedule.find();
     var totalRevenue = 0;
     projectroleSchedules.forEach(function(prs) {
-        totalRevenue = prs.revenue + totalRevenue;
-        console.log(totalRevenue);
-        console.log(prs.revenue);
+        var eachday = prs.days;
+        eachday.forEach(function(prsday) {
+            totalRevenue = prsday.revenue + totalRevenue
+        });
     });
     return accounting.formatMoney(totalRevenue);
   }

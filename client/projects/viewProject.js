@@ -89,13 +89,8 @@ Template.newProjectRoleModal.events({
         
         Meteor.call('insertProjectRole', ratebookroleId, allocation, enddate, probability, this._id, startdate, function(error, result){
             newProjectRole = result;
-        });
-        
-        var role = ratebookrole && Roles.findOne({_id: ratebookrole.role_id});
-        var roleName = role && role.name;
-        
-        setTimeout(function(){
-            console.log('im an id: ' + newProjectRole); 
+            var role = ratebookrole && Roles.findOne({_id: ratebookrole.role_id});
+            var roleName = role && role.name;
             var content = '<div><a href="/projectRoles/' + newProjectRole + '">' + roleName + '</a>&nbsp;<div class="btn-group btn-group-xs"><button type="button" class="btn btn-default projectRole_assign" data-toggle="modal" data-target="#projectRoleAssign"><span class="glyphicon glyphicon-search"></span></button></div></div>';
             data.add([
                 {
@@ -105,27 +100,10 @@ Template.newProjectRoleModal.events({
                     end: enddate
                 }
             ]);
-        }, 2000);
+        });
+
         
-        var totaldays = moment(enddate).diff(moment(startdate), 'days', true);
-        var dayCount = 1;
-        
-                
-        while(dayCount <= totaldays) {
-            var myDate = new Date(startdate);
-            myDate.setDate(myDate.getDate() + dayCount);
-            console.log(myDate);
-            console.log('rate: ' + ratebookrole.rate );
-            console.log('allocation: '  + allocation );
-            console.log(ratebookrole.rate * allocation);
-            Project_Role_Schedule.insert({
-                project_role_id: ratebookroleId,
-                revenue: ratebookrole.rate * allocation / 100 * 8,
-                date: myDate
-            });
-            
-            ++dayCount;
-        }
+        Meteor.call('insertProjectRoleSchedules', startdate, enddate, ratebookrole, allocation);
         
         $('#newProjectRoleModal').modal('hide');
         $('.projectrole_ratebookroleid').val(null);
@@ -143,5 +121,6 @@ Template.projectRolesListRowOptions.events({
     'click a.delete_projectrole': function(e) {
         e.preventDefault();
         Project_Roles.remove(this._id);
+        data.remove(this._id);
     }
 });
