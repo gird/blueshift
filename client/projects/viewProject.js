@@ -100,10 +100,9 @@ Template.newProjectRoleModal.events({
                     end: enddate
                 }
             ]);
+            
+            Meteor.call('insertProjectRoleSchedules', startdate, enddate, ratebookrole, allocation, newProjectRole);
         });
-
-        
-        Meteor.call('insertProjectRoleSchedules', startdate, enddate, ratebookrole, allocation);
         
         $('#newProjectRoleModal').modal('hide');
         $('.projectrole_ratebookroleid').val(null);

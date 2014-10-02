@@ -9,7 +9,7 @@ Meteor.methods({
                 startDate: startdate,
             });
     },
-    insertProjectRoleSchedules: function (startdate, enddate, ratebookrole, allocation) {
+    insertProjectRoleSchedules: function (startdate, enddate, ratebookrole, allocation, projectroleid) {
         var totaldays = moment(enddate).diff(moment(startdate), 'days', true);
         var dayCount = 1;
         var allDays = [];
@@ -24,11 +24,12 @@ Meteor.methods({
             ++dayCount;
         }
         var new_prs = Project_Role_Schedule.insert({
-            project_role_id: ratebookrole._id,
+            project_role_id: projectroleid,
             days: allDays
         });
     },
     removeProjectRoleSchedule: function (projectRoleId) {
-        Project_Role_Schedule.remove({project_role_id: projectRoleId});
+        console.log(projectRoleId);
+        Project_Role_Schedule.remove({"project_role_id": projectRoleId});
     }
 });
