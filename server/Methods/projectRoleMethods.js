@@ -27,5 +27,8 @@ Meteor.methods({
             project_role_id: ratebookrole._id,
             days: allDays
         });
+    },
+    removeProjectRoleSchedule: function (projectRoleId) {
+        Project_Role_Schedule.remove({project_role_id: projectRoleId});
     }
 });

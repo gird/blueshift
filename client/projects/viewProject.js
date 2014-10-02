@@ -122,5 +122,6 @@ Template.projectRolesListRowOptions.events({
         e.preventDefault();
         Project_Roles.remove(this._id);
         data.remove(this._id);
+        Meteor.call('removeProjectRoleSchedule', this._id);
     }
 });
