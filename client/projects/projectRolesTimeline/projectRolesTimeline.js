@@ -100,18 +100,16 @@ Template.projectRolesTimeline.rendered = function () {
                     resBegin = ':&nbsp;<a href="/resources/' + res.resource_id + '">';
                     resEnd = '</a> ';
                 } else {
-                    resourceNames = resourceNames + resourceFirstName + ' ' + resourceLastName + ' (' + res.type + ') ' + ', ';
+                    resourceNames = resourceNames + resourceFirstName + ' ' + resourceLastName + ' (' + res.type + ')' + ', ';
                     console.log(resourceNames);
-                    resBegin = '<a href="#" id="poppy" class="btn-group-xs" data-toggle="popover" title="Claimed Resources" data-content="';
-                    
+                    resBegin = '<a data-toggle="tooltip" title="';
                     resEnd = '"><span class="glyphicon glyphicon-comment"></span></a>';
                 }
-                resourceNames = resourceNames.slice(0, resourceNames.length -2);
             });
+            resourceNames = resourceNames.slice(0, resourceNames.length -2);
             var content = '<div> <a href="/projectRoles/' + projectRole._id + '">' + roleName + '</a>&nbsp;' + resBegin + resourceNames + resEnd + '</div>';
+            console.log(content);
         }
-
-        
         
         try {
             data.add([
@@ -131,15 +129,7 @@ Template.projectRolesTimeline.rendered = function () {
         console.log('event', event, properties);
     });
     $(document).ready(function () {
-        // Below needs to be replaced, bad form reloading entire timeline after refresh
-        //$("#projectRolesTimelineChart").html("");
         var container = document.getElementById('projectRolesTimelineChart');
         var timeline = new vis.Timeline(container, data, options);
-        
-    });
-    //});
-
-    $(function () {
-        $('#poppy').popover('show');
     });
 };
