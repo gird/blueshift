@@ -75,8 +75,19 @@ Template.newResourceSkillModal.helpers({
 });
 
 // Below is for a typeahead demo. 
-Template.newResourceSkillModal.skillz = function(){
+Template.customTypeAhead.skillz = function(){
     return Skills.find().fetch().map(function(it){ return it.name; });
+    /*console.log(Skills.find().fetch());
+    var listOfSkills = Skills.find();
+    var typeaheadSkillsList = [];
+    listOfSkills.forEach(function(skill){
+        typeaheadSkillsList.push({
+            name: skill.name, 
+            value: skill._id 
+        });
+    });
+    console.log('List for query' + typeaheadSkillsList);
+    return typeaheadSkillsList;*/
 };
 
 Template.resourceSkillsListRowOptions.events({
@@ -88,7 +99,12 @@ Template.resourceSkillsListRowOptions.events({
 
 Template.newResourceSkillModal.events({
     'click .submit_new_resourceSkill': function() {
-        var skillId = $('.resourceSkill_skillid').val();
+        var skillName = $('.resourceSkill_skillName').val();
+        var skill = Skills.findOne({name: skillName});
+        var skillId = skill && skill._id;
+        console.log(skillName);
+        console.log(skill);
+        console.log(skillId);
         var experience = $('.resourceSkill_experience').val();
         Resource_Skills.insert({
             resource_id: this._id,
@@ -96,7 +112,7 @@ Template.newResourceSkillModal.events({
             experience: experience
         });
         $('#newResourceSkillModal').modal('hide');
-        $('.resourceSkill_skillid').val(null);
+        $('.resourceSkill_skillName').val(null);
         Session.set('adding_resourceskill_skillid', null);
         $('.resourceSkill_experience').val(null);
         Session.set('adding_resourceskill_experience', null);

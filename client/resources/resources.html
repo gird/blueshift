@@ -182,7 +182,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Skill</label>
                             <div class="col-md-10">
-                                <input class="form-control typeahead" name="skill" type="text" placeholder="Skills" autocomplete="off" spellcheck="off" data-source="skillz"/>
+                                {{> customTypeAhead}}
                                 <!--select class="form-control resourceSkill_skillid">
                                     <option value="" selected disabled>Select a Skill...</option>
                                     {{#each skills}}
@@ -209,6 +209,10 @@
             </div>
         </div>
     </div>
+</template>
+
+<template name="customTypeAhead">
+    <input class="form-control typeahead resourceSkill_skillName" name="skill" type="text" placeholder="Skills" autocomplete="off" spellcheck="off" data-source="skillz"/>
 </template>
 
 <template name="editResourceSkillModal">
