@@ -74,26 +74,18 @@ Template.newResourceSkillModal.helpers({
     }
 });
 
-// Below is for a typeahead demo. 
-Template.customTypeAhead.skillz = function(){
+Template.newResourceSkillModal.skillLookup = function(){
     return Skills.find().fetch().map(function(it){ return it.name; });
-    /*console.log(Skills.find().fetch());
-    var listOfSkills = Skills.find();
-    var typeaheadSkillsList = [];
-    listOfSkills.forEach(function(skill){
-        typeaheadSkillsList.push({
-            name: skill.name, 
-            value: skill._id 
-        });
-    });
-    console.log('List for query' + typeaheadSkillsList);
-    return typeaheadSkillsList;*/
 };
 
 Template.resourceSkillsListRowOptions.events({
     'click a.delete_resourceskill': function(e) {
         e.preventDefault();
         Resource_Skills.remove(this._id);
+    },
+    'click a.edit_resourceskill': function() {
+        Session.set('editing_resourceSkillId', this._id);
+        $('.edit_resourceSkill_experience').val(Resource_Skills.findOne(this._id).experience);
     }
 });
 
@@ -102,9 +94,6 @@ Template.newResourceSkillModal.events({
         var skillName = $('.resourceSkill_skillName').val();
         var skill = Skills.findOne({name: skillName});
         var skillId = skill && skill._id;
-        console.log(skillName);
-        console.log(skill);
-        console.log(skillId);
         var experience = $('.resourceSkill_experience').val();
         Resource_Skills.insert({
             resource_id: this._id,
@@ -116,29 +105,30 @@ Template.newResourceSkillModal.events({
         Session.set('adding_resourceskill_skillid', null);
         $('.resourceSkill_experience').val(null);
         Session.set('adding_resourceskill_experience', null);
-    }/*,
-    'click select.ratebookrole_roleid': function() {
-        if($('.ratebookrole_roleid').val() != ''){
-            Session.set('adding_ratebookrole_roleid', $('.ratebookrole_roleid').val());
-        }
     },
-    'keyup input.ratebookrole_rate': function (evt) {
-        if (evt.which) {
-            var rate = $('.ratebookrole_rate').val();
-            console.log(rate);
-            console.log(rate == 0);
-            if(rate > 0) {
-                Session.set('adding_ratebookrole_rate', $('.adding_ratebookrole_rate').val());
-            } 
-            if (rate <= 0){
-                Session.set('adding_ratebookrole_rate', null);
-            }
-        }
+    'click .cancel_new_resourceSkill': function() {
+        $('.resourceSkill_skillName').val(null);
+        Session.set('adding_resourceskill_skillid', null);
+        $('.resourceSkill_experience').val(null);
+        Session.set('adding_resourceskill_experience', null);
+    }
+});
+
+Template.editResourceSkillModal.events({
+    'click .submit_edit_resourceSkill': function() {
+        var experience = $('.edit_resourceSkill_experience').val();
+        var resourceSkillId = Session.get('editing_resourceSkillId');
+        Resource_Skills.update(
+            resourceSkillId, {$set: {experience: experience}}
+        );
+        $('#editResourceSkillModal').modal('hide');
+        $('.edit_resourceSkill_experience').val(null);
+        Session.set('editting_resourceskill_experience', null);
+        Session.set('editing_resourceSkillId', null);
+        
     },
-    'click .cancel_new_ratebookrole': function() {
-        $('.ratebookrole_roleid').val(null);
-        Session.set('adding_ratebookrole_roleid', null);
-        $('.ratebookrole_rate').val(null);
-        Session.set('adding_ratebookrole_rate', null);
-    }*/
+    'click .cancel_edit_resourceSkill': function() {
+        $('.edit_resourceSkill_experience').val(null);
+        Session.set('editting_resourceskill_experience', null);
+    }
 });

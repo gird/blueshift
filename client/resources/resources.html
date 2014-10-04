@@ -150,7 +150,7 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
-            <li><a href="#" class="edit_resourceskill"><span class="glyphicon glyphicon-pencil"></span></a>
+            <li><a href="#" class="edit_resourceskill" data-toggle="modal" data-target="#editResourceSkillModal"><span class="glyphicon glyphicon-pencil"></span></a>
             </li>
             <li><a href="#" class="delete_resourceskill"><span class="glyphicon glyphicon-trash"></span></a>
             </li>
@@ -182,13 +182,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Skill</label>
                             <div class="col-md-10">
-                                {{> customTypeAhead}}
-                                <!--select class="form-control resourceSkill_skillid">
-                                    <option value="" selected disabled>Select a Skill...</option>
-                                    {{#each skills}}
-                                    <option value="{{this._id}}">{{this.name}}</option>
-                                    {{/each}}
-                                </select-->
+                                <input class="form-control typeahead resourceSkill_skillName col-md-12" name="skill" type="text" placeholder="Skills" autocomplete="off" spellcheck="off" data-source="skillLookup"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -211,10 +205,6 @@
     </div>
 </template>
 
-<template name="customTypeAhead">
-    <input class="form-control typeahead resourceSkill_skillName" name="skill" type="text" placeholder="Skills" autocomplete="off" spellcheck="off" data-source="skillz"/>
-</template>
-
 <template name="editResourceSkillModal">
     <div class="modal fade" id="editResourceSkillModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -223,7 +213,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel">Edit Skill for {{this.name}}</h4>
+                        <h4 class="modal-title" id="myModalLabel">Edit Skill</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
