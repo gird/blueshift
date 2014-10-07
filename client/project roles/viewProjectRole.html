@@ -62,14 +62,16 @@
             </h4>
         <div id="projectRoleResources" class="panel-collapse collapse in">
             <div class="panel-body">
-                <div class="childProjectRoles">
-                    <a href="{{pathFor 'resources'}}">{{resourceName}}</a> has been assigned to this role.
+                <div class="assignedResource">
+                    <a href="/resources/{{resourceId}}">{{resourceName}}</a> is assigned to this role.
                 </div>
                 {{> assignedResourceButtons}}
             </div>
         </div>
     </div>
 </template>
+
+
 
 <template name="assignedResourceButtons">
     <div class="btn-group" style="margin: 10px 10px 10px;">

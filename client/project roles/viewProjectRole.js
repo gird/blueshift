@@ -68,7 +68,17 @@ Template.projectRoleRelated_resourceAssigned.helpers({
         var resource = Resources.findOne({
             _id: resourceId
         });
-        var resourcename = resource && (resource.firstname + ' ' + resource.lastname);
-        return resourcename;
+        var resourceName = resource && resource.firstname + ' ' + resource.lastname;
+        return resourceName;
+    },
+    'resourceId': function () {
+        var resources = this.resources;
+        var resourceId;
+        resources && resources.forEach(function(resource){
+            if(resource.type=='Assign'){
+                resourceId = resource.resource_id;
+            }
+        });
+        return resourceId;
     }
 });

@@ -35,7 +35,7 @@
 
 <template name="relatedResourcesListRow">
     <tr>
-        <td>{{resourceName}}</td>
+        <td><a href="{{pathFor 'resourceView'}}">{{this.firstname}} {{this.lastname}}</a></td>
         <td>{{> relatedResourcesListRowOptions}}</td>
     </tr>
 </template>
