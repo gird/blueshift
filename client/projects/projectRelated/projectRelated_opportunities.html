@@ -1,0 +1,37 @@
+<template name="projectRelated_opportunities">
+    <div class="panel panel-default">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" href="#opportunities">Associated Opportunities</a>
+        </h4>
+        <div id="opportunities" class="panel-collapse collapse">
+            <div class="panel-body">
+                {{#if projectOpportunities.count}}
+                <div class="relatedOpportunities">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each projectOpportunities}} {{> projectOpportunitiesListRow}} {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{else}}
+                <p><strong> Somethings wrong :\ There are no opportunities for this project and there should be.</strong>
+                </p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="projectOpportunitiesListRow">
+    <tr>
+        <td> <a href="{{pathFor 'opportunityView'}}"> {{name}} </a> 
+        </td>
+        <td>{{stage}}</td>
+    </tr>
+</template>

@@ -101,14 +101,12 @@ Template.projectRolesTimeline.rendered = function () {
                     resEnd = '</a> ';
                 } else {
                     resourceNames = resourceNames + resourceFirstName + ' ' + resourceLastName + ' (' + res.type + ')' + ', ';
-                    console.log(resourceNames);
                     resBegin = '<a data-toggle="tooltip" title="';
                     resEnd = '"><span class="glyphicon glyphicon-comment"></span></a>';
                 }
             });
             resourceNames = resourceNames.slice(0, resourceNames.length -2);
             var content = '<div> <a href="/projectRoles/' + projectRole._id + '">' + roleName + '</a>&nbsp;' + resBegin + resourceNames + resEnd + '</div>';
-            console.log(content);
         }
         
         try {
@@ -125,9 +123,9 @@ Template.projectRolesTimeline.rendered = function () {
         }
         
     });
-    data.on('*', function (event, properties, senderId) {
-        console.log('event', event, properties);
-    });
+    //data.on('*', function (event, properties, senderId) {
+        //console.log('event', event, properties);
+    //});
     $(document).ready(function () {
         var container = document.getElementById('projectRolesTimelineChart');
         var timeline = new vis.Timeline(container, data, options);

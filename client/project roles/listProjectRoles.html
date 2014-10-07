@@ -1,0 +1,25 @@
+<template name="projectRoles">
+  <h1>Project Roles</h1>
+    <div class="projectRoles">
+        <table class="table">
+          <thead>
+            <tr>
+            <th>Project Role Name</th>
+            <th>Status</th>
+            </tr>
+	  </thead>
+	  <tbody>
+	    {{#each projectRoles}}
+	      {{> projectRoleListRow}}
+	    {{/each}}
+	  </tbody>
+	</table>
+      </div>
+</template>
+
+<template name="projectRoleListRow">
+  <tr>
+    <td><a href="{{pathFor 'projectRoleView'}}"> {{this._id}} </a></td>
+    <td>{{this.status}}</td>
+  </tr>
+</template>

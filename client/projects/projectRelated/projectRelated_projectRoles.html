@@ -1,0 +1,173 @@
+<template name="projectRelated_projectRoles">
+    <div class="panel panel-default">
+        <h4 class="panel-title">
+                <a data-toggle="collapse" href="#projectRoles">
+                    Project Roles
+                </a>
+            </h4>
+        <div id="projectRoles" class="panel-collapse collapse in">
+            <div class="panel-body">
+                {{#if projectRoles.count}}
+                <div class="childProjectRoles">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Resource</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each projectRoles}} 
+                                {{> projectRolesListRow}} 
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{else}}
+                <p>There are currently no Project Roles for this Project.</p>
+                {{/if}}
+                {{> projectRolesButtons}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="projectRolesListRow">
+    <tr>
+        <td> <a href="{{pathFor 'projectRoleView'}}" data-toggle="tooltip" title="{{resourceNames}}"> {{role}} </a> 
+        </td>
+        <td>{{resourceNames}}</td>
+        <td>{{startDate}}</td>
+        <td>{{endDate}}</td>
+        <td>{{> projectRolesListRowOptions}}</td>
+    </tr>
+</template>
+
+<template name="projectRolesListRowOptions">
+    <div class="btn-group">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="edit_projectrole"><span class="glyphicon glyphicon-pencil"></span></a>
+            </li>
+            <li><a href="#" class="delete_projectrole"><span class="glyphicon glyphicon-trash"></span></a>
+            </li>
+        </ul>
+    </div>
+</template>
+
+
+<!--Start of Project Role modal-->
+<template name="projectRolesButtons">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default new-project-role" data-toggle="modal" data-target="#newProjectRoleModal"><span class="glyphicon glyphicon-plus"></span> Add</button>
+    </div>
+    {{> newProjectRoleModal}}
+    <!--{{> editProjectRoleModal}}-->
+</template>
+
+<template name="newProjectRoleModal">
+    <div class="modal fade" id="newProjectRoleModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Add Role to {{name}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Role</label>
+                            <div class="col-md-10">
+                                <select class="form-control projectrole_ratebookroleid">
+                                    <option value="" selected disabled>Select a Role...</option>
+                                    {{#each roles}}
+                                    <option value="{{this.rate_book_role_id}}">{{this.role_name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Start Date</label>
+                            <div class="col-md-10">
+                                <input type="date" class="form-control projectrole_startdate" placeholder="Select Date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">End</label>
+                            <div class="col-md-10">
+                                <input type="date" class="form-control projectrole_enddate" placeholder="Select Date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Allocation</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">%</span>
+                                    <input type="decimal" class="form-control projectrole_allocation" placeholder="Enter Allocation">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Probability</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">%</span>
+                                    <input type="decimal" class="form-control projectrole_probability" placeholder="Enter Probability">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default cancel_new_projectrole" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary submit_new_projectrole" disabled="{{submitIsDisabled}}"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!--template name="editProjectRoleModal">
+    <div class="modal fade" id="editProjectRoleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Edit Role for {{this.name}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Rate</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    <input type="text" class="form-control edit_ratebookrole_rate" placeholder="Enter Amount">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default cancel_edit_ratebookrole" data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary submit_edit_ratebookrole" disabled="{{submitEditIsDisabled}}">Save changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template-->
