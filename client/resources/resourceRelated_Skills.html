@@ -1,0 +1,135 @@
+
+<template name="resourceRelated_skills">
+    <div class="panel panel-default">
+            <h3 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#skills">
+              Skills
+              </a>
+            </h3>
+            <div id="skills" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    {{#if resourceSkills}}
+                    <div class="resourceSkills">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Experience</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each resourceSkills}} {{> resourceSkillsListRow}} {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    {{else}}
+                    <p><strong> There are no skills for this resource.</strong>
+                    </p>
+                    {{/if}}
+                    {{> resourceSkillsListButtons}}
+                </div>
+            </div>
+        </div>
+</template>
+
+
+<template name="resourceSkillsListRow">
+    <tr>
+        <td> {{skill}} </td>
+        <td> {{this.experience}} </td>
+        <td>{{> resourceSkillsListRowOptions}}</td>
+    </tr>
+</template>
+
+<template name="resourceSkillsListRowOptions">
+    <div class="btn-group">
+        <button class="btn btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="edit_resourceskill" data-toggle="modal" data-target="#editResourceSkillModal"><span class="glyphicon glyphicon-pencil"></span></a>
+            </li>
+            <li><a href="#" class="delete_resourceskill"><span class="glyphicon glyphicon-trash"></span></a>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<template name="resourceSkillsListButtons">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default new_resource_skill" data-toggle="modal" data-target="#newResourceSkillModal"><span class="glyphicon glyphicon-plus"></span> New</button>
+    </div>     
+    
+    {{> newResourceSkillModal}}
+    {{> editResourceSkillModal}}
+</template>
+
+
+<template name="newResourceSkillModal">
+    <div class="modal fade" id="newResourceSkillModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Add Skill to {{firstname}} {{lastname}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Skill</label>
+                            <div class="col-md-10">
+                                <input class="form-control typeahead resourceSkill_skillName col-md-12" name="skill" type="text" placeholder="Skills" autocomplete="off" spellcheck="off" data-source="skillLookup"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Experience</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <input type="text" class="form-control resourceSkill_experience" placeholder="Enter amount of experience">
+                                    <span class="input-group-addon">Years</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_new_resourceSkill" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit_new_resourceSkill" disabled="{{submitIsDisabled}}">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="editResourceSkillModal">
+    <div class="modal fade" id="editResourceSkillModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Edit Skill</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Experience</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <input type="text" class="form-control edit_resourceSkill_experience">
+                                    <span class="input-group-addon">Years</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_edit_resourceSkill" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit_edit_resourceSkill" disabled="{{submitEditIsDisabled}}">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,46 @@
+<template name="resourceRelated_projectRoles">
+    {{#if subscriptionReady}}
+        <div class="panel panel-default">
+            <h3 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#projectRoles">
+              Project Assignments
+              </a>
+            </h3>
+            <div id="projectRoles" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    {{#if resourceProjectRoles}}
+                    <div class="resourceProjectRoles">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Role</th>
+                                    <th>Start</th>
+                                    <th>End</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each resourceProjectRoles}} {{> resourceProjectRolesListRow}} {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    {{else}}
+                    <p><strong> This resource has not been assigned to any projects.</strong>
+                    </p>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</template>
+
+<template name="resourceProjectRolesListRow">
+    <tr>
+        <td> {{project}} </td>
+        <td> {{role}} </td>
+        <td> {{projectrole.startDate}} </td>
+        <td> {{projectrole.endDate}} </td>
+        <!--td>{{> resourceProjectRolesListRowOptions}}</td-->
+    </tr>
+</template>

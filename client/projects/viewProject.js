@@ -1,6 +1,11 @@
 Template.projectView.subscriptionReady=function(){
     //return projectsSubscriptionHandle.ready();
-    if (rateBookRolesSubscriptionHandle.ready() && projectsSubscriptionHandle.ready() && rolesSubscriptionHandle.ready() && projectRolesSubscriptionHandle.ready()){
+    if (rateBookRolesSubscriptionHandle.ready() &&
+        projectsSubscriptionHandle.ready() && 
+        rolesSubscriptionHandle.ready() && 
+        projectRolesSubscriptionHandle.ready() &&
+        projectRoleResourcesSubscriptionHandle.ready())
+    {
         return true;
     } else {
         return false;

@@ -30,42 +30,7 @@ Template.projectRolesTimeline.rendered = function () {
     var projectRoles = Project_Roles.find({
         project_id: this.data._id
     });
-
-    /*
-    This needs a better reactive way of loading the timeline.  Instead of reloading the entire chart,  refresh the data within the timeline.
     
-    Check out https://www.eventedmind.com/feed/meteor-build-a-reactive-data-source for a start.
-    https://meteor.hackpad.com/Meteor-Cookbook-Reactive-D3-Visualizations-YUR9JT4mrm9
-    */
-
-    //Deps.autorun(function (c) {
-    /*
-    var options = {
-        editable: {
-            add: false,
-            updateTime: true,
-            updateGroup: false,
-            remove: false
-        },
-        onMove: function (item, callback) {
-            callback(item); // send back item as confirmation (allow change)
-            var updatedstart = moment(new Date(item.start)).format('YYYY-MM-DD');
-            var updatedend = moment(new Date(item.end)).format('YYYY-MM-DD');
-            
-            Project_Roles.update({
-                _id: item.id
-            }, {
-                $set: {
-                    startDate: updatedstart,
-                    endDate: updatedend
-                }
-            });
-        }
-
-    };
-    var data = new vis.DataSet(options);
-    */
-    //Need to revisit the rendering of the timeline, may have better options to add data to datavis array through meteor methods.
     data.clear();
     
     projectRoles.forEach(function (projectRole) {
@@ -82,6 +47,7 @@ Template.projectRolesTimeline.rendered = function () {
         var resBegin = '';
         var resEnd = '';
         var resources = projectRole.resources;
+        var resources1 = Project_Role_Resources.find({project_role_id: projectRole._id});
         
         if(!resources){
             resourceNames = 'Not Assigned or Claimed';
