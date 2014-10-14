@@ -1,16 +1,16 @@
 <template name="skills">
     <h1>Skills</h1>
     <div class="skills">
-        <table class="table">
+        <table class="table tablesorter">
             <thead>
                 <tr>
                     <th>Name</th>
                     <th></th>
                 </tr>
             </thead>
+            {{> newSkillRow}}
             <tbody>
                 {{#each skills}} {{> skillListRow}} {{/each}} 
-                {{> newSkillRow}}
             </tbody>
         </table>
     </div>

@@ -121,3 +121,7 @@ Template.editSkillRow.events({
         }
     }
 });
+
+Template.skills.rendered = function () {
+    $(".tablesorter").tablesorter(); 
+};

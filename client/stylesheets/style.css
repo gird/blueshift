@@ -92,6 +92,12 @@ a:hover {
     text-decoration: none;
     font-weight: normal;
 }
+th {
+    cursor:pointer;
+}
+th:hover {
+    text-decoration: underline;
+}
 .navbar {
     margin-bottom: 10px;
 }

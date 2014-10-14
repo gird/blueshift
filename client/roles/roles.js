@@ -121,3 +121,7 @@ Template.editRoleRow.events({
         }
     }
 });
+
+Template.roles.rendered = function () {
+    $(".tablesorter").tablesorter(); 
+};
