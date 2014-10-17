@@ -1,14 +1,12 @@
 <template name="companyView">
     {{#if subscriptionReady}}
-        <h1><a href="{{pathFor 'companies'}}">Company</a></h1>
-        <h2>{{name}} {{>companyViewButtons}}</h2>
-        {{#if parent_id}}
-        <p><strong> &nbsp; Parent: </strong><a href="{{pathFor 'companyParent'}}">{{parent}}</a>
-        </p>
-        {{/if}}
+        {{#contentFor "breadcrumbs"}}
+            <li>Home</li>
+            <li><a href="{{pathFor 'companies'}}">Company</a></li>
+            <li><strong style="text-decoration: underline;">{{name}}</strong></li>
+        {{/contentFor}}
         <div class="col-md-6">{{> companyViewDetails}}</div>
         <div class="col-md-6">{{> companyRelatedLists}}</div>
-        <div class="col-md-6">{{> companyViewDetails}}</div>
     {{/if}}
 </template>
 
@@ -21,6 +19,11 @@
 
 <template name="companyViewDetails">
     <div class="company">
+        <div class="pull-right">{{>companyViewButtons}}</div>
+        {{#if parent_id}}
+            <p><strong>Parent: </strong><a href="{{pathFor 'companyParent'}}">{{parent}}</a>
+            </p>
+        {{/if}}
         <p><strong>Industry: </strong>{{industry}}</p>
         <p><strong>Type: </strong>{{type}}</p>
         <p><strong>Phone: </strong>{{phone}}</p>

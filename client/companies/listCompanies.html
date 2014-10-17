@@ -1,6 +1,10 @@
 <template name="companies">
-    <h1>Companies {{> companyListButtons}}</h1>
+    {{#contentFor "breadcrumbs"}}
+    <li>Home</li>
+    <li><strong style="text-decoration: underline;">Companies</strong></li>
+    {{/contentFor}}
     <div class="companies">
+        <div align="center">{{> companyListButtons}}</div>
         <table class="table">
             <thead>
                 <tr>
@@ -26,7 +30,7 @@
 <template name="companyListButtons">
     <div class="btn-group">
         <a href="{{pathFor 'newCompany'}}">
-            <button type="button" class="btn btn-default new_company"><span class="glyphicon glyphicon-plus"></span> Company</button>
+            <button type="button" class="btn btn-default new_company"><span class="glyphicon glyphicon-plus"></span> New</button>
         </a>
         
     </div>

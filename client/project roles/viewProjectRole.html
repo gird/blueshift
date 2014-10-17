@@ -3,10 +3,9 @@
     <li>Home</li>
     <li><a href="{{pathFor 'projects'}}">Projects</a></li>
     <li><a href="{{pathFor 'projectRoleProject'}}">{{project}}</a></li>
-    <li><strong>{{role}}</strong></li>
+    <li><strong style="text-decoration: underline;">{{role}}</strong></li>
     {{/contentFor}}
     <div class="col-md-6">
-        {{> projectRoleViewButtons}}
         {{> projectRoleViewDetail}}
     </div>
     <div class="col-md-6">
@@ -17,24 +16,22 @@
 <template name="projectRoleViewButtons">
     <div class="btn-group" style="margin: 10px 10px 10px;">
         <div class="btn-group">
-            <button type="button" class="btn btn-default">Edit</button>
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
         </div>
         <div class="btn-group">
-            <button type="button" class="btn btn-default">Delete</button>
-        </div>
-        <div class="btn-group">
-            <button type="button" class="btn btn-default">Clone</button>
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
         </div>
     </div>
 </template>
 
 <template name="projectRoleViewDetail">
     <div class="projectRole">
+        <div class="pull-right">{{> projectRoleViewButtons}}</div>
         <p><strong>Start Date: </strong>{{startDate}}</p>
         <p><strong>End Date: </strong>{{endDate}}</p>
         <p><strong>Allocation: </strong>{{allocation}}</p>
         <p><strong>Probability: </strong>{{probability}}</p>
-        <p><strong>Rate: </strong>${{rate1}}</p>
+        <p><strong>Rate: </strong>${{rate}}</p>
     </div>
 </template>
 

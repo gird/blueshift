@@ -2,7 +2,7 @@ Template.companyView.subscriptionReady = function () {
     return companiesSubscriptionHandle.ready();
 };
 
-Template.companyView.helpers({
+Template.companyViewDetails.helpers({
     'parent': function () {
         var parent = Companies.findOne(this.parent_id).name;
         return parent;

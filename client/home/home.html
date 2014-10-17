@@ -1,4 +1,16 @@
 <template name="home">
-    <h1>My Dashboard</h1>
+    {{#contentFor "breadcrumbs"}}
+    <li><strong style="text-decoration: underline;">Home</strong></li>
+    {{/contentFor}}
+    
     <div id="revenue" class="loading">{{revenue}}</div>
+    {{> projected_revenue}}
+</template>
+
+<template name="projected_revenue">
+    <div class="col-md-5 col-md-offset-1">
+        <div class="projected_revenue">
+            <canvas id="projected_revenue" width="440px" height="240px"></canvas>
+        </div>
+    </div>
 </template>

@@ -21,7 +21,7 @@ Template.projectRoleView.helpers({
 });
 
 Template.projectRoleViewDetail.helpers({
-    'rate1': function () {
+    'rate': function () {
         var project = Projects.findOne(this.project_id);
         var projectRateBook = project && project.rate_book_id;
         var rateBookRole = Rate_Book_Roles.findOne(this.rate_book_role_id);
@@ -30,31 +30,18 @@ Template.projectRoleViewDetail.helpers({
     }
 });
 
-Template.projectRoleView.isAssigned = function(){
-    //return projectsSubscriptionHandle.ready();
-    resources = this.resources;
-    var isAssigned = false;
-    resources && resources.forEach(function(resource){
-        console.log('type: ' + resource.type);
-        if(resource.type=='Assign'){
-            isAssigned = true;
-        }
-    });
-    return isAssigned;
-};
-
-Template.projectRoleRelatedLists.isAssigned = function(){
-    //return projectsSubscriptionHandle.ready();
-    var resources = this.resources;
-    var isAssigned = false;
-    resources && resources.forEach(function(resource){
-        console.log('type: ' + resource.type);
-        if(resource.type=='Assign'){
-            isAssigned = true;
-        }
-    });
-    return isAssigned;
-};
+Template.projectRoleRelatedLists.helpers({
+    isAssigned : function(){
+        var resources = this.resources;
+        var isAssigned = false;
+        resources && resources.forEach(function(resource){
+            if(resource.type=='Assign'){
+                isAssigned = true;
+            }
+        });
+        return isAssigned;
+    }
+});
 
 Template.projectRoleRelated_resourceAssigned.helpers({
     'resourceName': function () {
