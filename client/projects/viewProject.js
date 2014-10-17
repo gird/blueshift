@@ -1,16 +1,18 @@
-Template.projectView.subscriptionReady=function(){
-    //return projectsSubscriptionHandle.ready();
-    if (rateBookRolesSubscriptionHandle.ready() &&
-        projectsSubscriptionHandle.ready() && 
-        rolesSubscriptionHandle.ready() && 
-        projectRolesSubscriptionHandle.ready() &&
-        projectRoleResourcesSubscriptionHandle.ready())
-    {
-        return true;
-    } else {
-        return false;
+Template.projectView.helpers({
+    subscriptionReady : function(){
+        //return projectsSubscriptionHandle.ready();
+        if (rateBookRolesSubscriptionHandle.ready() &&
+            projectsSubscriptionHandle.ready() && 
+            rolesSubscriptionHandle.ready() && 
+            projectRolesSubscriptionHandle.ready() &&
+            projectRoleResourcesSubscriptionHandle.ready())
+        {
+            return true;
+        } else {
+            return false;
+        }
     }
-};
+});
 
 Template.projectViewDetail.helpers({
     'company': function () {
@@ -28,7 +30,7 @@ Template.projectViewDetail.helpers({
 Template.projectViewButtons.events({
     'click .delete_project': function (e) {
         e.preventDefault();
-        Projects.remove(this._id);
+        Meteor.call('delete_project', this._id);
         Router.go('projects');
     }
 });

@@ -65,12 +65,17 @@ var focus_field_by_class = function (className) {
   }
 };
 
-Template.roleListRow.editing = function () {
-  return Session.equals('editing_rolename', this._id);
-};
-Template.newRoleRow.submitIsDisabled = function () {
-    return Session.equals('adding_rolename', null);
-};
+Template.roleListRow.helpers({
+    editing: function () {
+        return Session.equals('editing_rolename', this._id);
+    }
+});
+
+Template.newRoleRow.helpers({
+    submitIsDisabled : function () {
+        return Session.equals('adding_rolename', null);
+    }
+});
 
 Template.roleListItem.events({
     'click a.delete_role': function (e) {

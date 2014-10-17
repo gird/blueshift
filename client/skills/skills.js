@@ -65,12 +65,16 @@ var focus_field_by_class = function (className) {
   }
 };
 
-Template.skillListRow.editing = function () {
-  return Session.equals('editing_skillname', this._id);
-};
-Template.newSkillRow.submitIsDisabled = function () {
-    return Session.equals('adding_skillname', null);
-};
+Template.skillListRow.helpers({
+    editing : function () {
+        return Session.equals('editing_skillname', this._id);
+    }
+});
+Template.newSkillRow.helpers({
+    submitIsDisabled : function () {
+        return Session.equals('adding_skillname', null);
+    }
+});
 
 Template.skillListItem.events({
     'click a.delete_skill': function (e) {

@@ -3,7 +3,6 @@ Template.projectRelated_projectRoles.helpers({
         var projectRoles = Project_Roles.find({
             project_id: this._id
         });
-        console.log(projectRoles);
         projectRoles.forEach(function (projectRole) {
             var role = Rate_Book_Roles.findOne({
                 _id: projectRole.rate_book_role_id
@@ -12,14 +11,6 @@ Template.projectRelated_projectRoles.helpers({
             var role = Roles.findOne({
                 _id: roleId
             });
-            
-            /*var resources = projectRole.resources;
-            resources.forEach(function(res){
-                var resource = Resources.findOne({
-                    _id: res.resource_id
-                });
-                console.log(resource.firstname + ' ' + resource.lastname);
-            });*/
         })
         return projectRoles;
     }

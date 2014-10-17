@@ -1,5 +1,8 @@
- <template name="projects">
-    <h1>Projects {{> projectListButtons}}</h1> 
+<template name="projects">
+    {{#contentFor "breadcrumbs"}}
+    <li>Home</li>
+    <li>Projects</li>
+    {{/contentFor}}
     <div class="projects">
         <table class="table">
             <thead>
@@ -14,6 +17,7 @@
                 {{#each projects}} {{> projectListRow}} {{/each}}
             </tbody>
         </table>
+        {{> projectListButtons}}
     </div>
 </template>
 

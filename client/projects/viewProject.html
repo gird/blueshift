@@ -1,16 +1,13 @@
 <template name="projectView">
     {{#if subscriptionReady}}
-    <h1>
-        <a href="{{pathFor 'projects'}}">
-             <span class="glyphicon glyphicon-briefcase"></span>&nbsp;Project
-        </a>
-    </h1>
-    <h2>
-        {{name}} 
-        {{>projectViewButtons}}
-    </h2>
+    {{#contentFor "breadcrumbs"}}
+    <li>Home</li>
+    <li><a href="{{pathFor 'projects'}}">Projects</a></li>
+    <li><strong>{{name}}</strong></li>
+    {{/contentFor}}
     <div class="col-md-6">
         {{> projectViewDetail}}
+        {{> projectViewButtons}}
     </div>
     <div class="col-md-12">
         {{> projectRelatedLists}}

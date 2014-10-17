@@ -1,4 +1,3 @@
-
 var projectroleskill = {
   'skill': function() {
     var prskill = Project_Role_Skills.findOne(this);

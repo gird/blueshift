@@ -1,14 +1,12 @@
 <template name="projectRoleView">
-    <h1>
-        <a href="{{pathFor 'projectRoleProject'}}">{{project}}</a>
-    </h1>
-    <h2>
-        <span class="glyphicon glyphicon-user"></span>
-        {{role}}
-        {{> projectRoleViewButtons}}
-    </h2>
-
+    {{#contentFor "breadcrumbs"}}
+    <li>Home</li>
+    <li><a href="{{pathFor 'projects'}}">Projects</a></li>
+    <li><a href="{{pathFor 'projectRoleProject'}}">{{project}}</a></li>
+    <li><strong>{{role}}</strong></li>
+    {{/contentFor}}
     <div class="col-md-6">
+        {{> projectRoleViewButtons}}
         {{> projectRoleViewDetail}}
     </div>
     <div class="col-md-6">
