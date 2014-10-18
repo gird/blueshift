@@ -1,6 +1,8 @@
 Template.projected_revenue.rendered = function () {
 
+    //Not reactive to new data, need to find a new solution for this.
     var projects = Projects.find();
+    var revenueByMonths = [0,0,0,0,0,0,0,0,0,0,0,0];
     projects.forEach(function(project) {
         var projectRoles = Project_Roles.find({project_id: project._id});
         if(projectRoles.length <= 0){
@@ -9,18 +11,63 @@ Template.projected_revenue.rendered = function () {
             console.log(projectRoles.fetch());
             projectRoles.forEach(function(projectRole) {
                 var projectRoleSchedules = Project_Role_Schedule.find({project_role_id: projectRole._id});
-                if(!projectRoleSchedules){
+                if(projectRoleSchedules.length <= 0){
                     console.log('No projects roles schedules for this project role');
                 } else {
-                    console.log(projectRoleSchedules.fetch());
+                    projectRoleSchedules.forEach(function(prs) {
+                        var eachday = prs.days;
+                        eachday.forEach(function(prsday) {
+                            month = moment(prsday.date).month();
+                            console.log(month);
+                            switch (month) {
+                                case 0:
+                                    revenueByMonths[0] = revenueByMonths[0] + prsday.revenue;
+                                    break;
+                                case 1:
+                                    revenueByMonths[1] = revenueByMonths[1] + prsday.revenue;
+                                    break;
+                                case 2:
+                                    revenueByMonths[2] = revenueByMonths[2] + prsday.revenue;
+                                    break;
+                                case 3:
+                                    revenueByMonths[3] = revenueByMonths[3] + prsday.revenue;
+                                    break;
+                                case 4:
+                                    revenueByMonths[4] = revenueByMonths[4] + prsday.revenue;
+                                    break;
+                                case 5:
+                                    revenueByMonths[5] = revenueByMonths[5] + prsday.revenue;
+                                    break;
+                                case 6:
+                                    revenueByMonths[6] = revenueByMonths[6] + prsday.revenue;
+                                    break;
+                                case 7:
+                                    revenueByMonths[7] = revenueByMonths[7] + prsday.revenue;
+                                    break;
+                                case 8:
+                                    revenueByMonths[8] = revenueByMonths[8] + prsday.revenue;
+                                    break;
+                                case 9:
+                                    revenueByMonths[9] = revenueByMonths[9] + prsday.revenue;
+                                    break;
+                                case 10:
+                                    revenueByMonths[10] = revenueByMonths[10] + prsday.revenue;
+                                    break;
+                                case 11:
+                                    revenueByMonths[11] = revenueByMonths[11] + prsday.revenue;
+                                    break;
+                            }
+                        });
+                    });
                 }
             });
         }
     });
+    console.log(revenueByMonths);
     
     
     var data = {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         datasets: [
             {
                 label: "Actual",
@@ -30,27 +77,7 @@ Template.projected_revenue.rendered = function () {
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(105,210,231,1)",
-                data: [100, 100, 100, 110, 160, 30, 100]
-        },
-            {
-                label: "Forecast",
-                fillColor: "rgba(167,219,216,0.2)",
-                strokeColor: "rgba(167,219,216,1)",
-                pointColor: "rgba(167,219,216,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(167,219,216,1)",
-                data: [120, 120, 120, 120, 120, 120, 120]
-        },
-            {
-                label: "Plan",
-                fillColor: "rgba(243,134,48,0.2)",
-                strokeColor: "rgba(243,134,48,1)",
-                pointColor: "rgba(243,134,48,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(243,134,48,1)",
-                data: [70, 70, 70, 70, 40, 60, 50]
+                data: revenueByMonths
         }
     ]
     };
