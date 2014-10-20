@@ -1,0 +1,7 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/home/gird/blueshift/server/Methods/projectedRevenueMethods.js",
+        "/home/gird/blueshift/client/lib/highcharts/themes/dark-green.js",
+        "/home/gird/blueshift/client/home/projectedRevenue.js"
+    ]
+}

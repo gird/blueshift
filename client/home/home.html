@@ -5,12 +5,21 @@
     
     <div id="revenue" class="loading">{{revenue}}</div>
     {{> projected_revenue}}
+    {{> cumulative_projected_revenue}}
 </template>
 
 <template name="projected_revenue">
     <div class="col-md-5 col-md-offset-1">
-        <div class="projected_revenue">
-            <canvas id="projected_revenue" width="440px" height="240px"></canvas>
+        <div class="projected_revenue1">
+            <div id="projected_revenue1" style="min-width: 430px; height: 240px; margin: 0 auto"></div>
+        </div>
+    </div>
+</template>
+
+<template name="cumulative_projected_revenue">
+    <div class="col-md-5">
+        <div class="cumulative_projected_revenue">
+            <canvas id="cumulative_projected_revenue" width="430px" height="240px"></canvas>
         </div>
     </div>
 </template>

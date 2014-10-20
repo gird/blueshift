@@ -1,4 +1,6 @@
-.projected_revenue {
+.projected_revenue1,
+.projected_revenue,
+.cumulative_projected_revenue {
     border-radius: 2px;
     padding: 10px;
     margin-bottom: 10px;
