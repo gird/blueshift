@@ -1,6 +1,6 @@
 <template name="projectRoleView">
     {{#contentFor "breadcrumbs"}}
-    <li>Home</li>
+    <li><a href="{{pathFor 'home'}}">Home</a></li>
     <li><a href="{{pathFor 'projects'}}">Projects</a></li>
     <li><a href="{{pathFor 'projectRoleProject'}}">{{project}}</a></li>
     <li><strong style="text-decoration: underline;">{{role}}</strong></li>

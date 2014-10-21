@@ -1,5 +1,9 @@
 <template name="opportunities">
-    <h1>Opportunities {{>opportunityListButtons}}</h1>
+    {{#contentFor "breadcrumbs"}}
+    <li><a href="{{pathFor 'home'}}">Home</a></li>
+    <li><strong>Opportunities</strong></li>
+    {{/contentFor}}
+
     <div class="opportunities">
         <table class="table">
             <thead>
@@ -12,8 +16,8 @@
                 {{#each opportunities}} {{> opportunityListRow}} {{/each}}
             </tbody>
         </table>
-
     </div>
+    {{> opportunityListButtons}}
 </template>
 
 <template name="opportunityListRow">
@@ -25,9 +29,13 @@
 </template>
 
 <template name="opportunityView">
-    <h1><a href="{{pathFor 'opportunities'}}">Opportunity</a></h1>
-    <h3>{{name}} {{> opportunityViewButtons}}</h3>
+    {{#contentFor "breadcrumbs"}}
+    <li>Home</li>
+    <li><a href="{{pathFor 'opportunities'}}">Opportunities</a></li>
+    <li><strong>{{name}}</strong></li>
+    {{/contentFor}}
     <div class="opportunity">
+        <div class="pull-right">{{> opportunityViewButtons}}</div>
         <p><strong>Owner Id: </strong>{{owner_id}}</p>
         <p><strong>Project: </strong><a href="{{pathFor 'opportunityProject'}}">{{project}}</a>
         </p>

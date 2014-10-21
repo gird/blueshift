@@ -1,6 +1,10 @@
 <template name="rateBookView">
     {{#if subscriptionReady}}
-    <h1><a href="{{pathFor 'rateBooks'}}">Rate Books</a></h1>
+    {{#contentFor "breadcrumbs"}}
+    <li><a href="{{pathFor 'home'}}">Home</a></li>
+    <li><a href="{{pathFor 'rateBooks'}}">Rate Books</a></li>
+    <li><strong style="text-decoration: underline;">{{name}}</strong></li>
+    {{/contentFor}}
     <h2>{{name}} {{> rateBookViewButtons}}</h2>
     <!--{{> rateBookDetails}} Don't need this-->
     {{> rateBookRelatedLists}}

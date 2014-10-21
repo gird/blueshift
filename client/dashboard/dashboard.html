@@ -1,0 +1,51 @@
+<template name="dashboard">
+    {{#contentFor "breadcrumbs"}}
+    <li><a href="{{pathFor 'home'}}">Home</a></li>
+    <li><strong style="text-decoration: underline;">Dashboard</strong>
+    </li>
+    {{/contentFor}}
+    
+    {{> projected_revenue}}
+    {{> project_execution}}
+</template>
+
+<template name="projected_revenue">
+    <div class="col-md-5 col-md-offset-1">
+        <div class="projected_revenue">
+            <div id="projected_revenue" style="height: 240px; margin: 0 auto"></div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="cumulative_projected_revenue">
+            <div id="cumulative_projected_revenue" style="height: 240px; margin: 0 auto"></div>
+        </div>
+    </div>
+</template>
+
+<template name="project_execution">
+    <div class="col-md-2 col-md-offset-1">
+        <div class="guage">
+            <div id="gross_margin" style="height: 200px; margin: 0 auto"></div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="guage">
+            <div id="cpi" style="height: 200px; margin: 0 auto"></div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="guage">
+            <div id="spi" style="height: 200px; margin: 0 auto"></div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="guage">
+            <div id="other1" style="height: 200px; margin: 0 auto"></div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="guage">
+            <div id="other2" style="height: 200px; margin: 0 auto"></div>
+        </div>
+    </div>
+</template>

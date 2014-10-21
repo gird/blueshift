@@ -1,7 +1,7 @@
 <template name="projectView">
     {{#if subscriptionReady}}
     {{#contentFor "breadcrumbs"}}
-    <li>Home</li>
+    <li><a href="{{pathFor 'home'}}">Home</a></li>
     <li><a href="{{pathFor 'projects'}}">Projects</a></li>
     <li><strong>{{name}}</strong></li>
     {{/contentFor}}

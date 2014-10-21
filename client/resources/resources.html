@@ -1,6 +1,6 @@
 <template name="resources">
     {{#contentFor "breadcrumbs"}}
-    <li>Home</li>
+    <li><a href="{{pathFor 'home'}}">Home</a></li>
     <li><strong style="text-decoration: underline;">Resources</strong></li>
     {{/contentFor}}
     <div class="resources">
@@ -60,7 +60,7 @@
 
 <template name="resourceView">
     {{#contentFor "breadcrumbs"}}
-    <li>Home</li>
+    <li><a href="{{pathFor 'home'}}">Home</a></li>
     <li><a href="{{pathFor 'resources'}}">Resource</a></li>
     <li><strong style="text-decoration: underline;">{{firstname}} {{lastname}}</strong></li>
     {{/contentFor}}

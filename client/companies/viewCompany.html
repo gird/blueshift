@@ -1,7 +1,7 @@
 <template name="companyView">
     {{#if subscriptionReady}}
         {{#contentFor "breadcrumbs"}}
-            <li>Home</li>
+            <li><a href="{{pathFor 'home'}}">Home</a></li>
             <li><a href="{{pathFor 'companies'}}">Company</a></li>
             <li><strong style="text-decoration: underline;">{{name}}</strong></li>
         {{/contentFor}}
