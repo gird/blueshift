@@ -53,11 +53,11 @@ Template.project_execution.rendered = function () {
         $('#gross_margin').highcharts(Highcharts.merge(gaugeOptions, {
             yAxis: {
                 stops: [
-                    [0.4, '#DF5353'], 
-                    [0.55, '#DDDF0D'], 
+                    [0.5, '#DF5353'], 
+                    [0.57, '#DDDF0D'], 
                     [0.6, '#55BF3B'], 
-                    [0.65, '#DDDF0D'],
-                    [0.8, '#DF5353']
+                    [0.67, '#DDDF0D'],
+                    [0.75, '#DF5353']
                 ],
                 min: 0,
                 max: 100,
@@ -72,7 +72,7 @@ Template.project_execution.rendered = function () {
 
             series: [{
                 name: 'Speed',
-                data: [55],
+                data: [51],
                 dataLabels: {
                     format: '<div style="text-align:center"><span style="font-size:20px;color:black">{y}%</span></div>'
                 }
