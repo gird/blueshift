@@ -39,6 +39,7 @@ less@1.0.10
 livedata@1.0.11
 localstorage@1.0.1
 logging@1.0.4
+matb33:collection-hooks@0.7.6
 meteor-platform@1.1.2
 meteor@1.1.2
 meteorhacks:kadira-binary-deps@1.2.0
