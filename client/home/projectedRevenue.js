@@ -245,7 +245,7 @@ Template.projected_revenue.rendered = function () {
                         data: cumulativeWeightedRevenueByMonths
                 }, {
                         name: 'Actual',
-                        data: [20000, 40000, 50000, 35000]
+                        data: [20000, 60000, 110000, 145000]
                 }
             ],
                 credits: {

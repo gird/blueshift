@@ -1,12 +1,13 @@
 Meteor.methods({
-    insertProjectRole: function (ratebookroleId, allocation, enddate, probability, projectId, startdate) {
+    insertProjectRole: function (ratebookroleId, allocation, enddate, probability, projectId, startdate, opportunityId) {
         return Project_Roles.insert({
                 rate_book_role_id: ratebookroleId,
                 allocation: allocation,
+                startDate: startdate,
                 endDate: enddate,
                 probability: probability,
                 project_id: projectId,
-                startDate: startdate,
+                opportunity_id: opportunityId
             });
     },
     insertProjectRoleSchedules: function (startdate, enddate, ratebookrole, allocation, projectroleid) {

@@ -27,12 +27,16 @@ Template.newProjectRoleModal.helpers({
             roles.push({rate_book_role_id: ratebookrole._id, role_name: role.name});
         });
         return roles;
+    },
+    opportunities: function() {
+        return opportunities = Opportunities.find({project_id: this._id});
     }
 });
 
 Template.newProjectRoleModal.events({
     'click .submit_new_projectrole': function() {
         var ratebookroleId = $('.projectrole_ratebookroleid').val();
+        var opportunityId = $('.projectrole_opportunityid').val();
         var allocation = $('.projectrole_allocation').val();
         var startdate = $('.projectrole_startdate').val();
         var enddate = $('.projectrole_enddate').val();
@@ -40,7 +44,7 @@ Template.newProjectRoleModal.events({
         var newProjectRole;
         var ratebookrole = Rate_Book_Roles.findOne({_id: ratebookroleId});
         
-        Meteor.call('insertProjectRole', ratebookroleId, allocation, enddate, probability, this._id, startdate, function(error, result){
+        Meteor.call('insertProjectRole', ratebookroleId, allocation, enddate, probability, this._id, startdate, opportunityId, function(error, result){
             newProjectRole = result;
             var role = ratebookrole && Roles.findOne({_id: ratebookrole.role_id});
             var roleName = role && role.name;
@@ -59,9 +63,8 @@ Template.newProjectRoleModal.events({
         
         $('#newProjectRoleModal').modal('hide');
         $('.projectrole_ratebookroleid').val(null);
-        //Session.set('adding_ratebookrole_roleid', null);
+        $('.projectrole_opportunityid').val(null);
         $('.ratebookrole_rate').val(null);
-        //Session.set('adding_ratebookrole_rate', null);
         $('.projectrole_allocation').val(null);
         $('.projectrole_startdate').val(null);
         $('.projectrole_enddate').val(null);

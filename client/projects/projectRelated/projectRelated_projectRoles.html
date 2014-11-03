@@ -14,6 +14,7 @@
                             <tr>
                                 <th>Name</th>
                                 <!--th>Resource</th-->
+                                <th>Opportunity</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th></th>
@@ -40,6 +41,7 @@
         <td> <a href="{{pathFor 'projectRoleView'}}" data-toggle="tooltip" title="{{resourceNames}}"> {{role}} </a> 
         </td>
         <!--td>{{resourceNames}}</td-->
+        <td><a href="/opportunities/{{opportunity_id}}"> {{opportunityName}} </a></td>
         <td>{{startDate}}</td>
         <td>{{endDate}}</td>
         <td>{{> projectRolesListRowOptions}}</td>
@@ -81,6 +83,17 @@
                         <h4 class="modal-title" id="myModalLabel">Add Role to {{name}}</h4>
                     </div>
                     <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Opportunity</label>
+                            <div class="col-md-10">
+                                <select class="form-control projectrole_opportunityid">
+                                    <option value="" selected disabled>Select the originating opportunity...</option>
+                                    {{#each opportunities}}
+                                    <option value="{{this._id}}">{{this.name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">Role</label>
                             <div class="col-md-10">

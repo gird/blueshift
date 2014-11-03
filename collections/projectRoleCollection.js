@@ -38,6 +38,14 @@ var projectrole = {
             resourceNames = resourceNames.slice(0, resourceNames.length -2);
             return resourceNames;
         }
+    },
+    'opportunityName': function () {
+        var opportunity = Opportunities.findOne(this.opportunity_id);
+        if(!opportunity) {
+            return 'No linked Opportunity';
+        } else {
+            return opportunity && opportunity.name;
+        }
     }
 };
 
