@@ -34,6 +34,13 @@ Template.resourceProjectRolesListRow.helpers({
         var projectName = project && project.name;
         return projectName;
     },
+    'project_id': function () {
+        var projectrole = Project_Roles.findOne({
+            _id: this.project_role_id
+        });
+        var projectId = projectrole && projectrole.project_id;
+        return projectId;
+    },
     'role': function () {
         var projectrole = Project_Roles.findOne({
             _id: this.project_role_id

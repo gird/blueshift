@@ -37,8 +37,8 @@
 
 <template name="resourceProjectRolesListRow">
     <tr>
-        <td> {{project}} </td>
-        <td> {{role}} </td>
+        <td> <a href="/projects/{{project_id}}">{{project}}</a></td>
+        <td> <a href="/projectRoles/{{this.project_role_id}}">{{role}}</a></td>
         <td> {{projectrole.startDate}} </td>
         <td> {{projectrole.endDate}} </td>
         <!--td>{{> resourceProjectRolesListRowOptions}}</td-->

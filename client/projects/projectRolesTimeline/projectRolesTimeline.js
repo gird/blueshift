@@ -27,6 +27,8 @@ data = new vis.DataSet(options);
 Template.projectRolesTimeline.rendered = function () {
     Meteor.subscribe('project_roles');
     Meteor.subscribe('resources');
+    Meteor.subscribe('project_role_resources');
+    Meteor.subscribe('roles');
     var projectRoles = Project_Roles.find({
         project_id: this.data._id
     });

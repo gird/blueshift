@@ -7,7 +7,7 @@ Template.home.helpers({
     projectroleSchedules.forEach(function(prs) {
         var eachday = prs.days;
         eachday.forEach(function(prsday) {
-            totalRevenue = prsday.revenue + totalRevenue
+            totalRevenue = prsday.revenue + totalRevenue;
         });
     });
     return accounting.formatMoney(totalRevenue);

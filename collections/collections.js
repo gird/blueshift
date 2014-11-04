@@ -1,7 +1,6 @@
 Projects = new Meteor.Collection('projects');
 Companies = new Meteor.Collection('companies');
 Contacts = new Meteor.Collection('contacts');
-Opportunities = new Meteor.Collection('opportunities');
 Resources = new Meteor.Collection('resources');
 Roles = new Meteor.Collection('roles');
 Skills = new Meteor.Collection('skills');

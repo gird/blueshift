@@ -46,6 +46,15 @@ var projectrole = {
         } else {
             return opportunity && opportunity.name;
         }
+    },
+    'totalRevenue': function () {
+        var schedule = Project_Role_Schedule.findOne({project_role_id: this._id});
+        var totalRevenue = 0;
+        var days = schedule.days;
+        days.forEach(function(prsday) {
+                totalRevenue = prsday.revenue + totalRevenue;
+        });
+        return accounting.formatMoney(totalRevenue);
     }
 };
 

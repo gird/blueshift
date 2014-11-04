@@ -28,30 +28,6 @@
     </tr>
 </template>
 
-<template name="opportunityView">
-    {{#contentFor "breadcrumbs"}}
-    <li>Home</li>
-    <li><a href="{{pathFor 'opportunities'}}">Opportunities</a></li>
-    <li><strong>{{name}}</strong></li>
-    {{/contentFor}}
-    <div class="opportunity">
-        <div class="pull-right">{{> opportunityViewButtons}}</div>
-        <p><strong>Owner Id: </strong>{{owner_id}}</p>
-        <p><strong>Project: </strong><a href="{{pathFor 'opportunityProject'}}">{{project}}</a>
-        </p>
-        <p><strong>Company: </strong><a href="{{pathFor 'opportunityCompany'}}">{{company}}</a>
-        </p>
-    </div>
-</template>
-
-<template name="opportunityViewButtons">
-    <div class="btn-group" style="margin: 10px 10px 10px;">
-        <button type="button" class="btn btn-default">Edit</button>
-        <button type="button" class="btn btn-default">Delete</button>
-        <button type="button" class="btn btn-default">Clone</button>
-    </div>
-</template>
-
 <template name="opportunityListButtons">
     <div class="btn-group">
         <button type="button" class="btn btn-default">Create New</button>

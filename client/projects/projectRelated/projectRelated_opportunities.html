@@ -7,11 +7,13 @@
             <div class="panel-body">
                 {{#if projectOpportunities.count}}
                 <div class="relatedOpportunities">
-                    <table class="table">
+                    <table class="table tablesorter">
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Status</th>
+                                <th>Estimated Amount</th>
+                                <th>Represented Amount</th>
+                                <th>Difference</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +34,8 @@
     <tr>
         <td> <a href="{{pathFor 'opportunityView'}}"> {{name}} </a> 
         </td>
-        <td>{{stage}}</td>
+        <td>{{estimated_amount}}</td>
+        <td>{{represented_amount}}</td>
+        <td>{{unrepresented_amount}}</td>
     </tr>
 </template>

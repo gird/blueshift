@@ -4,6 +4,7 @@ Template.projectView.helpers({
         if (rateBookRolesSubscriptionHandle.ready() &&
             projectsSubscriptionHandle.ready() && 
             rolesSubscriptionHandle.ready() && 
+            opportunitiesSubscriptionHandle.ready() && 
             projectRolesSubscriptionHandle.ready() &&
             projectRoleResourcesSubscriptionHandle.ready())
         {
