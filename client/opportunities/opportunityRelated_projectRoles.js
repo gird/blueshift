@@ -77,3 +77,7 @@ Template.oppProjectRolesListRowOptions.events({
         Meteor.call('removeProjectRoleSchedule', this._id);
     }
 });
+
+Template.opportunityRelated_projectRoles.rendered = function () {
+    $(".tablesorter").tablesorter(); 
+};

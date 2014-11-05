@@ -12,6 +12,19 @@ var opportunity = {
             });
         });
         return totalRevenue;
+    },
+    'companyName' : function () {
+        var company = Companies.findOne(this.company_id);
+        var companyName = company && company.name;
+        return companyName;
+    },
+    'projectName' : function () {
+        var project = Projects.findOne(this.project_id);
+        var projectName = project && project.name;
+        return projectName;
+    },
+    'ownerFullName' : function () {
+        return 'John Doe';
     }
 };
 

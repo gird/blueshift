@@ -9,27 +9,27 @@
             <div class="panel-body">
                 {{#if projectRoles.count}}
                 <div class="childProjectRoles">
-                    <table class="table tablesorter">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <!--th>Resource</th-->
-                                <th>Opportunity</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each projectRoles}} 
-                                {{> projectRolesListRow}} 
-                            {{/each}}
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table tablesorter">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <!--th>Resource</th-->
+                                    <th>Opportunity</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each projectRoles}} {{> projectRolesListRow}} {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 {{else}}
                 <p>There are currently no Project Roles for this Project.</p>
-                {{/if}}
+                {{/if}} 
                 {{> projectRolesButtons}}
             </div>
         </div>

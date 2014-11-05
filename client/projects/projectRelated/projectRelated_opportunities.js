@@ -3,6 +3,28 @@ Template.projectRelated_opportunities.helpers({
         return projectOpportunities = Opportunities.find({
             project_id: this._id
         });
+    },
+    'sum_estimated_amount': function() {
+        var projectOpportunities = Opportunities.find({
+            project_id: this._id
+        });
+        var amount = 0;
+        projectOpportunities.forEach(function(opp) {
+            amount = amount + opp.estimated_amount;
+        });
+        
+        return accounting.formatMoney(amount);
+    },
+    'sum_represented_amount': function() {
+        var projectOpportunities = Opportunities.find({
+            project_id: this._id
+        });
+        var amount = 0;
+        projectOpportunities.forEach(function(opp) {
+            amount = amount + opp.represented_amount();
+        });
+        
+        return accounting.formatMoney(amount);
     }
 });
 
@@ -15,11 +37,8 @@ Template.projectOpportunitiesListRow.helpers({
     },
     'unrepresented_amount': function() {
         var reped = this.represented_amount();
-        console.log(reped);
         var ested = this.estimated_amount;
-        console.log(ested);
         var unreped = reped && ested && reped - ested;
-        console.log(unreped);
         return accounting.formatMoney(unreped, {
             format: {
                 pos : "%s %v",

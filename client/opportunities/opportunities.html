@@ -9,7 +9,12 @@
             <thead>
                 <tr>
                     <th>Opportunity Name</th>
+                    <th>Company Name</th>
+                    <th>Related Project</th>
                     <th>Owner</th>
+                    <th>Close Date</th>
+                    <th>Estimated Amount</th>
+                    <th>Represented Amount</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,7 +29,12 @@
     <tr>
         <td><a href="{{pathFor 'opportunityView'}}"> {{this.name}} </a>
         </td>
-        <td>{{company}}</td>
+        <td><a href="/companies/{{this.company_id}}">{{companyName}}</a></td>
+        <td><a href="/projects/{{this.project_id}}">{{projectName}}</a></td>
+        <td>{{ownerFullName}}</td>
+        <td>{{closeDate}}</td>
+        <td>{{estimated_amount}}</td>
+        <td>{{represented_amount}}</td>
     </tr>
 </template>
 

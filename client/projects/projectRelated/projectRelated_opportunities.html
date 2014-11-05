@@ -7,19 +7,29 @@
             <div class="panel-body">
                 {{#if projectOpportunities.count}}
                 <div class="relatedOpportunities">
-                    <table class="table tablesorter">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Estimated Amount</th>
-                                <th>Represented Amount</th>
-                                <th>Difference</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each projectOpportunities}} {{> projectOpportunitiesListRow}} {{/each}}
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table tablesorter">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Estimated Amount</th>
+                                    <th>Represented Amount</th>
+                                    <th>Difference</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each projectOpportunities}} {{> projectOpportunitiesListRow}} {{/each}}
+                                <tr>
+                                    <td></td>
+                                    <td><strong>{{sum_estimated_amount}}</strong>
+                                    </td>
+                                    <td><strong>{{sum_represented_amount}}</strong>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 {{else}}
                 <p><strong> Somethings wrong :\ There are no opportunities for this project and there should be.</strong>
