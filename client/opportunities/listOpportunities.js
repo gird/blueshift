@@ -35,7 +35,7 @@ Template.newOpportunityExistingProjectModal.helpers({
             var companyId = company && company._id;
             data.push({
                 "name" : projectName + " - " + companyName,
-                "description": "test",
+                "description": project.situation,
                 "language": "testlan",
                 "value": projectName + " " + companyName,
                 "valueKey": projectId,
@@ -45,8 +45,6 @@ Template.newOpportunityExistingProjectModal.helpers({
                 ]
             });
         });
-        console.log(projects);
         return data;
     }
-
 });
