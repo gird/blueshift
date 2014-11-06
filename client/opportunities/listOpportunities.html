@@ -1,0 +1,113 @@
+<template name="opportunities">
+    {{#contentFor "breadcrumbs"}}
+    <li><a href="{{pathFor 'home'}}">Home</a>
+    </li>
+    <li><strong>Opportunities</strong>
+    </li>
+    {{/contentFor}}
+
+    <div class="opportunities">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Opportunity Name</th>
+                    <th>Company Name</th>
+                    <th>Related Project</th>
+                    <th>Owner</th>
+                    <th>Close Date</th>
+                    <th>Estimated Amount</th>
+                    <th>Represented Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each opportunities}} {{> opportunityListRow}} {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{> opportunityListButtons}}
+</template>
+
+<template name="opportunityListRow">
+    <tr>
+        <td><a href="{{pathFor 'opportunityView'}}"> {{this.name}} </a>
+        </td>
+        <td><a href="/companies/{{this.company_id}}">{{companyName}}</a>
+        </td>
+        <td><a href="/projects/{{this.project_id}}">{{projectName}}</a>
+        </td>
+        <td>{{ownerFullName}}</td>
+        <td>{{closeDate}}</td>
+        <td>{{estimated_amount}}</td>
+        <td>{{represented_amount}}</td>
+    </tr>
+</template>
+
+<template name="opportunityListButtons">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default new-opportunity" data-toggle="modal" data-target="#newOpportunityModal">Create New</button>
+        {{> newOpportunityModal}} {{> newOpportunityExistingProjectModal}}
+        <!--{{> editProjectRoleModal}}-->
+    </div>
+</template>
+
+<template name="newOpportunityModal">
+    <div class="modal fade" id="newOpportunityModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Create New Opportunity</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div align="center">
+                            <button type="button" class="btn btn-default new-opportunity_existing-project" data-toggle="modal" data-dismiss="modal" data-target="#newOpportunityExistingProjectModal">Related to Existing Project</button>
+                            <button type="button" class="btn btn-default new-opportunity_new-project">New Project</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default cancel_new_opportunity" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+<template name="newOpportunityExistingProjectModal">
+    <div class="modal fade" id="newOpportunityExistingProjectModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Relate new Opportunity to Existing Project</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Company Name</label>
+                            <div class="col-md-10">
+                                <input class="form-control typeahead newOpportunity_ProjectCompany col-md-12" name="company" type="text" placeholder="Company Name..." autocomplete="off" spellcheck="off" data-source="companyProjectLookup" data-template="company_project"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default cancel_new_opportunity" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="company_project">
+       <p class="company-project-companyName">{{name}}</p>
+       <p class="company-project_description">{{description}}</p>
+</template>
