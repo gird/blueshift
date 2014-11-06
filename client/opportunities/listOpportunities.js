@@ -34,7 +34,8 @@ Template.newOpportunityExistingProjectModal.helpers({
             var companyName = company && company.name;
             var companyId = company && company._id;
             data.push({
-                "name" : projectName + " - " + companyName,
+                "projectName" : projectName,
+                "companyName" : companyName,
                 "description": project.situation,
                 "language": "testlan",
                 "value": projectName + " " + companyName,
