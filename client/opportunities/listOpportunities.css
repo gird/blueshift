@@ -1,0 +1,8 @@
+.company-project-title {
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+}
+.company-project_situation,
+.company-project_solution {
+    font-size: 10px;
+}

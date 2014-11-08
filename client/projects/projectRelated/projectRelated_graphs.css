@@ -1,0 +1,14 @@
+.owl-carousel.item{
+  background: #3fbf79;
+  padding: 30px 0px;
+  margin: 10px;
+  color: #FFF;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.slick-prev:before, .slick-next:before { 
+    color:#ddd !important;
+}

@@ -9,6 +9,7 @@
         {{> projectViewDetail}}
         {{> projectViewButtons}}
     </div>
+    {{> projectRelated_opportunityGraph}}
     <div class="col-md-12">
         {{> projectRelatedLists}}
     </div>
@@ -38,8 +39,8 @@
 
 <template name="projectRelatedLists">
     <div class="panel-group" id="accordion">
-        {{> projectRelated_projectRoles}} 
+        {{> projectRelated_projectRoles}}
         {{> projectRolesTimeline}}
-        {{> projectRelated_opportunities}}        
+        {{> projectRelated_opportunities}}
     </div>
 </template>
