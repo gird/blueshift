@@ -15,3 +15,4 @@ Meteor.subscribe("resource_skills");
 resourceProjectRolesSubscriptionHandle = Meteor.subscribe("resource_project_roles");
 Meteor.subscribe("users");
 Meteor.subscribe("fields");
+Meteor.subscribe("revenue_projections");

@@ -1,0 +1,1 @@
+Revenue_Projections = new Meteor.Collection('revenue_projections');

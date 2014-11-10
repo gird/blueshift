@@ -64,3 +64,14 @@ Project_Roles = new Meteor.Collection('project_roles', {
         return _.extend(newInstance, doc);
     }
 });
+
+Project_Roles.after.remove(function (userId, doc) {
+    var currentYear = new Date().getFullYear();
+    Meteor.call("updateRevenueProjections", currentYear, doc.project_id);
+    console.log(doc);
+});
+Project_Roles.after.insert(function (userId, doc) {
+    var currentYear = new Date().getFullYear();
+    Meteor.call("updateRevenueProjections", currentYear, doc.project_id);
+    console.log(doc);
+});
