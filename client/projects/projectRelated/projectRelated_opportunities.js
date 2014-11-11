@@ -12,7 +12,7 @@ Template.projectRelated_opportunities.helpers({
         projectOpportunities.forEach(function(opp) {
             amount = amount + opp.estimated_amount;
         });
-        
+        console.log(amount);
         return accounting.formatMoney(amount);
     },
     'sum_represented_amount': function() {

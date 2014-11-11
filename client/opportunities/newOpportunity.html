@@ -1,79 +1,114 @@
-<template name="newOpportunityPickTypeModal">
-    <div class="modal fade" id="newOpportunityPickTypeModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form class="form-horizontal">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Create New Opportunity</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div align="center">
-                            <button type="button" class="btn btn-default new-opportunity_existing-project" data-toggle="modal" data-dismiss="modal" data-target="#newOpportunityExistingProjectModal">Related to Existing Project</button>
-                            <button type="button" class="btn btn-default new-opportunity_new-project">New Project</button>
-                        </div>
-                    </div>
-                    <!--div class="modal-footer">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default cancel_new_opportunity" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>
-                            </button>
-                        </div>
-                    </div-->
-                </form>
-            </div>
-        </div>
-    </div>
-</template>
-<template name="newOpportunityExistingProjectModal">
-    <div class="modal fade" id="newOpportunityExistingProjectModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form class="form-horizontal">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Find Existing Project...</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <input class="form-control typeahead newOpportunity_ProjectCompany col-md-12" name="company" type="text" placeholder="Search for company name or project..." autocomplete="off" spellcheck="off" data-source="companyProjectLookup" data-template="company_project"/>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</template>
-<template name="company_project">
-    <div><p class="company-project-title"><b>{{projectName}}</b> - {{companyName}}</p></div>
-    <p class="company-project_situation"><b>Situation: </b>{{situation}}</p>
-    <p class="company-project_solution"><b>Solution: </b>{{solution}}</p>
+<template name="newOpportunity">
+    <h1>Create New Opportunity for Existing Project</h1>
+    {{> newOpportunityDetails}}
 </template>
 
-<template name="newOpportunityModal">
-    <div class="modal fade" id="newOpportunityModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form class="form-horizontal">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Create New Opportunity Detail</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Add fields here.</p>
-                    </div>
-                    <!--div class="modal-footer">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default cancel_new_opportunity" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>
-                            </button>
-                        </div>
-                    </div-->
-                </form>
+<template name="newOpportunityDetails">
+    <div class="opportunity">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="opportunity-name" class="col-md-2">Opportunity Name</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control " id="opportunity-name" placeholder="Enter a title...">
+                </div>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="opportunity-close-date" class="col-md-2">Opportunity Close Date</label>
+                <div class="col-lg-10">
+                    <input type="date" class="form-control" id="opportunity-close-date" placeholder="...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="opportunity-amount" class="col-md-2">Estimated Amount</label>
+                <div class="col-md-10">
+                    <input type="number" class="form-control" id="opportunity-amount">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="opportunity-probability" class="col-md-2">Probability</label>
+                <div class="col-md-10">
+                    <input type="number" class="form-control" id="opportunity-probability">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="project-situation" class="col-md-2">Explanation for Addition to Existing Project</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" id="opportunity-explination" rows="3"></textarea>
+                </div>
+            </div>
+            <a href="{{pathFor 'opportunities'}}">
+                <button type="submit" class="btn btn-primary opportunity-submit">Create</button>
+            </a>
+        </form>
+    </div>
+</template>
+
+<template name="newOpportunityProject">
+    <h1>Create New Opportunity and Project</h1>
+    {{> newOpportunityProjectDetails}}
+</template>
+
+<template name="newOpportunityProjectDetails">
+    <div class="opportunity">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="opportunity-name" class="col-md-2">Opportunity/Project Name</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control " id="opportunity-name" placeholder="Enter a title...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="opportunity-close-date" class="col-md-2">Opportunity Close Date</label>
+                <div class="col-lg-10">
+                    <input type="date" class="form-control" id="opportunity-close-date" placeholder="...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="opportunity-amount" class="col-md-2">Estimated Amount</label>
+                <div class="col-md-10">
+                    <input type="number" class="form-control" id="opportunity-amount">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="opportunity-probability" class="col-md-2">Probability</label>
+                <div class="col-md-10">
+                    <input type="number" class="form-control" id="opportunity-probability">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="project-start-date" class="col-md-2">Project Start Date</label>
+                <div class="col-lg-10">
+                    <input type="date" class="form-control" id="project-start-date" placeholder="...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="project-duration" class="col-md-2">Project Duration In Weeks</label>
+                <div class="col-md-10">
+                    <input type="number" class="form-control" id="project-duration">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="project-end-date" class="col-md-2">Project End Date</label>
+                <div class="col-lg-10">
+                    <input type="date" class="form-control" id="project-end-date" placeholder="...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="project-situation" class="col-md-2">Situation</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" id="project-situation" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="project-solution" class="col-md-2">Solution</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" id="project-solution" rows="3"></textarea>
+                </div>
+            </div>
+
+            <a href="{{pathFor 'opportunities'}}">
+                <button type="submit" class="btn btn-primary opportunity-project-submit">Create</button>
+            </a>
+        </form>
     </div>
 </template>
