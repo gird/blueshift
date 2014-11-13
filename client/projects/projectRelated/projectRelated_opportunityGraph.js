@@ -156,6 +156,6 @@ Template.projectRelated_opportunityGraph.rendered = function () {
     
     $('#carousel').slick({
         dots: true,
-        arrows: true
+        arrows: false
     });
 };

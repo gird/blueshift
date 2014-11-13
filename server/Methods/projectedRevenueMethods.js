@@ -1,8 +1,25 @@
 Meteor.methods({
     updateRevenueProjections: function (currentYear, projectId) {
-        var opportunities = Opportunities.find({
-            project_id: projectId
+        var opportunities = Opportunities.find(
+            {project_id: projectId}, {fields: { project_id: 1, name: 1, probability: 1 }}
+        );
+        /*var opportunitiesMap = [];
+        opportunities.forEach(function (opportunity) {
+            opportunitiesMap.push(opportunity._id);
         });
+        
+        var projectRolesMap = [];
+        var rateBookRoleMap = [];
+        var projectRoles = Project_Roles.find({opportunity_id: { $in:  opportunitiesMap }});
+        projectRoles.forEach(function (projectRole) {
+            projectRolesMap.push(projectRole._id);
+            rateBookRoleMap.push(projectRole.rate_book_role_id);
+        });
+        
+        var projectRoleSchedules = Project_Role_Schedule.find({project_role_id: {$in: projectRolesMap }});
+        var ratebookrole = Rate_Book_Roles.find({_id: {$in: rateBookRoleMap }});
+        */
+        
         var series = [];
         var weightedSeries = [];
         opportunities.forEach(function (opportunity) {
@@ -85,7 +102,7 @@ Meteor.methods({
             }
             weightedRevProjections = Revenue_Projections.findOne({project_id: opportunity.project_id, stack: "Weighted", opportunity_id: opportunity._id});
             if(weightedRevProjections) {
-                console.log('found a rev projection for this project ' + weightedRevProjections._id);
+                console.log('found a weighted rev projection. ID: ' + weightedRevProjections._id);
                 Revenue_Projections.update({
                     _id: weightedRevProjections._id
                 }, {
@@ -94,6 +111,7 @@ Meteor.methods({
                     }
                 });
             } else {
+                console.log('didnt find a weighted rev projection for this project ');
                 Revenue_Projections.insert({
                     opportunity_id: opportunity._id,
                     project_id: opportunity.project_id,
@@ -104,6 +122,7 @@ Meteor.methods({
             }
             revProjections = Revenue_Projections.findOne({project_id: opportunity.project_id, stack: "Unweighted", opportunity_id: opportunity._id});
             if(revProjections) {
+                console.log('found a rev projection. ID: ' + weightedRevProjections._id);
                 Revenue_Projections.update({
                     _id: revProjections._id
                 }, {
@@ -112,6 +131,7 @@ Meteor.methods({
                     }
                 });
             } else {
+                console.log('didnt find a rev projection for this project ');
                 Revenue_Projections.insert({
                     opportunity_id: opportunity._id,
                     project_id: opportunity.project_id,
