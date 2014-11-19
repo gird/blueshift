@@ -7,7 +7,6 @@ Template.newProjectDetails.events({
         var projectSolution = $('#project-solution');
         var projectOwner = this.userId;
         var projectCompanyId = 'company200';
-        var projectProbability = $('#project-probability');
         var projectRateBookId = 'rb1';
         var projectStatus = 'Draft';
         
@@ -19,7 +18,6 @@ Template.newProjectDetails.events({
             solution: projectSolution.val(),
             owner_id: projectOwner,
             company_id: projectCompanyId,
-            probability: projectProbability.val(),
             rate_book_id: projectRateBookId,
             status: projectStatus
         });

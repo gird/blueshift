@@ -49,12 +49,12 @@
 </template>
 
 <template name="newOpportunityProjectDetails">
-    <div class="opportunity">
-        <form class="form-horizontal">
+    <form class="form-horizontal">
+        <div class="opportunity">
             <div class="form-group">
                 <label for="opportunity-name" class="col-md-2">Opportunity/Project Name</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control " id="opportunity-name" placeholder="Enter a title...">
+                    <input type="text" class="form-control " id="opportunity-project-name" placeholder="Enter a title...">
                 </div>
             </div>
             <div class="form-group">
@@ -75,6 +75,8 @@
                     <input type="number" class="form-control" id="opportunity-probability">
                 </div>
             </div>
+        </div>
+        <div class="project">
             <div class="form-group">
                 <label for="project-start-date" class="col-md-2">Project Start Date</label>
                 <div class="col-lg-10">
@@ -105,10 +107,9 @@
                     <textarea class="form-control" id="project-solution" rows="3"></textarea>
                 </div>
             </div>
-
-            <a href="{{pathFor 'opportunities'}}">
-                <button type="submit" class="btn btn-primary opportunity-project-submit">Create</button>
-            </a>
-        </form>
-    </div>
+        </div>
+        <a href="{{pathFor 'opportunities'}}">
+            <button type="submit" class="btn btn-primary opportunity-project-submit">Create Opportunity and Project</button>
+        </a>
+    </form>
 </template>

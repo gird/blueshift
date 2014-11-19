@@ -11,6 +11,15 @@ Template.newOpportunityExistingProjectModal.rendered = function () {
     });
 }
 
+Template.newOpportunityPickTypeModal.events({
+    'click .new-opportunity_new-project': function () {
+        $('#newOpportunityPickTypeModal').modal('hide');
+        $('#newOpportunityPickTypeModal').on('hidden.bs.modal', function () {
+            Router.go('/newOpportunityProject');
+        });
+    }
+});
+
 Template.newOpportunityExistingProjectModal.helpers({
     'companyProjectLookup': function () {
         var projects = Projects.find();
