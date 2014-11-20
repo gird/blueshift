@@ -30,90 +30,90 @@ Template.projected_revenue.rendered = function () {
                             switch (month) {
                             case 0:
                                 revenueByMonths[0] = Math.round(revenueByMonths[0] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                weightedRevenueByMonths[0] = Math.round(weightedRevenueByMonths[0] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                weightedRevenueByMonths[0] = Math.round(weightedRevenueByMonths[0] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                                 break;
                             case 1:
                                 revenueByMonths[1] = Math.round(revenueByMonths[1] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                weightedRevenueByMonths[1] = Math.round(weightedRevenueByMonths[1] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                weightedRevenueByMonths[1] = Math.round(weightedRevenueByMonths[1] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                                 break;
                             case 2:
                                 revenueByMonths[2] = Math.round(revenueByMonths[2] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                weightedRevenueByMonths[2] = Math.round(weightedRevenueByMonths[2] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                weightedRevenueByMonths[2] = Math.round(weightedRevenueByMonths[2] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                                 break;
                             case 3:
                                 revenueByMonths[3] = Math.round(revenueByMonths[3] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                weightedRevenueByMonths[3] = Math.round(weightedRevenueByMonths[3] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                weightedRevenueByMonths[3] = Math.round(weightedRevenueByMonths[3] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                                 break;
                             case 4:
                                 revenueByMonths[4] = Math.round(revenueByMonths[4] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                weightedRevenueByMonths[4] = Math.round(weightedRevenueByMonths[4] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                weightedRevenueByMonths[4] = Math.round(weightedRevenueByMonths[4] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                                 break;
                             case 5:
                                 revenueByMonths[5] = Math.round(revenueByMonths[5] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                weightedRevenueByMonths[5] = Math.round(weightedRevenueByMonths[5] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                weightedRevenueByMonths[5] = Math.round(weightedRevenueByMonths[5] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                                 break;
                             case 6:
                                 revenueByMonths[6] = Math.round(revenueByMonths[6] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                weightedRevenueByMonths[6] = Math.round(weightedRevenueByMonths[6] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                weightedRevenueByMonths[6] = Math.round(weightedRevenueByMonths[6] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                                 break;
                             case 7:
                                 revenueByMonths[7] = Math.round(revenueByMonths[7] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                weightedRevenueByMonths[7] = Math.round(weightedRevenueByMonths[7] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                weightedRevenueByMonths[7] = Math.round(weightedRevenueByMonths[7] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                                 break;
                             case 8:
                                 revenueByMonths[8] = Math.round(revenueByMonths[8] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                weightedRevenueByMonths[8] = Math.round(weightedRevenueByMonths[8] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                weightedRevenueByMonths[8] = Math.round(weightedRevenueByMonths[8] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                                 break;
                             case 9:
                                 revenueByMonths[9] = Math.round(revenueByMonths[9] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                weightedRevenueByMonths[9] = Math.round(weightedRevenueByMonths[9] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                weightedRevenueByMonths[9] = Math.round(weightedRevenueByMonths[9] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                                 break;
                             case 10:
                                 revenueByMonths[10] = Math.round(revenueByMonths[10] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                weightedRevenueByMonths[10] = Math.round(weightedRevenueByMonths[10] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                weightedRevenueByMonths[10] = Math.round(weightedRevenueByMonths[10] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                                 break;
                             case 11:
                                 revenueByMonths[11] = Math.round(revenueByMonths[11] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                weightedRevenueByMonths[11] = Math.round(weightedRevenueByMonths[11] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                weightedRevenueByMonths[11] = Math.round(weightedRevenueByMonths[11] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                                 break;
                             }
                             switch (month) {
                             case 0:
                                 cumulativeRevenueByMonths[0] = Math.round(cumulativeRevenueByMonths[0] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                cumulativeWeightedRevenueByMonths[0] = Math.round(cumulativeWeightedRevenueByMonths[0] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                cumulativeWeightedRevenueByMonths[0] = Math.round(cumulativeWeightedRevenueByMonths[0] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                             case 1:
                                 cumulativeRevenueByMonths[1] = Math.round(cumulativeRevenueByMonths[1] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                cumulativeWeightedRevenueByMonths[1] = Math.round(cumulativeWeightedRevenueByMonths[1] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                cumulativeWeightedRevenueByMonths[1] = Math.round(cumulativeWeightedRevenueByMonths[1] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                             case 2:
                                 cumulativeRevenueByMonths[2] = Math.round(cumulativeRevenueByMonths[2] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                cumulativeWeightedRevenueByMonths[2] = Math.round(cumulativeWeightedRevenueByMonths[2] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                cumulativeWeightedRevenueByMonths[2] = Math.round(cumulativeWeightedRevenueByMonths[2] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                             case 3:
                                 cumulativeRevenueByMonths[3] = Math.round(cumulativeRevenueByMonths[3] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                cumulativeWeightedRevenueByMonths[3] = Math.round(cumulativeWeightedRevenueByMonths[3] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                cumulativeWeightedRevenueByMonths[3] = Math.round(cumulativeWeightedRevenueByMonths[3] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                             case 4:
                                 cumulativeRevenueByMonths[4] = Math.round(cumulativeRevenueByMonths[4] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                cumulativeWeightedRevenueByMonths[4] = Math.round(cumulativeWeightedRevenueByMonths[4] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                cumulativeWeightedRevenueByMonths[4] = Math.round(cumulativeWeightedRevenueByMonths[4] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                             case 5:
                                 cumulativeRevenueByMonths[5] = Math.round(cumulativeRevenueByMonths[5] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                cumulativeWeightedRevenueByMonths[5] = Math.round(cumulativeWeightedRevenueByMonths[5] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                cumulativeWeightedRevenueByMonths[5] = Math.round(cumulativeWeightedRevenueByMonths[5] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                             case 6:
                                 cumulativeRevenueByMonths[6] = Math.round(cumulativeRevenueByMonths[6] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                cumulativeWeightedRevenueByMonths[6] = Math.round(cumulativeWeightedRevenueByMonths[6] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                cumulativeWeightedRevenueByMonths[6] = Math.round(cumulativeWeightedRevenueByMonths[6] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                             case 7:
                                 cumulativeRevenueByMonths[7] = Math.round(cumulativeRevenueByMonths[7] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                cumulativeWeightedRevenueByMonths[7] = Math.round(cumulativeWeightedRevenueByMonths[7] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                cumulativeWeightedRevenueByMonths[7] = Math.round(cumulativeWeightedRevenueByMonths[7] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                             case 8:
                                 cumulativeRevenueByMonths[8] = Math.round(cumulativeRevenueByMonths[8] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                cumulativeWeightedRevenueByMonths[8] = Math.round(cumulativeWeightedRevenueByMonths[8] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                cumulativeWeightedRevenueByMonths[8] = Math.round(cumulativeWeightedRevenueByMonths[8] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                             case 9:
                                 cumulativeRevenueByMonths[9] = Math.round(cumulativeRevenueByMonths[9] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                cumulativeWeightedRevenueByMonths[9] = Math.round(cumulativeWeightedRevenueByMonths[9] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                cumulativeWeightedRevenueByMonths[9] = Math.round(cumulativeWeightedRevenueByMonths[9] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                             case 10:
                                 cumulativeRevenueByMonths[10] = Math.round(cumulativeRevenueByMonths[10] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                cumulativeWeightedRevenueByMonths[10] = Math.round(cumulativeWeightedRevenueByMonths[10] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                cumulativeWeightedRevenueByMonths[10] = Math.round(cumulativeWeightedRevenueByMonths[10] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                             case 11:
                                 cumulativeRevenueByMonths[11] = Math.round(cumulativeRevenueByMonths[11] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
-                                cumulativeWeightedRevenueByMonths[11] = Math.round(cumulativeWeightedRevenueByMonths[11] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100 * project.probability / 100));
+                                cumulativeWeightedRevenueByMonths[11] = Math.round(cumulativeWeightedRevenueByMonths[11] + ((ratebookrole.rate * projectRole.allocation / 100 * 8) * projectRole.probability / 100/* need to add opportunity.probability here */));
                             }
                         });
                     });
