@@ -66,10 +66,49 @@
 <!--Start of Project Role modal-->
 <template name="projectRolesButtons">
     <div class="btn-group">
-        <button type="button" class="btn btn-default new-project-role" data-toggle="modal" data-target="#newProjectRoleModal"><span class="glyphicon glyphicon-plus"></span> Add</button>
+        <button type="button" class="btn btn-default new-project-role" data-toggle="modal" data-target="#newProjectRoleModal"><span class="glyphicon glyphicon-plus"></span> Add Role</button>
+        <button type="button" class="btn btn-default new-project-role-quick" data-toggle="modal" data-target="#newProjectRoleQuickModal"><span class="glyphicon glyphicon-flash"></span> Quick Add</button>
     </div>
     {{> newProjectRoleModal}}
+    {{> newProjectRoleQuickModal}}
     <!--{{> editProjectRoleModal}}-->
+</template>
+
+<template name="newProjectRoleQuickModal">
+    <div class="modal fade" id="newProjectRoleQuickModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Add Role to {{name}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Opportunity</label>
+                            <div class="col-md-10">
+                                <select class="form-control projectrole_opportunityid">
+                                    <option value="" selected disabled>Select the originating opportunity...</option>
+                                    {{#each opportunities}}
+                                    <option value="{{this._id}}">{{this.name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default cancel_new_projectrole_quick" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary submit_new_projectrole_quick" disabled="{{submitIsDisabled}}"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </template>
 
 <template name="newProjectRoleModal">

@@ -6,6 +6,7 @@ Template.projected_revenue.rendered = function () {
     var weightedRevenueByMonths = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     var cumulativeRevenueByMonths = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     var cumulativeWeightedRevenueByMonths = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    //need to change below to the sum of opportunities, not projects
     projects.forEach(function (project) {
         var projectRoles = Project_Roles.find({
             project_id: project._id

@@ -1,5 +1,6 @@
 Meteor.methods({
     updateRevenueProjections: function (projectId) {
+        console.log('trying to update rev projections for project Id: ' + projectId); 
         var opportunities = Opportunities.find(
             {project_id: projectId}, {fields: { project_id: 1, name: 1, probability: 1 }}
         );
@@ -31,6 +32,7 @@ Meteor.methods({
             if (projectRoles.length <= 0) {
                 console.log('No projects roles for this opportunity : ' + opportunity.name);
             } else {
+                console.log('projects roles found for opportunity : ' + opportunity.name);
                 projectRoles.forEach(function (projectRole) {
                     var projectRoleSchedules = Project_Role_Schedule.find({
                         project_role_id: projectRole._id
@@ -41,6 +43,7 @@ Meteor.methods({
                     if (projectRoleSchedules.length <= 0) {
                         console.log('No projects roles schedules exist for this project role');
                     } else {
+                        console.log('projects role schedules found for opportunity : ' + opportunity.name);
                         projectRoleSchedules.forEach(function (prs) {
                             var eachday = prs.days;
                             eachday.forEach(function (prsday) {

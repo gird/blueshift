@@ -65,13 +65,10 @@ Project_Roles = new Meteor.Collection('project_roles', {
     }
 });
 
-Project_Roles.after.remove(function (userId, doc) {
-    var currentYear = new Date().getFullYear();
-    Meteor.call("updateRevenueProjections", currentYear, doc.project_id);
+Project_Roles.after.remove(function (userId, doc){
+    console.log('the following project role was deleted');
     console.log(doc);
-});
-Project_Roles.after.insert(function (userId, doc) {
-    var currentYear = new Date().getFullYear();
-    Meteor.call("updateRevenueProjections", currentYear, doc.project_id);
-    console.log(doc);
+    var projectRoleId = doc._id
+    console.log(projectRoleId);
+    Meteor.call('removeProjectRoleSchedule', projectRoleId);
 });

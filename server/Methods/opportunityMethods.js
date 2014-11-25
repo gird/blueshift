@@ -11,5 +11,8 @@ Meteor.methods({
             probability: probability,
             createdById: createdby
         });
+    },
+    deleteOpportunity: function (id) {
+        Opportunities.remove(id);
     }
 });
