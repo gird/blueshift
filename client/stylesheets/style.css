@@ -18,7 +18,7 @@
 .resources,
 .timelinechart,
 .panel-group {
-    background: #eee;
+    background: #fff;
     border-radius: 2px;
     padding: 10px;
     margin-bottom: 10px;
@@ -53,12 +53,11 @@
     border-radius: 2px;
 }
 .btn-group {
-    box-shadow: 0 4px 6px rgba(0, 50, 50, 0.15);
     border-radius: 2px;
 }
 
 .btn-group.open .dropdown-menu>li>a,.btn-group.open .dropdown-menu {
-    color:#000; 
+    color:#000;
     background-color:#fff;
 }
 
@@ -67,22 +66,28 @@
     background-color:#ddd;
 }
 
+.btn {
+    border: none !important
+}
+
 .btn.btn-default {
     background-color: #b57330;
-    border-color: #bcbcbc;
+    border-radius: 2px;
+    box-shadow: 0 2px 3px rgba(0, 50, 50, 0.15);
 }
 .btn.btn-default:hover {
     background-color: #b57330;
-    border-color: #616161;
+    outline: none;
+    box-shadow: 0 6px 8px rgba(0, 50, 50, 0.25);
 }
 a {
     text-decoration: none;
-    font-weight: bold;
+    font-weight: bold !important;
     color: #797cc8;
 }
 a:hover {
-    text-decoration: underline;
-    font-weight: bold;
+    text-decoration: underline !important;
+    font-weight: bold !important;
 }
 .hideA {
     text-decoration: none;

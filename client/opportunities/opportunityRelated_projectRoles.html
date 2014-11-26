@@ -64,10 +64,8 @@
 
 <!--Start of Project Role modal-->
 <template name="opportunityRelated_projectRolesButtons">
-    <div class="btn-group">
-        <button type="button" class="btn btn-default new-project-role" data-toggle="modal" data-target="#opportunityRelated_newProjectRoleModal"><span class="glyphicon glyphicon-plus"></span> Add</button>
-        <button type="button" class="btn btn-default new-project-role-quick"><span class="glyphicon glyphicon-flash"></span> Quick Add</button>
-    </div>
+    <a class="btn btn-default new-project-role" data-toggle="modal" data-target="#opportunityRelated_newProjectRoleModal">Add</a>
+    <a class="btn btn-default new-project-role-quick">Quick Add</a>
     {{> opportunityRelated_newProjectRoleModal}}
     <!--{{> editProjectRoleModal}}-->
 </template>

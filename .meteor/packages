@@ -8,7 +8,6 @@ insecure
 iron:router
 less
 mrt:moment@2.8.1
-simison:bootstrap3-less
 lepozepo:accounting
 joshowens:accounts-entry
 sergeyt:typeahead
@@ -18,4 +17,4 @@ jquery
 sacha:spin
 matb33:collection-hooks
 udondan:slick
-
+simison:bootstrap3-less
