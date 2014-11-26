@@ -7,7 +7,6 @@
     {{/contentFor}}
     <div class="col-md-6">
         {{> projectViewDetail}}
-        {{> projectViewButtons}}
     </div>
     {{> projectRelated_opportunityGraph}}
     <div class="col-md-12">
@@ -17,14 +16,13 @@
 </template>
 
 <template name="projectViewButtons">
-    <div class="btn-group" style="margin: 10px 10px 10px;">
-        <button type="button" class="btn btn-default edit_project"><span class="glyphicon glyphicon-pencil"></span></button>
-        <button type="button" class="btn btn-default delete_project"><span class="glyphicon glyphicon-trash"></span></button>
-    </div>
+    <button type="button" class="btn btn-default edit_project"><span class="glyphicon glyphicon-pencil"></span></button>
+    <button type="button" class="btn btn-default delete_project"><span class="glyphicon glyphicon-trash"></span></button>
 </template>
 
 <template name="projectViewDetail">
     <div class="project">
+        <div class="pull-right">{{> projectViewButtons}}</div>
         <p><strong>Start Date: </strong>{{startDate}}</p>
         <p><strong>End Date: </strong>{{endDate}}</p>
         <p><strong>Situation: </strong>{{situation}}</p>

@@ -65,10 +65,10 @@
 
 <!--Start of Project Role modal-->
 <template name="projectRolesButtons">
-    <div class="btn-group">
-        <button type="button" class="btn btn-default new-project-role" data-toggle="modal" data-target="#newProjectRoleModal"><span class="glyphicon glyphicon-plus"></span> Add Role</button>
-        <button type="button" class="btn btn-default new-project-role-quick" data-toggle="modal" data-target="#newProjectRoleQuickModal"><span class="glyphicon glyphicon-flash"></span> Quick Add</button>
-    </div>
+
+    <a class="btn btn-default new-project-role" data-toggle="modal" data-target="#newProjectRoleModal">Add Role</a>
+    <a class="btn btn-default new-project-role-quick" data-toggle="modal" data-target="#newProjectRoleQuickModal"><span class="glyphicon glyphicon-flash"></span></a>
+
     {{> newProjectRoleModal}}
     {{> newProjectRoleQuickModal}}
     <!--{{> editProjectRoleModal}}-->

@@ -72,3 +72,14 @@ Project_Roles.after.remove(function (userId, doc){
     console.log(projectRoleId);
     Meteor.call('removeProjectRoleSchedule', projectRoleId);
 });
+
+Project_Roles.after.update(function (userId, doc, fieldNames, modifier, options){
+    console.log('the following project role was updated');
+    var projectRoleId = doc._id
+    var startdate = doc.startDate;
+    var enddate = doc.endDate;
+    var ratebookrole = Rate_Book_Roles.findOne(doc.rate_book_role_id);
+    var allocation = doc.allocation;
+    Meteor.call('removeProjectRoleSchedule', projectRoleId);
+    Meteor.call('insertProjectRoleSchedules', startdate, enddate, ratebookrole, allocation, projectRoleId);
+});

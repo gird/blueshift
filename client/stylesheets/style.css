@@ -67,7 +67,8 @@
 }
 
 .btn {
-    border: none !important
+    border: none !important;
+    color:#fff !important;
 }
 
 .btn.btn-default {

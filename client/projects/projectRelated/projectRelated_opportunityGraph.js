@@ -38,7 +38,10 @@ function builtGraph(projectId) {
                     }
                 },
                 stackLabels: {
-                    enabled: true
+                    enabled: true,
+                    formatter: function () {
+                        return (Math.round(this.total / 1000)) + 'k';
+                    }
                 }
             },
             legend: {
@@ -109,7 +112,10 @@ function builtGraph(projectId) {
                     }
                 },
                 stackLabels: {
-                    enabled: true
+                    enabled: true,
+                    formatter: function () {
+                        return (Math.round(this.total / 1000)) + 'k';
+                    }
                 }
             },
             legend: {
