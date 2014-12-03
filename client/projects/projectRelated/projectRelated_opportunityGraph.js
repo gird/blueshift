@@ -1,6 +1,33 @@
-function builtGraph(projectId) {
-    var unweightedSeries = Revenue_Projections.find({project_id:projectId, stack: "Unweighted"}).fetch(); 
-    var weightedSeries = Revenue_Projections.find({project_id:projectId, stack: "Weighted"}).fetch(); 
+var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+
+function getMonthCategories(startDate, endDate) {
+    var arr = [];
+    var datFrom = new Date(startDate);
+    var datTo = new Date(endDate);
+    var fromYear =  datFrom.getFullYear();
+    var toYear =  datTo.getFullYear();
+    var diffYear = (12 * (toYear - fromYear)) + datTo.getMonth();
+
+    for (var i = datFrom.getMonth(); i <= diffYear; i++) {
+        if(i==0 || i==11){
+            arr.push(monthNames[i%12] + " " + Math.floor(fromYear+(i/12)));
+        } else {
+            arr.push(monthNames[i%12]);
+        }
+        
+    }        
+    return arr;
+}
+
+
+function buildProjectGraphs(project) {
+    var unweightedSeries = Revenue_Projections.find({project_id:project._id, stack: "Unweighted"}).fetch(); 
+    var weightedSeries = Revenue_Projections.find({project_id:project._id, stack: "Weighted"}).fetch(); 
+    var projectStartDate = new Date(project.startDate + 1);
+    var projectEndDate = new Date(project.endDate + 1);
+    var monthCategories = getMonthCategories(projectStartDate, projectEndDate);
+    
     $(document).ready(function () {
         $('#weighted_projected_revenue').highcharts({
             chart: {
@@ -13,20 +40,7 @@ function builtGraph(projectId) {
                 text: null
             },
             xAxis: {
-                categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
-            ]
+                categories: monthCategories
             },
             yAxis: {
                 min: 0,
@@ -87,20 +101,7 @@ function builtGraph(projectId) {
                 text: null
             },
             xAxis: {
-                categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
-            ]
+                categories: monthCategories
             },
             yAxis: {
                 min: 0,
@@ -155,9 +156,10 @@ function builtGraph(projectId) {
 
 Template.projectRelated_opportunityGraph.rendered = function () {
     var projectId = this.data._id;
+    var project = Projects.findOne(projectId);
     
     this.autorun(function (c) {
-        builtGraph(projectId);
+        buildProjectGraphs(project);
     });
     
     $('#carousel').slick({

@@ -1,9 +1,21 @@
 Meteor.methods({
     updateRevenueProjections: function (projectId) {
-        console.log('trying to update rev projections for project Id: ' + projectId); 
-        var opportunities = Opportunities.find(
-            {project_id: projectId}, {fields: { project_id: 1, name: 1, probability: 1 }}
-        );
+        console.log('trying to update rev projections for project Id: ' + projectId);
+        var opportunities = Opportunities.find({
+            project_id: projectId
+        }, {
+            fields: {
+                project_id: 1,
+                name: 1,
+                probability: 1
+            }
+        });
+
+        var project = Projects.findOne(projectId);
+        var startDate = project && project.startDate;
+        var endDate = project && project.endDate;
+        var monthsDuration = Math.abs(moment(startDate).diff(moment(endDate), 'months', true));
+        console.log(monthsDuration);
         /*var opportunitiesMap = [];
         opportunities.forEach(function (opportunity) {
             opportunitiesMap.push(opportunity._id);
@@ -20,12 +32,16 @@ Meteor.methods({
         var projectRoleSchedules = Project_Role_Schedule.find({project_role_id: {$in: projectRolesMap }});
         var ratebookrole = Rate_Book_Roles.find({_id: {$in: rateBookRoleMap }});
         */
-        
+
         var series = [];
         var weightedSeries = [];
         opportunities.forEach(function (opportunity) {
-            var revenueByMonths = [null, null, null, null, null, null, null, null, null, null, null, null];
-            var weightedRevenueByMonths = [null, null, null, null, null, null, null, null, null, null, null, null];
+            var revenueByMonths = [];
+            var weightedRevenueByMonths = [];
+            for (i = 0; i < monthsDuration; i++) {
+                revenueByMonths.push(null);
+                weightedRevenueByMonths.push(null);
+            }
             var projectRoles = Project_Roles.find({
                 opportunity_id: opportunity._id
             });
@@ -47,7 +63,9 @@ Meteor.methods({
                         projectRoleSchedules.forEach(function (prs) {
                             var eachday = prs.days;
                             eachday.forEach(function (prsday) {
-                                month = moment(prsday.date).month();
+                                //month = moment(prsday.date).month();
+                                month = Math.abs(moment(startDate).diff(moment(prsday.date), 'months', true));
+                                month = Math.floor(month);
                                 switch (month) {
                                 case 0:
                                     revenueByMonths[0] = Math.round(revenueByMonths[0] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
@@ -103,8 +121,12 @@ Meteor.methods({
                     }
                 });
             }
-            weightedRevProjections = Revenue_Projections.findOne({project_id: opportunity.project_id, stack: "Weighted", opportunity_id: opportunity._id});
-            if(weightedRevProjections) {
+            weightedRevProjections = Revenue_Projections.findOne({
+                project_id: opportunity.project_id,
+                stack: "Weighted",
+                opportunity_id: opportunity._id
+            });
+            if (weightedRevProjections) {
                 console.log('found a weighted rev projection. ID: ' + weightedRevProjections._id);
                 Revenue_Projections.update({
                     _id: weightedRevProjections._id
@@ -123,8 +145,12 @@ Meteor.methods({
                     stack: 'Weighted'
                 });
             }
-            revProjections = Revenue_Projections.findOne({project_id: opportunity.project_id, stack: "Unweighted", opportunity_id: opportunity._id});
-            if(revProjections) {
+            revProjections = Revenue_Projections.findOne({
+                project_id: opportunity.project_id,
+                stack: "Unweighted",
+                opportunity_id: opportunity._id
+            });
+            if (revProjections) {
                 console.log('found a rev projection. ID: ' + weightedRevProjections._id);
                 Revenue_Projections.update({
                     _id: revProjections._id

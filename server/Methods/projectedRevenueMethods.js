@@ -3,6 +3,12 @@ Meteor.methods({
         var opportunities = Opportunities.find(
             {project_id: projectId}, {fields: { project_id: 1, name: 1, probability: 1 }}
         );
+        
+        var project = Projects.findOne(projectId);
+        var startDate = project && project.startDate;
+        var endDate = project && project.endDate;
+        var monthsDuration = Math.abs(moment(startDate).diff(moment(endDate), 'months', true));
+        console.log(monthsDuration);
         /*var opportunitiesMap = [];
         opportunities.forEach(function (opportunity) {
             opportunitiesMap.push(opportunity._id);
@@ -44,7 +50,9 @@ Meteor.methods({
                         projectRoleSchedules.forEach(function (prs) {
                             var eachday = prs.days;
                             eachday.forEach(function (prsday) {
-                                month = moment(prsday.date).month();
+                                //month = moment(prsday.date).month();
+                                month = Math.abs(moment(startDate).diff(moment(prsday.date), 'months', true));
+                                month = Math.floor(month);
                                 switch (month) {
                                 case 0:
                                     revenueByMonths[0] = Math.round(revenueByMonths[0] + (ratebookrole.rate * projectRole.allocation / 100 * 8));
