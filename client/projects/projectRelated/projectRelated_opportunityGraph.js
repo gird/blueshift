@@ -8,9 +8,12 @@ function getMonthCategories(startDate, endDate) {
     var fromYear =  datFrom.getFullYear();
     var toYear =  datTo.getFullYear();
     var diffYear = (12 * (toYear - fromYear)) + datTo.getMonth();
+    var firstMonth = datFrom.getMonth();
 
     for (var i = datFrom.getMonth(); i <= diffYear; i++) {
-        if(i==0 || i==11){
+        var remainderJan = i % 0; 
+        var remainderDec = i % 12; 
+        if(i==firstMonth || remainderJan==0 || remainderDec==0){
             arr.push(monthNames[i%12] + " " + Math.floor(fromYear+(i/12)));
         } else {
             arr.push(monthNames[i%12]);
