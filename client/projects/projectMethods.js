@@ -1,4 +1,4 @@
-Meteor.methods({
+/*Meteor.methods({
     updateProjectDates: function (projectId, statedate, enddate) {
         return Projects.update({
                 _id: projectId
@@ -28,4 +28,4 @@ Meteor.methods({
             }
         );
     }
-});
+});*/
