@@ -1,4 +1,3 @@
-Projects = new Meteor.Collection('projects');
 Contacts = new Meteor.Collection('contacts');
 Resources = new Meteor.Collection('resources');
 Roles = new Meteor.Collection('roles');

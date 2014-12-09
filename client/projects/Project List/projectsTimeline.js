@@ -9,17 +9,10 @@ var projectTimelineOptions = {
             callback(item); // send back item as confirmation (allow change)
             var updatedstart = moment(new Date(item.start)).format('YYYY-MM-DD');
             var updatedend = moment(new Date(item.end)).format('YYYY-MM-DD');
+            var projectId = item.id;
             
-            Projects.update({
-                _id: item.id
-            }, {
-                $set: {
-                    startDate: updatedstart,
-                    endDate: updatedend
-                }
-            });
+            Meteor.call('updateProjectDates', projectId, updatedstart, updatedend);
         }
-
     };
 
 projectTimelineData = new vis.DataSet(projectTimelineOptions);
