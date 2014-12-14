@@ -12,7 +12,7 @@ Meteor.methods({
             createdById: createdby
         });
     },
-    updateProjectDates: function (projectId, statedate, enddate) {
+    updateProjectDates: function (projectId, startdate, enddate) {
         return Projects.update({
                 _id: projectId
             }, {
@@ -21,26 +21,5 @@ Meteor.methods({
                     endDate: enddate
                 }
             });
-    },
-    removeProjectRoles: function (projectId) {
-        console.log('deleteing schedule for ' + projectId);
-        Project_Roles.remove({"project_id": projectId});
-    },
-    updateProjectRolesStartDates: function (projectId, startdate) {
-        console.log('updating project roles');
-        var projectRoles = Project_Roles.find({project_id: projectId});
-        projectRoles.forEach( function(projectrole) {
-            
-        });
-        Project_Roles.update({
-                project_id: projectId
-            }, {
-                $set: {
-                    startDate: startdate
-                }
-            }, {
-                multi: true
-            }
-        );
     }
 });

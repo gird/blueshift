@@ -12,9 +12,6 @@ Meteor.methods({
     },
     insertProjectRoleSchedules: function (startdate, enddate, ratebookrole, allocation, projectroleid) {
         var totaldays = moment(enddate).diff(moment(startdate), 'days', true);
-        console.log(totaldays);
-        console.log(startdate);
-        console.log(enddate);
         var dayCount = 1;
         var allDays = [];
                 

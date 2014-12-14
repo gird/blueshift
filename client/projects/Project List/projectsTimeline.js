@@ -25,14 +25,15 @@ Template.projectsTimeline.rendered = function () {
     projects.forEach(function (project) {
 
         var projectName = project && project.name;
+        var projectId = project && project._id;
         var resourceNames = '';
         var resBegin = '';
         var resEnd = '';
-        var content = '<div> <a href="/projects/' + project._id + '">' + projectName + '</a></div>';
+        var content = '<div> <a href="/projects/' + projectId + '">' + projectName + '</a></div>';
         try {
             projectTimelineData.add([
                 {
-                    id: project._id,
+                    id: projectId,
                     content: content,
                     start: project.startDate,
                     end: project.endDate

@@ -65,6 +65,10 @@ Project_Roles = new Meteor.Collection('project_roles', {
     }
 });
 
+Project_Roles.before.remove(function(userId, doc){
+    
+});
+
 Project_Roles.after.remove(function (userId, doc){
     console.log('the following project role was deleted');
     console.log(doc);
@@ -72,6 +76,20 @@ Project_Roles.after.remove(function (userId, doc){
     console.log(projectRoleId);
     Meteor.call('removeProjectRoleSchedule', projectRoleId);
 });
+
+Project_Roles.before.insert(function(userId, doc){
+    
+});
+
+Project_Roles.after.insert(function(userId, doc){
+    
+});
+
+/*
+Project_Roles.before.udpate(function(userId, doc, fieldNames, modifier, options){
+    
+});
+*/
 
 Project_Roles.after.update(function (userId, doc, fieldNames, modifier, options){
     console.log('the following project role was updated');
