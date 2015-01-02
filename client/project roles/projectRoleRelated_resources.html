@@ -56,8 +56,45 @@
 
 <template name="relatedResourcesButtons">
     <div class="btn-group">
-        <button type="button" class="btn btn-default new-relatedResource" data-toggle="modal" data-target="#">Assign/Claim</button>
+        <button type="button" class="btn btn-default new-relatedResource" data-toggle="modal" data-target="#newProjectRoleResourceModal">Assign/Claim</button>
     </div>
-    <!--{{> newRelatedResourceModal}}
-    {{> editRelatedResourceModal}}-->
+    {{> newProjectRoleResourceModal}}
+    <!--{{> editRelatedResourceModal}}-->
+</template>
+
+<template name="newProjectRoleResourceModal">
+    <div class="modal fade" id="newProjectRoleResourceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Add Claim or Assignment</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Resource</label>
+                            <div class="col-md-10">
+                                <input class="form-control typeahead projectRoleResource_resourceName col-md-12" name="resource" type="text" placeholder="Look for a resource..." autocomplete="off" spellcheck="off" data-source="resourceLookup"/>
+                            </div>
+                        </div>
+                        <!--div class="form-group">
+                            <label class="col-md-2 control-label">Experience</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <input type="text" class="form-control projectRoleSkill_experience" placeholder="Enter desired amount of experience">
+                                    <span class="input-group-addon">Years</span>
+                                </div>
+                            </div>
+                        </div-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_new_projectRoleResource" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit_new_projectRoleResource" disabled="{{submitIsDisabled}}">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </template>

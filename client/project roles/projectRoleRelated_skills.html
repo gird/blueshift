@@ -49,9 +49,9 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
-            <li><a href="#" class="edit_projectroleskill"><span class="glyphicon glyphicon-pencil"></span> </a>
+            <li><a href="#" class="edit_projectRoleSkill" data-toggle="modal" data-target="#editProjectRoleSkillModal"><span class="glyphicon glyphicon-pencil"></span> </a>
             </li>
-            <li><a href="#" class="delete_projectroleskill"><span class="glyphicon glyphicon-trash"></span></a>
+            <li><a href="#" class="delete_projectRoleSkill"><span class="glyphicon glyphicon-trash"></span></a>
             </li>
         </ul>
     </div>
@@ -80,12 +80,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Skill</label>
                             <div class="col-md-10">
-                                <select class="form-control projectRoleSkill_skillid">
-                                    <option value="" selected disabled>Select a Skill...</option>
-                                    {{#each skills}}
-                                    <option value="{{this._id}}">{{this.name}}</option>
-                                    {{/each}}
-                                </select>
+                                <input class="form-control typeahead projectRoleSkill_skillName col-md-12" name="skill" type="text" placeholder="Skills" autocomplete="off" spellcheck="off" data-source="skillLookup"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -131,7 +126,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default cancel_edit_projectRoleSkill" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary submit_edit_projectRoleSkill" disabled="{{submitEditIsDisabled}}">Save changes</button>
+                        <button type="button" class="btn btn-primary submit_edit_projectRoleSkill">Save changes</button>
                     </div>
                 </form>
             </div>

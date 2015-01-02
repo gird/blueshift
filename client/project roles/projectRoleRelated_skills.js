@@ -1,6 +1,13 @@
+Template.newProjectRoleSkillModal.rendered = function() {
+    Meteor.typeahead.inject();
+}
+
 Template.newProjectRoleSkillModal.helpers({
     skills: function() {
         return Skills.find();
+    },
+    skillLookup: function() {
+        return Skills.find().fetch().map(function(it){ return it.name; });
     }
 });
 
@@ -21,9 +28,23 @@ Template.projectRoleSkillsListRowOptions.events({
     }
 });
 
+Template.projectRoleSkillsListRowOptions.events({
+    'click a.delete_projectRoleSkill': function(e) {
+        e.preventDefault();
+        Resource_Skills.remove(this._id);
+    },
+    'click a.edit_projectRoleSkill': function() {
+        Session.set('editing_projectRoleSkill_id', this._id);
+        console.log('editing this: ' + this._id);
+        $('.edit_projectRoleSkill_experience').val(Project_Role_Skills.findOne(this._id).experience);
+    }
+});
+
 Template.newProjectRoleSkillModal.events({
     'click .submit_new_projectRoleSkill': function() {
-        var skillId = $('.projectRoleSkill_skillid').val();
+        var skillName = $('.projectRoleSkill_skillName').val();
+        var skill = Skills.findOne({name: skillName});
+        var skillId = skill && skill._id;
         var experience = $('.projectRoleSkill_experience').val();
         Project_Role_Skills.insert({
             project_role_id: this._id,
@@ -31,33 +52,35 @@ Template.newProjectRoleSkillModal.events({
             experience: experience
         });
         $('#newProjectRoleSkillModal').modal('hide');
-        $('.projectRoleSkill_skillid').val(null);
+        $('.projectRoleSkill_skillName').val(null);
         Session.set('adding_projectroleskill_skillid', null);
         $('.projectRoleSkill_experience').val(null);
         Session.set('adding_projectroleskill_experience', null);
-    }/*,
-    'click select.ratebookrole_roleid': function() {
-        if($('.ratebookrole_roleid').val() != ''){
-            Session.set('adding_ratebookrole_roleid', $('.ratebookrole_roleid').val());
-        }
     },
-    'keyup input.ratebookrole_rate': function (evt) {
-        if (evt.which) {
-            var rate = $('.ratebookrole_rate').val();
-            console.log(rate);
-            console.log(rate == 0);
-            if(rate > 0) {
-                Session.set('adding_ratebookrole_rate', $('.adding_ratebookrole_rate').val());
-            } 
-            if (rate <= 0){
-                Session.set('adding_ratebookrole_rate', null);
-            }
-        }
+    'click .cancel_new_projectRoleSkill': function() {
+        $('.projectRoleSkill_skillName').val(null);
+        Session.set('adding_projectRoleSkill_skillname', null);
+        $('.projectRoleSkill_experience').val(null);
+        Session.set('adding_projectRoleSkill_experience', null);
+    }
+});
+
+Template.editProjectRoleSkillModal.events({
+    'click .submit_edit_projectRoleSkill': function() {
+        var experience = $('.edit_projectRoleSkill_experience').val();
+        var projectRoleSkillId = Session.get('editing_projectRoleSkill_id');
+        Project_Role_Skills.update(
+            projectRoleSkillId, {$set: {experience: experience}}
+        );
+        $('#editProjectRoleSkillModal').modal('hide');
+        $('.edit_projectRoleSkill_experience').val(null);
+        Session.set('editing_projectRoleSkill_experience', null);
+        Session.set('editing_projectRoleSkill_id', null);
+        
     },
-    'click .cancel_new_ratebookrole': function() {
-        $('.ratebookrole_roleid').val(null);
-        Session.set('adding_ratebookrole_roleid', null);
-        $('.ratebookrole_rate').val(null);
-        Session.set('adding_ratebookrole_rate', null);
-    }*/
+    'click .cancel_edit_ProjectRoleSkill': function() {
+        $('.edit_projectRoleSkill_experience').val(null);
+        Session.set('editing_projectRoleSkill_experience', null);
+        Session.set('editing_projectRoleSkill_id', null);
+    }
 });

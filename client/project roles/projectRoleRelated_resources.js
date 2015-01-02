@@ -1,3 +1,7 @@
+Template.newProjectRoleResourceModal.rendered = function() {
+    Meteor.typeahead.inject();
+}
+
 Template.projectRoleRelated_resources.helpers({
     resources: function () {
         var resourceList = this.resources;
@@ -12,5 +16,17 @@ Template.projectRoleRelated_resources.helpers({
             return; 
         }
                 
+    }
+});
+
+Template.newProjectRoleResourceModal.helpers({
+    resources: function() {
+        return Resources.find();
+    },
+    resourceLookup: function() {
+        return Resources.find().fetch().map(function(it){ 
+            var fullname = it.firstname + ' ' + it.lastname;
+            return fullname; 
+        });
     }
 });

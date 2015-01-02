@@ -44,11 +44,11 @@ Projects.after.update(function (userId, doc, fieldNames, modifier, options){
                     //These Project Roles are now OOB(Out of bounds) and a decision needs to be made about what the system should do. 
                     //When adjusting Project Dates with such ease, the user may accidently make a change that triggers this, therefore, any delete action would not be recommended
                 } else {
-                    projectrole.startDate = projectrole.startDate + projectStartChange;
+                    projectrole.startDate = moment(projectrole.startDate).add(projectStartChange, 'days').format('YYYY-MM-DD');
                     if (projectrole.endDate + projectStartChange >= newProject.endDate) {
                         projectrole.endDate = newProject.endDate;
                     } else {
-                        projectrole.endDate = projectrole.endDate + projectStartChange;
+                        projectrole.endDate = moment(projectrole.endDate).add(projectStartChange, 'days').format('YYYY-MM-DD');
                     }
                 }
                 Project_Roles.update({

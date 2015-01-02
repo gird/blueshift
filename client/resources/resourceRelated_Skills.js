@@ -23,12 +23,11 @@ Template.resourceSkillsListRow.helpers({
 Template.newResourceSkillModal.helpers({
     skills: function() {
         return Skills.find();
+    },
+    skillLookup: function() {
+        return Skills.find().fetch().map(function(it){ return it.name; });
     }
 });
-
-Template.newResourceSkillModal.skillLookup = function(){
-    return Skills.find().fetch().map(function(it){ return it.name; });
-};
 
 Template.resourceSkillsListRowOptions.events({
     'click a.delete_resourceskill': function(e) {
