@@ -3,9 +3,6 @@ Template.newProjectRoleSkillModal.rendered = function() {
 }
 
 Template.newProjectRoleSkillModal.helpers({
-    skills: function() {
-        return Skills.find();
-    },
     skillLookup: function() {
         return Skills.find().fetch().map(function(it){ return it.name; });
     }
