@@ -21,10 +21,33 @@
     <div class="company">
         <div class="pull-right">{{>companyViewButtons}}</div>
         {{#if parent_id}}
-            <p><strong>Parent: </strong><a href="{{pathFor 'companyParent'}}">{{parent}}</a>
-            </p>
+            <div><strong>Parent: </strong>
+            {{#if editingParent}}
+                <div class="edit_parentCompany_form input-group col-sm-6">
+                    <input type="text" class="edit_parent_name form-control input-sm" value="{{parent}}"/>
+                    <span class="input-group-btn">
+                        <button type="submit" class="submit_edit_parent btn btn-sm btn-default">Save</button>
+                        <button type="cancel" class="cancel_edit_parent btn btn-sm btn-default">Cancel</button>
+                    </span>
+                </div>
+            {{else}}
+                <p class="parentName">{{parent}}<a href="{{pathFor 'companyParent'}}">...</a></p>
+            {{/if}}
+            </div>
         {{/if}}
-        <p><strong>Industry: </strong>{{industry}}</p>
+        <p><strong>Industry: </strong>
+        {{#if editingIndustry}}
+            <div class="edit_industry_form input-group col-sm-10">
+                <input type="text" class="edit_industry form-control input-sm" value="{{industry}}"/>
+                <span class="input-group-btn">
+                    <button type="submit" class="submit_edit_industry btn btn-sm btn-default">Save</button>
+                    <button type="cancel" class="cancel_edit_industry btn btn-sm btn-default">Cancel</button>
+                </span>
+            </div>
+        {{else}}
+            <div class="industryName" style="display:inline">{{industry}}</div>
+        {{/if}}
+        </p>
         <p><strong>Type: </strong>{{type}}</p>
         <p><strong>Phone: </strong>{{phone}}</p>
         <p><strong>Billing Street: </strong>{{billingstreet}}</p>
@@ -35,7 +58,14 @@
         <p><strong>Shipping City: </strong>{{shippingcity}}</p>
         <p><strong>Shipping State: </strong>{{shippingstate}}</p>
         <p><strong>Shipping Zip: </strong>{{shippingzip}}</p>
+        {{#each attributes}}
+            <p><strong>{{displayValue}}: </strong>{{> companyAttribute}}</p>
+        {{/each}}
     </div>
+</template>
+
+<template name="companyAttribute">
+    {{../industry}}
 </template>
 
 <template name="companyRelatedLists">

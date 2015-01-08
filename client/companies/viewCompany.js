@@ -3,12 +3,69 @@ Template.companyView.subscriptionReady = function () {
 };
 
 Template.companyViewDetails.helpers({
-    'parent': function () {
+    attributes: function() {
+        
+        var columnNames = [{keyValue: "parent", displayValue: "Parent"}, {keyValue: "type", displayValue: "Type"}];
+        return columnNames;
+        /*{{#if parent_id}}
+            <p><strong>Parent: </strong><a href="{{pathFor 'companyParent'}}">{{parent}}</a>
+            </p>
+        {{/if}}
+        <p><strong>Industry: </strong>{{industry}}</p>
+        <p><strong>Type: </strong>{{type}}</p>
+        <p><strong>Phone: </strong>{{phone}}</p>
+        <p><strong>Billing Street: </strong>{{billingstreet}}</p>
+        <p><strong>Billing City: </strong>{{billingcity}}</p>
+        <p><strong>Billing State: </strong>{{billingstate}}</p>
+        <p><strong>Billing Zip: </strong>{{billingzip}}</p>
+        <p><strong>Shipping Street: </strong>{{shippingstreet}}</p>
+        <p><strong>Shipping City: </strong>{{shippingcity}}</p>
+        <p><strong>Shipping State: </strong>{{shippingstate}}</p>
+        <p><strong>Shipping Zip: </strong>{{shippingzip}}</p>*/
+    },
+    parent: function () {
         var parent = Companies.findOne(this.parent_id).name;
         return parent;
+    },
+    editingParent: function () {
+        return Session.equals('editing_parent', this._id);
+    },
+    editingIndustry: function () {
+        return Session.equals('editing_industry', this._id);
     }
 });
-
+Template.companyViewDetails.events({
+    'dblclick .parentName': function () {
+            Session.set('editing_parent', this._id);
+            Meteor.flush(); // update DOM before focus
+            //focus_field_by_class('edit_role_name');
+            var input = $('.edit_parent_name');
+            input.focus();
+            input.select();
+    },
+    'click .submit_edit_parent': function () {
+        //var roleName = $('.edit_role_name');
+        Session.set('editing_parent', null);
+    },
+    'click .cancel_edit_parent': function () {
+        Session.set('editing_parent', null);
+    },
+    'dblclick .industryName': function () {
+            Session.set('editing_industry', this._id);
+            Meteor.flush(); // update DOM before focus
+            //focus_field_by_class('edit_role_name');
+            var input = $('.edit_industry');
+            input.focus();
+            input.select();
+    },
+    'click .submit_edit_industry': function () {
+        //var roleName = $('.edit_role_name');
+        Session.set('editing_industry', null);
+    },
+    'click .cancel_edit_industry': function () {
+        Session.set('editing_industry', null);
+    }
+});
 Template.companyViewButtons.events({
     'click .edit_company': function () {
         

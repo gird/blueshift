@@ -15,7 +15,8 @@ var org = nforce.createConnection({
     environment: 'sandbox' // optional, salesforce 'sandbox' or 'production', production default
     //mode: 'multi' // optional, 'single' or 'multi' user mode, multi default
 });
-var oauth;
+
+var globalauth;
 org.authenticate({
     username: username,
     password: password
@@ -27,38 +28,41 @@ org.authenticate({
         return;
     } else {
         console.log(oauth);
-        org.query({
-            query: 'SELECT Id, Name FROM Account',
-            oauth: oauth
-        }, function (err, resp) {
+        globalauth = oauth;
+        /*
+        org.query({query: 'SELECT Id, Name FROM Account', oauth: oauth}, function (err, resp) {
             if (err) throw err;
             if (resp.records && resp.records.length) {
                 resp.records.forEach(function (rec) {
                     console.log('Name: ' + rec.get('Name'));
                 });
-
             }
         });
+        */
     }
 });
-/*
-var jsforce = Meteor.npmRequire('jsforce'); 
 
-var conn = new jsforce.Connection({
-    // you can change loginUrl to connect to sandbox or prerelease env.
-    loginUrl: 'https://test.salesforce.com',
-    proxyUrl: 'http://localhost:3000'
-});
-conn.login("detcmaygkenawell@foliage.com.chatter", "December250BLlZsg69Iwp39BnqwKtW99OF", function (err, userInfo) {
-    if (err) {
-        return console.error(err);
+Meteor.methods({
+    add_company_to_sfdc: function (name, phone, website, status, type, industry) {
+        var company = nforce.createSObject('Account', {
+            Name: name,
+            Phone: phone,
+            Website: website,
+            Company_Status__c: status,
+            Type: type,
+            Industry: industry
+        });
+        org.insert({
+            sobject: company,
+            oauth: globalauth
+        }, function (err, resp) {
+            if (err) {
+                console.error('--> unable to insert company');
+                console.error('--> ' + JSON.stringify(err));
+            } else {
+                console.log('--> company inserted');
+            }
+        });
+
     }
-    // Now you can get the access token and instance URL information.
-    // Save them to establish connection next time.
-    console.log(conn.accessToken);
-    console.log(conn.instanceUrl);
-    // logged in user property
-    console.log("User ID: " + userInfo.id);
-    console.log("Org ID: " + userInfo.organizationId);
-    // ...
-});*/
+});

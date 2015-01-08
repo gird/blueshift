@@ -1,62 +1,42 @@
 Template.newCompanyDetails.events({
     'click .company-submit': function () {
-        var companyName = $('#company-name');
-        var companyType = $('#company-type');
-        var companyPhone = $('#company-phone');
-        var billingstreet = $('#company-billingstreet');
-        var billingcity = $('#company-billingcity');
-        var billingstate = $('#company-billingstate');
-        var billingzip = $('#company-billingzip');
-        var shippingstreet = $('#company-shippingstreet');
-        var shippingcity = $('#company-shippingcity');
-        var shippingstate = $('#company-shippingstate');
-        var shippingzip = $('#company-shippingzip');
-        var companyIndustry = $('#company-industry');
+        var companyName = $('#company-name').val();
+        var companyType = $('#company-type').val();
+        var companyPhone = $('#company-phone').val();
+        var billingstreet = $('#company-billingstreet').val();
+        var billingcity = $('#company-billingcity').val();
+        var billingstate = $('#company-billingstate').val();
+        var billingzip = $('#company-billingzip').val();
+        var shippingstreet = $('#company-shippingstreet').val();
+        var shippingcity = $('#company-shippingcity').val();
+        var shippingstate = $('#company-shippingstate').val();
+        var shippingzip = $('#company-shippingzip').val();
+        var companyIndustry = $('#company-industry').val();
+        var owner = Meteor.user()._id;
 
         Companies.insert({
-            name: companyName.val(),
-            owner_id: Meteor.user()._id,
-            industry: companyIndustry.val(),
-            billingstreet: billingstreet.val(),
-            billingcity: billingcity.val(),
-            billingstate: billingstate.val(),
-            billingzip: billingzip.val(),
-            shippingstreet: shippingstreet.val(),
-            shippingcity: shippingcity.val(),
-            shippingstate: shippingstate.val(),
-            shippingzip: shippingzip.val(),
-            phone: companyPhone.val(),
-            type: companyType.val()
+            name: companyName,
+            owner_id: owner,
+            industry: companyIndustry,
+            billingstreet: billingstreet,
+            billingcity: billingcity,
+            billingstate: billingstate,
+            billingzip: billingzip,
+            shippingstreet: shippingstreet,
+            shippingcity: shippingcity,
+            shippingstate: shippingstate,
+            shippingzip: shippingzip,
+            phone: companyPhone,
+            type: companyType
         });
         
         console.log('blah');
         
-        /*var consumerKey = '3MVG9Gmy2zmPB01rXNIONIoUJo9mHTW1hKMF6AP8LOUrsFYUc5z9sNLjPeWhGGl2xBcpYqMSkVUlK3GIboY4W';
-        var consumerSecret = '1737151145906060705';
-        var callBackUrl = 'http://localhost:3000';
-        //Meteor.call("doSalesforce"); 
-        var conn = new jsforce.Connection({
-            oauth2: {
-                // you can change loginUrl to connect to sandbox or prerelease env.
-                loginUrl : 'https://test.salesforce.com',
-                clientId: consumerKey,
-                clientSecret: consumerSecret,
-                redirectUri: callBackUrl
-            }
-        });
-        conn.login('detcmaygkenawell@foliage.com.chatter', 'December256mH8M7yrz3OdRetCxioLhkwD', function (err, userInfo) {
-            if (err) {
-                return console.error(err);
-            }
-            // Now you can get the access token and instance URL information.
-            // Save them to establish connection next time.
-            console.log(conn.accessToken);
-            console.log(conn.instanceUrl);
-            // logged in user property
-            console.log("User ID: " + userInfo.id);
-            console.log("Org ID: " + userInfo.organizationId);
-            // ...
-        });
+        Meteor.call('add_company_to_sfdc', companyName, companyPhone, 'website.com', 'Active', companyType, companyIndustry);
+        
+        /*
+        ConsumerKey: 3MVG9Gmy2zmPB01rXNIONIoUJo9mHTW1hKMF6AP8LOUrsFYUc5z9sNLjPeWhGGl2xBcpYqMSkVUlK3GIboY4W
+        ConsumerSecret: 1737151145906060705
         User Name: detcmaygkenawell@foliage.com.chatter
 Security Token: 0BLlZsg69Iwp39BnqwKtW99OF
         */
