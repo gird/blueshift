@@ -23,6 +23,12 @@ Template.opportunityViewDetail.helpers({
         var project = Projects.findOne(this.project_id).name;
         return project;
     },
+    owner: function() {
+        var companyOwner = Meteor.users.findOne({_id: this.owner_id});
+        return companyOwner;
+        //var ownerProfile = companyOwner && companyOwner().profile;
+        //return ownerProfile.firstname;
+    },
     'estimated_amount': function() {
         return accounting.formatMoney(this.estimated_amount);
     },

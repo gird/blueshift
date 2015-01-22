@@ -3,6 +3,25 @@
     <li><strong style="text-decoration: underline;">Home</strong>
     </li>
     {{/contentFor}}
-
+    
+    {{> welcome}}
+    
+    <br/>
     <div id="revenue" class="loading">{{revenue}}</div>
+</template>
+
+<template name="welcome">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="welcome">
+            <p><strong>Hi {{currentUser.profile.firstname}} {{currentUser.profile.lastname}}, welcome to Blueshift! </strong></p>
+            <!--p><strong>Project: </strong><a href="{{pathFor 'parentProject'}}">{{project}}</a></p>
+        <p><strong>Represented Amount: </strong>{{represented_amount}}</p>
+        <p><strong>Unrepresented Amount: </strong>{{unrepresented_amount}}</p-->
+        </div>
+    </div>
+    <!--div class="col-md-5">
+        <div class="cumulative_projected_revenue">
+            <div id="cumulative_projected_revenue" style="height: 240px; margin: 0 auto"></div>
+        </div>
+    </div-->
 </template>

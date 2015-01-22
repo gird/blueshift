@@ -17,7 +17,7 @@
 <template name="opportunityViewDetail">
     <div class="opportunity">
         <div class="pull-right">{{> opportunityViewButtons}}</div>
-        <p><strong>Owner Id: </strong>{{owner_id}}</p>
+        <p><strong>Owner: </strong>{{owner.profile.firstname}} {{owner.profile.lastname}}</p>
         <p><strong>Project: </strong><a href="{{pathFor 'parentProject'}}">{{project}}</a></p>
         <p><strong>Company: </strong><a href="{{pathFor 'parentCompany'}}">{{company}}</a></p>
         <p><strong>Expected Close Date: </strong>{{closeDate}}</p>

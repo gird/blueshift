@@ -58,6 +58,8 @@ var projectrole = {
     }
 };
 
+/*------Triggers-------------*/
+
 Project_Roles = new Meteor.Collection('project_roles', {
     transform: function (doc) {
         var newInstance = Object.create(projectrole);

@@ -36,12 +36,12 @@ Template.companyViewDetails.helpers({
 });
 Template.companyViewDetails.events({
     'dblclick .parentName': function () {
-            Session.set('editing_parent', this._id);
-            Meteor.flush(); // update DOM before focus
-            //focus_field_by_class('edit_role_name');
-            var input = $('.edit_parent_name');
-            input.focus();
-            input.select();
+        Session.set('editing_parent', this._id);
+        Meteor.flush(); // update DOM before focus
+        //focus_field_by_class('edit_role_name');
+        var input = $('.edit_parent_name');
+        input.focus();
+        input.select();
     },
     'click .submit_edit_parent': function () {
         //var roleName = $('.edit_role_name');
@@ -51,12 +51,13 @@ Template.companyViewDetails.events({
         Session.set('editing_parent', null);
     },
     'dblclick .industryName': function () {
-            Session.set('editing_industry', this._id);
-            Meteor.flush(); // update DOM before focus
-            //focus_field_by_class('edit_role_name');
-            var input = $('.edit_industry');
-            input.focus();
-            input.select();
+        Session.set('editing_industry', this._id);
+        Meteor.flush(); // update DOM before focus
+        console.log('dbl clicked industryname');
+        //focus_field_by_class('edit_role_name');
+        var input = $('.edit_industry');
+        input.focus();
+        input.select();
     },
     'click .submit_edit_industry': function () {
         //var roleName = $('.edit_role_name');

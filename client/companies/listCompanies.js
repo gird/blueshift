@@ -4,6 +4,14 @@ Template.companies.helpers({
   }
 });
 
+Template.companyListRow.helpers({
+    owner: function() {
+        var companyOwner = Meteor.users.findOne({_id: this.owner_id});
+        return companyOwner;
+        //var ownerProfile = companyOwner && companyOwner().profile;
+        //return ownerProfile.firstname;
+    }
+});
 /*
 
 

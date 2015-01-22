@@ -14,6 +14,12 @@ Template.home.helpers({
   }
 });
 
+Template.welcome.helpers({
+  currentUser: function() {
+    return Meteor.user();
+  }
+});
+
 Template.home.rendered = function () {
     //$("#revenue").fadeOut(1000);
     //$("#revenue").fadeIn(1000);

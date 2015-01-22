@@ -30,15 +30,8 @@ Template.newCompanyDetails.events({
             type: companyType
         });
         
-        console.log('blah');
+        //Salesforce call to add company to salesforce.
+        //Meteor.call('add_company_to_sfdc', companyName, companyPhone, 'website.com', 'Active', companyType, companyIndustry);
         
-        Meteor.call('add_company_to_sfdc', companyName, companyPhone, 'website.com', 'Active', companyType, companyIndustry);
-        
-        /*
-        ConsumerKey: 3MVG9Gmy2zmPB01rXNIONIoUJo9mHTW1hKMF6AP8LOUrsFYUc5z9sNLjPeWhGGl2xBcpYqMSkVUlK3GIboY4W
-        ConsumerSecret: 1737151145906060705
-        User Name: detcmaygkenawell@foliage.com.chatter
-Security Token: 0BLlZsg69Iwp39BnqwKtW99OF
-        */
     }
 });
