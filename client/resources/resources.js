@@ -26,9 +26,11 @@ var focus_field_by_class = function (className) {
   }
 };
 
-Template.resourceListRow.editing = function () {
-  return Session.equals('editing_resourcename', this._id);
-};
+Template.resourceListRow.helpers({
+    editing: function () {
+        return Session.equals('editing_resourcename', this._id);
+    }
+});
 
 Template.resourceListItem.events({
     'click a.delete_resource': function (e) {

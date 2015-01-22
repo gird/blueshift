@@ -1,3 +1,29 @@
-<template name="profile">
-<p>Hi this is a profile.</p>
+<template name="profileView">
+    {{#contentFor "breadcrumbs"}}
+        <li>My Profile</li>
+    {{/contentFor}}
+    <div class="col-md-6">
+        {{> profileViewDetail}}
+    </div>
+    <div class="col-md-6">
+        {{> profileRelatedLists}}
+    </div>
+</template>
+
+<template name="profileViewDetail">
+    <div class="profile">
+        <p><strong>First Name: </strong>{{this.profile.firstname}} </p>
+        <p><strong>Last Name: </strong>{{this.profile.lastname}}</p>
+        {{#each this.emails}}
+        <p><strong>Email: </strong>{{address}}</p>
+        {{/each}} 
+    </div>
+</template>
+
+
+<template name="profileRelatedLists">
+    <div class="panel-group" id="accordion">
+        {{> resourceRelated_skills}}
+        {{> resourceRelated_projectRoles}}
+    </div>
 </template>

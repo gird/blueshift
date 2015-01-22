@@ -1,32 +1,57 @@
 <template name="navigation">
-  <nav class="navbar navbar-inverse navbar-static-top" id="parentNav">
-    <div class="container-fluid">
-      <div class="navbar-header" >
-        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle" data-parent="#parentNav">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="{{pathFor 'home'}}">Blueshift</a>  
-      </div>
-        
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="nav navbar-nav navbar-left">
-          <li><a href="{{pathFor 'dashboard'}}">Dashboard</a></li>
-          <li><a href="{{pathFor 'opportunities'}}">Opportunities</a></li>
-          <li><a href="{{pathFor 'projects'}}">Projects</a></li>
-          <li><a href="{{pathFor 'companies'}}">Companies</a></li>
-          <li><a href="{{pathFor 'roles'}}">Roles</a></li>
-          <li><a href="{{pathFor 'rateBooks'}}">Rate Books</a></li>
-          <li><a href="{{pathFor 'skills'}}">Skills</a></li>
-          <li><a href="{{pathFor 'resources'}}">Resources</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            {{> accountButtons}}
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <nav class="navbar navbar-inverse navbar-static-top" id="parentNav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle" data-parent="#parentNav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{pathFor 'home'}}">Blueshift</a> 
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="{{pathFor 'dashboard'}}">Dashboard</a>
+                    </li>
+                    <li><a href="{{pathFor 'opportunities'}}">Opportunities</a>
+                    </li>
+                    <li><a href="{{pathFor 'projects'}}">Projects</a>
+                    </li>
+                    <li><a href="{{pathFor 'companies'}}">Companies</a>
+                    </li>
+                    <li><a href="{{pathFor 'roles'}}">Roles</a>
+                    </li>
+                    <li><a href="{{pathFor 'rateBooks'}}">Rate Books</a>
+                    </li>
+                    <li><a href="{{pathFor 'skills'}}">Skills</a>
+                    </li>
+                    <li><a href="{{pathFor 'resources'}}">Resources</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {{#if currentUser}} {{> loggedInButtons}} {{else}} {{> notLoggedInButtons}} {{/if}}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {{> accountButtons}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</template>
+
+<template name="loggedInButtons">
+    <li><a href="{{pathFor 'profile'}}" style="color: #CCC ;">{{user.profile.firstname}} {{user.profile.lastname}}</a>
+    </li>
+    <li><a href="">Sign Out</a>
+    </li>
+</template>
+
+<template name="notLoggedInButtons">
+    <li><a href="">Sign In</a>
+    </li>
+    <li><a href="">Register</a>
+    </li>
 </template>

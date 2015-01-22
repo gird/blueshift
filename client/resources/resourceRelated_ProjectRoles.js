@@ -1,18 +1,16 @@
-Template.resourceRelated_projectRoles.subscriptionReady=function(){
-    //return projectsSubscriptionHandle.ready();
-    if (projectRoleResourcesSubscriptionHandle.ready())
-    {
-        return true;
-    } else {
-        return false;
-    }
-};
-
 Template.resourceRelated_projectRoles.helpers({
-    resourceProjectRoles: function() {
+    resourceProjectRoles: function () {
         return Project_Role_Resources.find({
-            resource_id:this._id
-        });        
+            resource_id: this._id
+        });
+    },
+    subscriptionReady: function () {
+        //return projectsSubscriptionHandle.ready();
+        if (projectRoleResourcesSubscriptionHandle.ready()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 });
 
@@ -49,7 +47,7 @@ Template.resourceProjectRolesListRow.helpers({
         var ratebookrole = ratebookroleId && Rate_Book_Roles.findOne({
             _id: ratebookroleId
         });
-        
+
         var roleId = ratebookrole && ratebookrole.role_id;
         var role = roleId && Roles.findOne({
             _id: roleId
