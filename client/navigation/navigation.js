@@ -7,3 +7,12 @@ Template.navigation.rendered = function () {
         });
     });
 }
+
+Template.loggedInButtons.events({
+    'click .logout':function() {
+        Meteor.logout();
+        console.log("logged out");
+
+    }
+    
+});

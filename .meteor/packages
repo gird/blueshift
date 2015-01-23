@@ -9,7 +9,6 @@ iron:router
 less
 mrt:moment@2.8.1
 lepozepo:accounting
-joshowens:accounts-entry
 sergeyt:typeahead
 meteorhacks:kadira
 mizzao:autocomplete
@@ -22,3 +21,5 @@ meteorhacks:npm
 
 
 npm-container
+accounts-base
+accounts-password
