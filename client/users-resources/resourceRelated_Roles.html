@@ -1,0 +1,134 @@
+<template name="userRelated_roles">
+    <div class="panel panel-default">
+            <h3 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#roles">
+              Roles
+              </a>
+            </h3>
+            <div id="roles" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    {{#if userRoles}}
+                    <div class="userRoles">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Experience</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each userRoles}} {{> userRolesListRow}} {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    {{else}}
+                    <p><strong> There are no roles for this user.</strong>
+                    </p>
+                    {{/if}}
+                    {{> userRolesListButtons}}
+                </div>
+            </div>
+        </div>
+</template>
+
+
+<template name="userRolesListRow">
+    <tr>
+        <td> {{role}} </td>
+        <td> {{this.experience}} </td>
+        <td>{{> userRolesListRowOptions}}</td>
+    </tr>
+</template>
+
+<template name="userRolesListRowOptions">
+    <div class="btn-group">
+        <button class="btn btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="edit_userrole" data-toggle="modal" data-target="#editResourceRoleModal"><span class="glyphicon glyphicon-pencil"></span></a>
+            </li>
+            <li><a href="#" class="delete_userrole"><span class="glyphicon glyphicon-trash"></span></a>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<template name="userRolesListButtons">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default new_user_role" data-toggle="modal" data-target="#newResourceRoleModal"><span class="glyphicon glyphicon-plus"></span> New</button>
+    </div>     
+    
+    {{> newResourceRoleModal}}
+    {{> editResourceRoleModal}}
+</template>
+
+
+<template name="newResourceRoleModal">
+    <div class="modal fade" id="newResourceRoleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Add Role to {{firstname}} {{lastname}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Role</label>
+                            <div class="col-md-10">
+                                <input class="form-control typeahead userRole_roleName col-md-12" name="role" type="text" placeholder="Roles" autocomplete="off" spellcheck="off" data-source="roleLookup"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Experience</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <input type="text" class="form-control userRole_experience" placeholder="Enter amount of experience">
+                                    <span class="input-group-addon">Years</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_new_userRole" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit_new_userRole" disabled="{{submitIsDisabled}}">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="editResourceRoleModal">
+    <div class="modal fade" id="editResourceRoleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Edit Role</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Experience</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <input type="text" class="form-control edit_userRole_experience">
+                                    <span class="input-group-addon">Years</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_edit_userRole" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit_edit_userRole" disabled="{{submitEditIsDisabled}}">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>

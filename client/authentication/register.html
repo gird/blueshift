@@ -4,21 +4,23 @@
             <div class="entry col-md-4 col-md-offset-4">
                 <form id="register-form" action="action">
                     <div class="form-group">
-                        <input type="email" id="account-email" class="form-control" placeholder="email">
+                        <input type="email" id="account-email" class="form-control" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <input type="password" id="account-password" class="form-control" placeholder="password">
+                        <input type="password" id="account-password" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <input type="text" id="profile-firstname" class="form-control" placeholder="first name">
+                        <input type="text" id="profile-firstname" class="form-control" placeholder="First Name">
                     </div>
                     <div class="form-group">
-                        <input type="text" id="profile-lastname" class="form-control" placeholder="last name">
+                        <input type="text" id="profile-lastname" class="form-control" placeholder="Last Name">
                     </div>
                     <div class="form-group">
                         <button type="submit" id="create-account" class="submit btn btn-block btn-default">Create an Account</button>
                     </div>
                 </form>
+                <hr>
+                <a href="{{pathFor 'login'}}" class="btn btn-info center-block">Already have an account?</a>
             </div>
         </div>
     </div>

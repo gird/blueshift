@@ -12,6 +12,7 @@ rolesSubscriptionHandle = Meteor.subscribe("roles");
 Meteor.subscribe("skills");
 Meteor.subscribe("resources");
 Meteor.subscribe("resource_skills");
+Meteor.subscribe("resource_roles");
 resourceProjectRolesSubscriptionHandle = Meteor.subscribe("resource_project_roles");
 Meteor.subscribe("users");
 Meteor.subscribe("fields");

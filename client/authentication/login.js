@@ -14,7 +14,7 @@ Template.login.events({
         if (err) {
             
         } else {
-          // The user has been logged in.
+            Router.go('home');
         }
       });
          return false; 

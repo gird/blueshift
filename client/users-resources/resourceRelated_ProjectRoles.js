@@ -1,5 +1,5 @@
-Template.resourceRelated_projectRoles.helpers({
-    resourceProjectRoles: function () {
+Template.userRelated_projectRoles.helpers({
+    userProjectRoles: function () {
         return Project_Role_Resources.find({
             resource_id: this._id
         });
@@ -14,7 +14,7 @@ Template.resourceRelated_projectRoles.helpers({
     }
 });
 
-Template.resourceProjectRolesListRow.helpers({
+Template.userProjectRolesListRow.helpers({
     'projectrole': function () {
         var projectrole = Project_Roles.findOne({
             _id: this.project_role_id

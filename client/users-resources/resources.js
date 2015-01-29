@@ -1,3 +1,4 @@
+/*
 Template.resources.helpers({
   resources: function() {
     return Resources.find();
@@ -47,3 +48,4 @@ Template.resourceListItem.events({
         input.select();
     }
 });
+*/

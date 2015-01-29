@@ -1,4 +1,4 @@
-<template name="resourceRelated_projectRoles">
+<template name="userRelated_projectRoles">
     {{#if subscriptionReady}}
         <div class="panel panel-default">
             <h3 class="panel-title">
@@ -8,8 +8,8 @@
             </h3>
             <div id="projectRoles" class="panel-collapse collapse in">
                 <div class="panel-body">
-                    {{#if resourceProjectRoles}}
-                    <div class="resourceProjectRoles">
+                    {{#if userProjectRoles}}
+                    <div class="userProjectRoles">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -21,12 +21,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{#each resourceProjectRoles}} {{> resourceProjectRolesListRow}} {{/each}}
+                                {{#each userProjectRoles}} {{> userProjectRolesListRow}} {{/each}}
                             </tbody>
                         </table>
                     </div>
                     {{else}}
-                    <p><strong> This resource has not been assigned to any projects.</strong>
+                    <p><strong> This user has not been assigned to any projects.</strong>
                     </p>
                     {{/if}}
                 </div>
@@ -35,12 +35,12 @@
     {{/if}}
 </template>
 
-<template name="resourceProjectRolesListRow">
+<template name="userProjectRolesListRow">
     <tr>
         <td> <a href="/projects/{{project_id}}">{{project}}</a></td>
         <td> <a href="/projectRoles/{{this.project_role_id}}">{{role}}</a></td>
         <td> {{projectrole.startDate}} </td>
         <td> {{projectrole.endDate}} </td>
-        <!--td>{{> resourceProjectRolesListRowOptions}}</td-->
+        <!--td>{{> userProjectRolesListRowOptions}}</td-->
     </tr>
 </template>

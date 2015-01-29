@@ -28,7 +28,7 @@
                     </li>
                     <li><a href="{{pathFor 'skills'}}">Skills</a>
                     </li>
-                    <li><a href="{{pathFor 'resources'}}">Resources</a>
+                    <li><a href="{{pathFor 'users'}}">Users</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -40,7 +40,7 @@
 </template>
 
 <template name="loggedInButtons">
-    <li><a href="{{pathFor 'profile'}}" style="color: #CCC ;">{{user.profile.firstname}} {{user.profile.lastname}}</a>
+    <li><a href="{{pathFor 'user'}}" style="color: #CCC ;">{{user.profile.firstname}} {{user.profile.lastname}}</a>
     </li>
     <li><a href="{{pathFor 'home'}}" class="logout">Sign Out</a>
     </li>

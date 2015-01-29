@@ -1,0 +1,46 @@
+<template name="users">
+    {{#contentFor "breadcrumbs"}}
+    <li><a href="{{pathFor 'home'}}">Home</a>
+    </li>
+    <li><strong style="text-decoration: underline;">Users</strong>
+    </li>
+    {{/contentFor}}
+    <div class="users">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}} {{> userListRow}} {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<template name="userListRow">
+    <tr>
+        {{> userListItem}}
+    </tr>
+</template>
+
+<template name="userListItem">
+    <td><a href="{{pathFor 'user'}}">{{this.profile.firstname}}</a>
+    </td>
+    <td><a href="{{pathFor 'user'}}">{{this.profile.lastname}}</a>
+    </td>
+    <td>
+        <div class="btn-group">
+            <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" user="menu">
+                <li><a href="#" class="delete_user">Delete</a>
+                </li>
+            </ul>
+        </div>
+    </td>
+</template>

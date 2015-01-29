@@ -1,16 +1,21 @@
-<template name="profileView">
+<template name="userView">
     {{#contentFor "breadcrumbs"}}
+    {{#if isLoggedInUser}}
         <li>My Profile</li>
+    {{else}}
+        <li><a href="{{pathFor 'users'}}">Users</a></li>
+        <li><strong>{{this.profile.firstname}} {{this.profile.lastname}}</strong></li>
+    {{/if}}
     {{/contentFor}}
     <div class="col-md-6">
-        {{> profileViewDetail}}
+        {{> userViewDetail}}
     </div>
     <div class="col-md-6">
-        {{> profileRelatedLists}}
+        {{> userRelatedLists}}
     </div>
 </template>
 
-<template name="profileViewDetail">
+<template name="userViewDetail">
     <div class="profile">
         <p><strong>First Name: </strong>{{this.profile.firstname}} </p>
         <p><strong>Last Name: </strong>{{this.profile.lastname}}</p>
@@ -21,9 +26,10 @@
 </template>
 
 
-<template name="profileRelatedLists">
+<template name="userRelatedLists">
     <div class="panel-group" id="accordion">
-        {{> resourceRelated_skills}}
-        {{> resourceRelated_projectRoles}}
+        {{> userRelated_skills}}
+        {{> userRelated_roles}}
+        {{> userRelated_projectRoles}}
     </div>
 </template>
