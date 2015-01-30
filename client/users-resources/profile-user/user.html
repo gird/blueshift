@@ -1,7 +1,7 @@
 <template name="userView">
     {{#contentFor "breadcrumbs"}}
     {{#if isLoggedInUser}}
-        <li>My Profile</li>
+        <li><strong>My Profile</strong></li>
     {{else}}
         <li><a href="{{pathFor 'users'}}">Users</a></li>
         <li><strong>{{this.profile.firstname}} {{this.profile.lastname}}</strong></li>
@@ -28,8 +28,9 @@
 
 <template name="userRelatedLists">
     <div class="panel-group" id="accordion">
-        {{> userRelated_skills}}
-        {{> userRelated_roles}}
         {{> userRelated_projectRoles}}
+        {{> userRelated_skills}}
+        {{> userRelated_desiredSkills}}
+        {{> userRelated_roles}}
     </div>
 </template>

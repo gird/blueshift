@@ -1,42 +1,42 @@
 <template name="userRelated_skills">
     <div class="panel panel-default">
-            <h3 class="panel-title">
+        <h3 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#skills">
               Skills
               </a>
             </h3>
-            <div id="skills" class="panel-collapse collapse in">
-                <div class="panel-body">
-                    {{#if userSkills}}
-                    <div class="userSkills">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Experience</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each userSkills}} {{> userSkillsListRow}} {{/each}}
-                            </tbody>
-                        </table>
-                    </div>
-                    {{else}}
-                    <p><strong> There are no skills for this user.</strong>
-                    </p>
-                    {{/if}}
-                    {{> userSkillsListButtons}}
+        <div id="skills" class="panel-collapse collapse">
+            <div class="panel-body">
+                {{#if userSkills}}
+                <div class="userSkills">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Experience</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each userSkills}} {{> userSkillsListRow}} {{/each}}
+                        </tbody>
+                    </table>
                 </div>
+                {{else}}
+                <p><strong> There are no skills for this user.</strong>
+                </p>
+                {{/if}} 
+                {{> userSkillsListButtons}}
             </div>
         </div>
+    </div>
 </template>
 
 
 <template name="userSkillsListRow">
     <tr>
-        <td> {{skill}} </td>
-        <td> {{this.experience}} </td>
+        <td>{{skill}}</td>
+        <td>{{this.experience}}</td>
         <td>{{> userSkillsListRowOptions}}</td>
     </tr>
 </template>
@@ -58,14 +58,11 @@
 <template name="userSkillsListButtons">
     <div class="btn-group">
         <button type="button" class="btn btn-default new_user_skill" data-toggle="modal" data-target="#newResourceSkillModal"><span class="glyphicon glyphicon-plus"></span> New</button>
-    </div>     
-    
-    {{> newResourceSkillModal}}
-    {{> editResourceSkillModal}}
+    </div>
+    {{> newUserSkillModal}} {{> editUserSkillModal}}
 </template>
 
-
-<template name="newResourceSkillModal">
+<template name="newUserSkillModal">
     <div class="modal fade" id="newResourceSkillModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -79,7 +76,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Skill</label>
                             <div class="col-md-10">
-                                <input class="form-control typeahead userSkill_skillName col-md-12" name="skill" type="text" placeholder="Skills" autocomplete="off" spellcheck="off" data-source="skillLookup"/>
+                                <input class="form-control typeahead userSkill_skillName col-md-12" name="skill" type="text" placeholder="Skills" autocomplete="off" spellcheck="off" data-source="skillLookup" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -102,7 +99,7 @@
     </div>
 </template>
 
-<template name="editResourceSkillModal">
+<template name="editUserSkillModal">
     <div class="modal fade" id="editResourceSkillModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

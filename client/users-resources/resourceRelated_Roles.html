@@ -5,7 +5,7 @@
               Roles
               </a>
             </h3>
-            <div id="roles" class="panel-collapse collapse in">
+            <div id="roles" class="panel-collapse collapse">
                 <div class="panel-body">
                     {{#if userRoles}}
                     <div class="userRoles">
@@ -13,7 +13,6 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Experience</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -36,7 +35,6 @@
 <template name="userRolesListRow">
     <tr>
         <td> {{role}} </td>
-        <td> {{this.experience}} </td>
         <td>{{> userRolesListRowOptions}}</td>
     </tr>
 </template>
@@ -82,15 +80,6 @@
                                 <input class="form-control typeahead userRole_roleName col-md-12" name="role" type="text" placeholder="Roles" autocomplete="off" spellcheck="off" data-source="roleLookup"/>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">Experience</label>
-                            <div class="col-md-10">
-                                <div class="input-group">
-                                    <input type="text" class="form-control userRole_experience" placeholder="Enter amount of experience">
-                                    <span class="input-group-addon">Years</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default cancel_new_userRole" data-dismiss="modal">Close</button>
@@ -111,17 +100,6 @@
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                         </button>
                         <h4 class="modal-title" id="myModalLabel">Edit Role</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">Experience</label>
-                            <div class="col-md-10">
-                                <div class="input-group">
-                                    <input type="text" class="form-control edit_userRole_experience">
-                                    <span class="input-group-addon">Years</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default cancel_edit_userRole" data-dismiss="modal">Close</button>

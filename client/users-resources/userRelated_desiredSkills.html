@@ -1,0 +1,120 @@
+<template name="userRelated_desiredSkills">
+    <div class="panel panel-default">
+        <h3 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#desired_skills">
+              Desired Skills
+              </a>
+            </h3>
+        <div id="desired_skills" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="userDesiredSkills">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each userDesiredSkills}} {{> userDesiredSkillsListRow}} {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{> userDesiredSkillsListButtons}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="userDesiredSkillsListRow">
+    <tr>
+        <td>{{skill}}</td>
+        <td>{{this.reason}}</td>
+        <td>{{> userDesiredSkillsListRowOptions}}</td>
+    </tr>
+</template>
+
+<template name="userDesiredSkillsListRowOptions">
+    <div class="btn-group">
+        <button class="btn btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="#" class="edit_userDesiredSkill" data-toggle="modal" data-target="#editUserDesiredSkillModal"><span class="glyphicon glyphicon-pencil"></span></a>
+            </li>
+            <li><a href="#" class="delete_userDesiredSkill"><span class="glyphicon glyphicon-trash"></span></a>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<template name="userDesiredSkillsListButtons">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default new_user_desired_skill" data-toggle="modal" data-target="#newUserDesiredSkillModal"><span class="glyphicon glyphicon-plus"></span> New</button>
+    </div>
+    {{> newUserDesiredSkillModal}} {{> editUserDesiredSkillModal}}
+</template>
+
+<template name="newUserDesiredSkillModal">
+    <div class="modal fade" id="newUserDesiredSkillModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Add Desired Skill to {{firstname}} {{lastname}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Desired Skill</label>
+                            <div class="col-md-10">
+                                <input class="form-control typeahead userDesiredSkill_skillName col-md-12" name="skill" type="text" placeholder="Skills" autocomplete="off" spellcheck="off" data-source="skillLookup" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Reason</label>
+                            <div class="col-md-10">
+                                <textarea class="form-control userDesiredSkill_reason" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_new_userDesiredSkill" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit_new_userDesiredSkill" disabled="{{submitIsDisabled}}">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="editUserDesiredSkillModal">
+    <div class="modal fade" id="editUserDesiredSkillModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Edit Skill</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Reason</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <input type="text" class="form-control edit_userDesiredSkill_reason">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_edit_userDesiredSkill" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary submit_edit_userDesiredSkill" disabled="{{submitEditIsDisabled}}">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>

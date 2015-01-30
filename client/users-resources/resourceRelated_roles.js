@@ -49,7 +49,8 @@ Template.newResourceRoleModal.events({
         Resource_Roles.insert({
             resource_id: this._id,
             role_id: roleId,
-            experience: experience
+            createdDate: new Date(),
+            createdBy: Meteor.userId()
         });
         $('#newResourceRoleModal').modal('hide');
         $('.userRole_roleName').val(null);

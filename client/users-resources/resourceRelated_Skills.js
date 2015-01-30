@@ -1,6 +1,4 @@
-Template.newResourceSkillModal.rendered = function() {
-    Meteor.typeahead.inject();
-}
+/*----------Start of User Skills----------*/
 
 Template.userRelated_skills.helpers({
     userSkills: function() {
@@ -20,15 +18,6 @@ Template.userSkillsListRow.helpers({
     }
 });
 
-Template.newResourceSkillModal.helpers({
-    skills: function() {
-        return Skills.find();
-    },
-    skillLookup: function() {
-        return Skills.find().fetch().map(function(it){ return it.name; });
-    }
-});
-
 Template.userSkillsListRowOptions.events({
     'click a.delete_userskill': function(e) {
         e.preventDefault();
@@ -40,7 +29,20 @@ Template.userSkillsListRowOptions.events({
     }
 });
 
-Template.newResourceSkillModal.events({
+Template.newUserSkillModal.rendered = function() {
+    Meteor.typeahead.inject();
+}
+
+Template.newUserSkillModal.helpers({
+    skills: function() {
+        return Skills.find();
+    },
+    skillLookup: function() {
+        return Skills.find().fetch().map(function(it){ return it.name; });
+    }
+});
+
+Template.newUserSkillModal.events({
     'click .submit_new_userSkill': function() {
         var skillName = $('.userSkill_skillName').val();
         var skill = Skills.findOne({name: skillName});
@@ -65,7 +67,7 @@ Template.newResourceSkillModal.events({
     }
 });
 
-Template.editResourceSkillModal.events({
+Template.editUserSkillModal.events({
     'click .submit_edit_userSkill': function() {
         var experience = $('.edit_userSkill_experience').val();
         var userSkillId = Session.get('editing_userSkillId');
@@ -83,3 +85,5 @@ Template.editResourceSkillModal.events({
         Session.set('editting_userskill_experience', null);
     }
 });
+
+/*----------End of User Skills----------*/

@@ -63,6 +63,10 @@ Meteor.publish('resource_skills', function() {
   return Resource_Skills.find();
 });
 
+Meteor.publish('user_desired_skills', function() {
+  return User_Desired_Skills.find();
+});
+
 Meteor.publish('resource_roles', function() {
   return Resource_Roles.find();
 });
