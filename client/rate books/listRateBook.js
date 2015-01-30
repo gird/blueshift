@@ -1,16 +1,23 @@
 //rateBooksSubscriptionHandle = Meteor.subscribe("rate_books");
 
-Template.rateBooks.subscriptionReady=function(){
-    return rateBooksSubscriptionHandle.ready();
-};
-
 Template.rateBooks.helpers({
-  rateBooks: function() {
-    return Rate_Books.find();
-  }
+    rateBooks: function () {
+        return Rate_Books.find();
+    },
+    subscriptionReady: function () {
+        return rateBooksSubscriptionHandle.ready();
+    }
 });
 
 Template.rateBookListItem.helpers({
+    showDefault: function () {
+        var nameOfThis = Rate_Books.findOne(this._id);
+        if (nameOfThis.isDefault == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     /*'nameDefault': function() {
         var nameOfThis = Rate_Books.findOne(this._id);
         if(nameOfThis.isDefault == true){
@@ -21,26 +28,21 @@ Template.rateBookListItem.helpers({
     }*/
 });
 
-Template.rateBookListItem.showDefault = function () {
-    var nameOfThis = Rate_Books.findOne(this._id);
-    if(nameOfThis.isDefault == true){
-        return true;
-    } else { 
-        return false; 
-    }
-}
-
 Session.set('editing_ratebookname', null);
 
 Session.set('adding_ratebookname', null);
 
-Template.rateBookListRow.editing = function () {
-  return Session.equals('editing_ratebookname', this._id);
-};
+Template.rateBookListRow.helpers({
+    editing: function () {
+        return Session.equals('editing_ratebookname', this._id);
+    }
+});
 
-Template.newRateBook.submitIsDisabled = function () {
-    return Session.equals('adding_ratebookname', null);
-};
+Template.newRateBook.helpers({
+    submitIsDisabled: function () {
+        return Session.equals('adding_ratebookname', null);
+    }
+});
 
 Template.newRateBook.events({
     'click .submit_new_ratebook': function () {
@@ -55,10 +57,10 @@ Template.newRateBook.events({
     'keyup input.new_rateBook_name': function (evt) {
         if (evt.which) {
             var ratebookName = $('.new_rateBook_name').val();
-            if(ratebookName.length > 1) {
-                 Session.set('adding_ratebookname', ratebookName);
-            } 
-            if (ratebookName.length < 2){
+            if (ratebookName.length > 1) {
+                Session.set('adding_ratebookname', ratebookName);
+            }
+            if (ratebookName.length < 2) {
                 Session.set('adding_ratebookname', null);
             }
         }
@@ -66,15 +68,15 @@ Template.newRateBook.events({
     'keydown input.new_rateBook_name': function (evt) {
         if (evt.which === 13) {
             var ratebookName = $('.new_rateBook_name');
-            if(ratebookName.val().length > 1) {
+            if (ratebookName.val().length > 1) {
                 Rate_Books.insert({
                     name: ratebookName.val(),
                     isDefault: false
                 });
                 ratebookName.val('');
                 Session.set('adding_ratebookname', null);
-            } 
-            if (ratebookName.val().length < 2){
+            }
+            if (ratebookName.val().length < 2) {
                 Session.set('adding_ratebookname', null);
             }
         }
@@ -107,12 +109,24 @@ Template.rateBookListRowOptions.events({
         input.select();
     },
     'click a.setDefault_ratebook': function () {
-        var currentDefault = Rate_Books.findOne({isDefault: true});
+        var currentDefault = Rate_Books.findOne({
+            isDefault: true
+        });
         Rate_Books.update(
-            currentDefault._id, {$set: {isDefault: false}}, { multi: true }
+            currentDefault._id, {
+                $set: {
+                    isDefault: false
+                }
+            }, {
+                multi: true
+            }
         );
         Rate_Books.update(
-            this._id, {$set: {isDefault: true}}
+            this._id, {
+                $set: {
+                    isDefault: true
+                }
+            }
         );
     }
 });
@@ -121,7 +135,11 @@ Template.editRateBookRoleRow.events({
     'click .submit_edit_ratebook': function () {
         var ratebookName = $('.edit_ratebook_name');
         Rate_Books.update(
-            this._id, {$set: {name: ratebookName.val()}}
+            this._id, {
+                $set: {
+                    name: ratebookName.val()
+                }
+            }
         );
         ratebookName.val('');
         Session.set('editing_ratebookname', null);
@@ -131,9 +149,13 @@ Template.editRateBookRoleRow.events({
         if (evt.which === 13) {
             var ratebookName = $('.edit_ratebook_name');
             // Do not update if name did not change.
-            if (ratebookName != Rate_Books.findOne(this).name){
+            if (ratebookName != Rate_Books.findOne(this).name) {
                 Rate_Books.update(
-                    this._id, {$set: {name: ratebookName.val()}}
+                    this._id, {
+                        $set: {
+                            name: ratebookName.val()
+                        }
+                    }
                 );
             }
             ratebookName.val('');

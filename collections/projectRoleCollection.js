@@ -21,18 +21,18 @@ var projectrole = {
     
     'resourceNames': function () {
         var resourceNames = '';
-        var resources = this.resources;
+        var resources = Project_Role_Resources.find({project_role_id:this._id});
         //return resources;
         if(!resources){
             resourceNames = 'None Assigned/Claimed';
             return resourceNames;
         } else {
             resources.forEach(function(res){
-                var resource = Resources.findOne({
+                var resource = Meteor.users.findOne({
                     _id: res.resource_id
                 });
-                var resourceFirstName = resource && resource.firstname;
-                var resourceLastName = resource && resource.lastname;
+                var resourceFirstName = resource && resource.profile.firstname;
+                var resourceLastName = resource && resource.profile.lastname;
                 resourceNames = resourceNames + resourceFirstName + ' ' + resourceLastName + ' (' + res.type + ') ' + ', ';
             });
             resourceNames = resourceNames.slice(0, resourceNames.length -2);

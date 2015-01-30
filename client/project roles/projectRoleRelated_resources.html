@@ -35,7 +35,7 @@
 
 <template name="relatedResourcesListRow">
     <tr>
-        <td><a href="{{pathFor 'resourceView'}}">{{this.firstname}} {{this.lastname}}</a></td>
+        <td><a href="{{pathFor 'user'}}">{{this.profile.firstname}} {{this.profile.lastname}}</a></td>
         <td>{{> relatedResourcesListRowOptions}}</td>
     </tr>
 </template>
@@ -76,7 +76,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Resource</label>
                             <div class="col-md-10">
-                                <input class="form-control typeahead projectRoleResource_fullName col-md-12" name="resource" type="text" placeholder="Look for a resource..." autocomplete="off" spellcheck="off" data-source="resourceLookup"/>
+                                <input class="form-control typeahead projectRoleResource_fullName col-md-12" name="resource" type="text" placeholder="Look for a resource..." autocomplete="off" spellcheck="off" data-source="resourceLookup" data-selected="selectedUser"/>
                             </div>
                         </div>
                         <!--div class="form-group">
