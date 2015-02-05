@@ -1,4 +1,5 @@
 //create some Project Roles
+/*
 if (Project_Role_Resources.find().count() === 0) {  
   var projectRoleResources = [
   {
@@ -16,3 +17,4 @@ if (Project_Role_Resources.find().count() === 0) {
     Project_Role_Resources.insert(doc);
   });
 }
+*/

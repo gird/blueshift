@@ -1,4 +1,5 @@
 //create some sample Feilds
+/*
 if (Contacts.find().count() === 0) {  
   var contacts = [
   {
@@ -16,3 +17,4 @@ if (Contacts.find().count() === 0) {
     Contacts.insert(doc);
   });
 }
+*/

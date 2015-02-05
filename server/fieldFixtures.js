@@ -1,4 +1,5 @@
 //create some sample Feilds
+/*
 if (Fields.find().count() === 0) {  
   var fields = [
   {
@@ -26,3 +27,4 @@ if (Fields.find().count() === 0) {
     Fields.insert(doc);
   });
 }
+*/

@@ -1,4 +1,5 @@
 //create some sample Skills
+/*
 if (Skills.find().count() === 0) {
   var skills = [
   {
@@ -12,3 +13,4 @@ if (Skills.find().count() === 0) {
     Skills.insert(doc);
   });
 }
+*/

@@ -1,4 +1,5 @@
 //create some sample Opportunities
+/*
 if (Opportunities.find().count() === 0) {
     var opportunities = [
         {
@@ -35,3 +36,4 @@ if (Opportunities.find().count() === 0) {
         Opportunities.insert(doc);
     });
 }
+*/

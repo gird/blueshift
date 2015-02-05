@@ -6,8 +6,9 @@ Session.set('selectedUserId', null);
 
 Template.projectRoleRelated_resources.helpers({
     resources: function () {
-        var resourceList = Project_Role_Resources.find({project_role_id: this._id}).fetch();
-        var resourceMap = [];
+        var resourceList = Project_Role_Resources.find({project_role_id: this._id});
+        return resourceList;
+        /*var resourceMap = [];
         if(resourceList){
             resourceList.forEach(function(res){
                 resourceMap.push(res.resource_id);
@@ -16,7 +17,7 @@ Template.projectRoleRelated_resources.helpers({
             return resources;
         } else { 
             return; 
-        }
+        }*/
                 
     }
 });
@@ -52,5 +53,12 @@ Template.newProjectRoleResourceModal.events({
         $('.projectRoleResource_fullName').val(null);
         Session.set('adding_projectroleresource_resourceid', null);
         Session.set('selectedUserId', null);
+    }
+});
+
+Template.relatedResourcesListRowOptions.events({
+    'click .assign_relatedResource': function() {
+        var claimedResource = Project_Role_Resources.findOne(this._id);
+        console.log(this._id);
     }
 });

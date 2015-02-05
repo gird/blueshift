@@ -35,7 +35,7 @@
 
 <template name="relatedResourcesListRow">
     <tr>
-        <td><a href="{{pathFor 'user'}}">{{this.profile.firstname}} {{this.profile.lastname}}</a></td>
+        <td><a href="{{pathFor 'userFromRole'}}">{{this.resource_full_name}}</a></td>
         <td>{{> relatedResourcesListRowOptions}}</td>
     </tr>
 </template>

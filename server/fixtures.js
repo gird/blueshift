@@ -123,7 +123,6 @@ if (Rate_Book_Roles.find().count() === 0) {
     rate: 175
   });
 }
-*/
 
 //create some sample Resources
 if (Resources.find().count() === 0) {
@@ -138,4 +137,4 @@ if (Resources.find().count() === 0) {
     skills: ['skill100']
   });
 }
-
+*/
